@@ -1,1466 +1,859 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phatthanan S. | Economics Research & Quantitative Analysis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="icon" type="image/png" href="black.png">
-  <title>Phatthanan S. | Quantitative Economist & Research Specialist</title>
-  
-  <!-- Fonts: JetBrains Mono & Inter -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            mono: ['"JetBrains Mono"', 'monospace'],
-            sans: ['"Inter"', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
           },
           colors: {
             slate: {
               850: '#0f172a',
               900: '#0b1120',
-              950: '#060a12',
+              950: '#030712',
             },
-            accent: {
-              teal: '#06b6d4',
-              emerald: '#10b981',
-              amber: '#f59e0b',
-              indigo: '#6366f1'
+            cyan: {
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              glow: 'rgba(56, 189, 248, 0.15)',
             }
           }
         }
       }
     }
   </script>
-
   <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    body {
+      background-color: #030712;
+      color: #f3f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
     }
-    ::-webkit-scrollbar-track {
-      background: #0b1120;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 3px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
-    .math-formula {
+    .font-mono {
       font-family: 'JetBrains Mono', monospace;
-      letter-spacing: -0.025em;
     }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .glass-card {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(56, 189, 248, 0.12);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 10px 30px -10px rgba(56, 189, 248, 0.15);
+    }
+    .neon-text-glow {
+      text-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+    }
+    /* Subtle Canvas Layer */
+    #ambientCanvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.6;
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans antialiased min-h-screen selection:bg-cyan-500/20 selection:text-cyan-300">
+<body class="selection:bg-cyan-500/20 selection:text-cyan-300">
 
-  <!-- Top Sticky Header -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+  <!-- NAVIGATION HEADER -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      
-      <!-- Brand & Terminal Indicator -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 p-1 flex items-center justify-center group-hover:border-cyan-500/50 transition overflow-hidden">
-          <img src="black.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-mono text-cyan-400 font-bold text-sm\'>PS</span>';">
+      <div class="flex items-center space-x-3">
+        <div class="w-9 h-9 rounded-lg bg-slate-900 border border-cyan-500/30 p-1 flex items-center justify-center font-mono font-bold text-cyan-400 overflow-hidden">
+          <img src="black.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-mono font-bold text-cyan-400\'>PS</span>';">
         </div>
-        <div class="flex flex-col">
-          <span class="font-mono text-sm font-semibold tracking-tight text-white group-hover:text-cyan-400 transition">Phatthanan S.</span>
-          <span class="text-[10px] font-mono text-slate-500 tracking-wider">ECONOMETRICS & RESEARCH</span>
-        </div>
-      </a>
+        <span class="font-mono text-sm tracking-wider text-slate-200 font-semibold">Phatthanan S.</span>
+      </div>
 
-      <!-- Navigation & Action Controls -->
-      <nav class="hidden md:flex items-center gap-6 font-mono text-xs">
-        <a href="#projects" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_projects">Projects</a>
-        <a href="#lab" class="text-slate-400 hover:text-emerald-400 transition" data-i18n="nav_lab">Analytical Lab</a>
-        <a href="index.html" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1"><i class="fa-solid fa-wave-square text-[10px] text-cyan-400"></i> Pulse Engine</a>
-        <a href="#about" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_about">About & Philosophy</a>
-        <a href="#contact" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_contact">Contact</a>
+      <nav class="hidden md:flex items-center space-x-8 text-xs font-mono tracking-wider text-slate-400 uppercase">
+        <a href="#about" class="hover:text-cyan-400 transition-colors" data-i18n="nav_about">About</a>
+        <a href="#lab" class="hover:text-cyan-400 transition-colors" data-i18n="nav_lab">Analytical Lab</a>
+        <a href="#research" class="hover:text-cyan-400 transition-colors" data-i18n="nav_research">Projects</a>
+        <a href="#contact" class="hover:text-cyan-400 transition-colors" data-i18n="nav_contact">Contact</a>
+        <a href="index.html" class="hover:text-cyan-400 transition-colors text-cyan-400 font-semibold flex items-center space-x-1" data-i18n="nav_pulse"><span>⚡</span><span>Pulse Engine</span></a>
       </nav>
 
-      <!-- Language Switcher & Terminal Status -->
-      <div class="flex items-center gap-3">
-        <!-- Bilingual Toggle Button -->
-        <button id="langToggle" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 bg-slate-900/90 text-xs font-mono font-medium text-slate-200 hover:border-cyan-500 transition shadow-sm">
-          <i class="fa-solid fa-language text-cyan-400 text-sm"></i>
-          <span id="currentLangLabel">TH / EN</span>
+      <div class="flex items-center space-x-3">
+        <!-- Language Switcher Button -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="px-3 py-1.5 rounded border border-slate-700 bg-slate-900/80 text-xs font-mono text-cyan-400 hover:border-cyan-500/50 hover:bg-slate-800 transition-all flex items-center space-x-1.5 shadow-sm">
+          <span id="langLabel" class="font-semibold">TH / EN</span>
         </button>
-
-        <a href="mailto:sp.phatthanan@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-mono text-xs transition">
-          <i class="fa-regular fa-envelope"></i>
-          <span data-i18n="btn_hire">Get in Touch</span>
-        </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="relative overflow-hidden py-20 lg:py-28 border-b border-slate-900">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.15),rgba(255,255,255,0))]"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <!-- System Tag -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-300 font-mono text-xs mb-6">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span data-i18n="hero_status">Applied Economist • Quantitative Research Specialist</span>
+  <!-- HERO SECTION WITH SUBTLE AMBIENT CANVAS -->
+  <section class="relative min-h-[85vh] flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden border-b border-slate-850">
+    <!-- Ambient Sparkle & Gentle Dynamic Curve Canvas -->
+    <canvas id="ambientCanvas"></canvas>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-slate-900/60 backdrop-blur mb-6 text-xs font-mono text-cyan-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span data-i18n="hero_badge">Economist • Quantitative & Strategic Research</span>
       </div>
 
-      <!-- Core Header with Persona Quote -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-8">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Phatthanan S.
-          </h1>
-          
-          <div class="relative pl-6 border-l-2 border-cyan-400 mb-8 py-1">
-            <blockquote class="text-xl sm:text-2xl font-mono text-cyan-200/90 font-light italic" id="heroQuote">
-              "Master Economics, the Simple Way."
-            </blockquote>
-            <p class="text-sm font-mono text-slate-500 mt-2" data-i18n="quote_sub">
-              — Precision over rhetoric; evaluating long-term systemic equilibrium over localized illusions.
-            </p>
-          </div>
+      <h1 class="text-4xl sm:text-6xl font-bold tracking-tight text-white mb-6 font-mono leading-tight">
+        Phatthanan S.
+      </h1>
 
-          <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8" data-i18n="hero_desc">
-            Bridging rigorous econometric principles, strategic game theory, and empirical macroeconomic dynamics into clean, actionable analytical frameworks. Dedicated to unraveling complex economic phenomena through uncompromising logic and clarity.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-4 font-mono text-xs">
-            <a href="#projects" class="px-5 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
-              <i class="fa-solid fa-layer-group"></i>
-              <span data-i18n="hero_btn_explore">Explore Analytical Treatises (4)</span>
-            </a>
-            <a href="#lab" class="px-5 py-3 rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-200 transition flex items-center gap-2">
-              <i class="fa-solid fa-calculator text-emerald-400"></i>
-              <span data-i18n="hero_btn_lab">Interactive Simulator</span>
-            </a>
-            <a href="index.html" class="px-5 py-3 rounded-lg border border-cyan-500/40 bg-cyan-950/30 hover:bg-cyan-900/40 text-cyan-300 transition flex items-center gap-2 shadow-sm">
-              <i class="fa-solid fa-wave-square text-cyan-400"></i>
-              <span>Pulse Engine</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Analytical Badge Cards (Character Snapshot) -->
-        <div class="lg:col-span-4 space-y-4">
-          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm">
-            <div class="flex items-center justify-between text-xs font-mono text-slate-400 pb-3 border-b border-slate-800">
-              <span class="flex items-center gap-2">
-                <i class="fa-solid fa-microchip text-cyan-400"></i>
-                <span data-i18n="badge_methodology">METHODOLOGICAL RIGOR</span>
-              </span>
-              <span class="text-emerald-400">99.9%</span>
-            </div>
-            <ul class="mt-4 space-y-2.5 text-xs font-mono text-slate-300">
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_1">Hazlittian Long-Run Tracing</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_2">Nash & Subgame Perfect Equilibria</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_3">DSGE & Taylor Policy Rules</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_4">Geoeconomic Fragmentation Modeling</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="p-4 rounded-xl border border-emerald-950/60 bg-emerald-950/10 font-mono text-xs text-slate-400 flex items-center justify-between">
-            <div>
-              <span class="text-slate-500 block text-[10px]" data-i18n="stat_corpus_label">TOTAL PROJECT CORPUS</span>
-              <span class="text-lg font-bold text-emerald-400">4,800+ Words</span>
-            </div>
-            <div class="text-right">
-              <span class="text-slate-500 block text-[10px]" data-i18n="stat_bilingual_label">DUAL-EDITION</span>
-              <span class="text-xs font-semibold text-white">EN & TH Fully Synced</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Interactive Econometric Lab (Custom Character Gimmick) -->
-  <section id="lab" class="py-16 border-b border-slate-900 bg-slate-950">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-        <div>
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-medium uppercase tracking-wider mb-2">
-            <i class="fa-solid fa-terminal"></i>
-            <span data-i18n="lab_subtitle">Interactive Analytical Engine</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight" data-i18n="lab_title">
-            Quantitative Playground & Policy Simulators
-          </h2>
-        </div>
-        <div class="text-xs font-mono text-slate-500">
-          <span data-i18n="lab_disclaimer">// Real-time algorithmic calculation for economic logic</span>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Interactive Widget 1: Strategic Game Theory (Payoff Matrix Simulator) -->
-        <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/60 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-xs">MODULE 01</span>
-                <h3 class="font-bold text-white text-base" data-i18n="sim_game_title">Strategic Dilemma Payoff Matrix</h3>
-              </div>
-              <span class="text-xs font-mono text-slate-500">2x2 Strategic Form</span>
-            </div>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed" data-i18n="sim_game_desc">
-              Adjust payoff values to observe dynamic dominance shifts and compute Nash Equilibrium instantly.
-            </p>
-
-            <!-- Payoff Matrix Grid -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 mb-6 font-mono text-xs">
-              <div class="grid grid-cols-3 gap-2 text-center items-center">
-                <div class="text-slate-600 italic">P1 \ P2</div>
-                <div class="text-cyan-400 font-semibold" data-i18n="sim_col_coop">Cooperate (C)</div>
-                <div class="text-cyan-400 font-semibold" data-i18n="sim_col_defect">Defect (D)</div>
-
-                <!-- Row 1 Cooperate -->
-                <div class="text-emerald-400 font-semibold text-left" data-i18n="sim_row_coop">Coop (C)</div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-CC">
-                  <span class="text-emerald-400 font-bold" id="p1_cc">3</span>, <span class="text-cyan-400 font-bold" id="p2_cc">3</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_pareto">Pareto Opt</div>
-                </div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-CD">
-                  <span class="text-emerald-400 font-bold" id="p1_cd">0</span>, <span class="text-cyan-400 font-bold" id="p2_cd">5</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_sucker">Exploited</div>
-                </div>
-
-                <!-- Row 2 Defect -->
-                <div class="text-emerald-400 font-semibold text-left" data-i18n="sim_row_defect">Defect (D)</div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-DC">
-                  <span class="text-emerald-400 font-bold" id="p1_dc">5</span>, <span class="text-cyan-400 font-bold" id="p2_dc">0</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_tempt">Temptation</div>
-                </div>
-                <div class="p-3 rounded border border-amber-500/40 bg-amber-500/10 transition relative" id="cell-DD">
-                  <span class="text-emerald-400 font-bold" id="p1_dd">1</span>, <span class="text-cyan-400 font-bold" id="p2_dd">1</span>
-                  <div class="text-[9px] text-amber-400 font-bold mt-1" data-i18n="sim_nash">★ NASH EQ</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Controls -->
-            <div class="flex items-center justify-between text-xs font-mono">
-              <span class="text-slate-400" data-i18n="sim_game_preset">Preset Game:</span>
-              <div class="flex gap-2">
-                <button onclick="setGamePreset('pd')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Prisoner's Dilemma</button>
-                <button onclick="setGamePreset('coord')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Stag Hunt</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-800 text-xs font-mono text-slate-400">
-            <span class="text-emerald-400 font-semibold" data-i18n="sim_nash_result">Eq Status:</span>
-            <span id="nashExplanation" class="text-slate-300 ml-1">Strict Dominant Strategy leads to (Defect, Defect) yielding sub-optimal welfare.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Widget 2: Macroeconomic Taylor Rule Simulator -->
-        <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/60 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono text-xs">MODULE 02</span>
-                <h3 class="font-bold text-white text-base" data-i18n="sim_macro_title">Central Bank Taylor Rule Policy Engine</h3>
-              </div>
-              <span class="text-xs font-mono text-slate-500">i = r* + π + 0.5(π - π*) + 0.5(y - y*)</span>
-            </div>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed" data-i18n="sim_macro_desc">
-              Simulate optimal central bank target policy rates based on real inflation divergence and GDP output gap.
-            </p>
-
-            <!-- Sliders -->
-            <div class="space-y-4 font-mono text-xs mb-6">
-              <div>
-                <div class="flex justify-between text-slate-300 mb-1">
-                  <span data-i18n="sim_inflation_rate">Actual Inflation (π):</span>
-                  <span id="disp-pi" class="text-cyan-400 font-bold">4.2%</span>
-                </div>
-                <input type="range" min="0" max="10" step="0.1" value="4.2" id="input-pi" oninput="calculateTaylorRule()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
-              </div>
-
-              <div>
-                <div class="flex justify-between text-slate-300 mb-1">
-                  <span data-i18n="sim_output_gap">Output Gap (y - y*):</span>
-                  <span id="disp-gap" class="text-emerald-400 font-bold">+1.5%</span>
-                </div>
-                <input type="range" min="-5" max="5" step="0.1" value="1.5" id="input-gap" oninput="calculateTaylorRule()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400">
-              </div>
-
-              <div class="grid grid-cols-2 gap-3 pt-2">
-                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]" data-i18n="sim_neutral_rate">Assumed Neutral r*:</span>
-                  <span class="text-slate-300 font-bold">1.0%</span>
-                </div>
-                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]" data-i18n="sim_target_pi">Inflation Target π*:</span>
-                  <span class="text-slate-300 font-bold">2.0%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Calculated Policy Rate Display -->
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-            <div>
-              <div class="text-[10px] font-mono text-slate-500 uppercase tracking-wider" data-i18n="sim_prescribed_rate">PRESCRIBED POLICY RATE</div>
-              <div class="text-2xl font-bold font-mono text-cyan-400" id="taylorRateDisplay">7.05%</div>
-            </div>
-            <div class="text-right font-mono text-xs">
-              <span id="policyStanceBadge" class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold" data-i18n="sim_stance_tight">Aggressive Tightening</span>
-              <p class="text-[10px] text-slate-500 mt-1" id="yieldCurveStatus" data-i18n="sim_yield_inverted">Yield Curve: Inversion Risk High</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section: 4 Deep Analytical Treatises -->
-  <section id="projects" class="py-20 border-b border-slate-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-14">
-        <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider mb-2">
-          <i class="fa-solid fa-book-bookmark"></i>
-          <span data-i18n="projects_header_tag">Analytical Research & Treatises</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="projects_main_title">
-          Core Economic Foundations & Frameworks
-        </h2>
-        <p class="text-sm sm:text-base text-slate-400 mt-3 leading-relaxed" data-i18n="projects_main_desc">
-          Four foundational studies in political economy, game-theoretic equilibria, central banking, and international trade dynamics. Each analysis contains over 1,000 words of thorough, rigorous exposition.
-        </p>
-      </div>
-
-      <!-- Project Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Project 1 Card: Henry Hazlitt -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-800/40">PROJECT 01</span>
-              <span>1946 CLASSICAL TRADITION</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition mb-3" data-i18n="p1_title">
-              Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p1_summary">
-              An exhaustive critique of the "Broken Window Fallacy", the seen versus unseen secondary consequences, the destructive realities of government price ceilings, tariffs, and systemic monetary dilution.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#BrokenWindowFallacy</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#OpportunityCost</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#SoundMoney</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_1">1,180 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project1')" class="px-4 py-2 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 2 Card: Game Theory -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-emerald-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-800/40">PROJECT 02</span>
-              <span>STRATEGIC INTERACTION</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-300 transition mb-3" data-i18n="p2_title">
-              Game Theory: Equilibria, Information & Mechanism Design
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p2_summary">
-              Formal mathematical and behavioral foundations of strategic behavior: Simultaneous vs Sequential games, Nash equilibria, Cournot-Bertrand competition, signaling, and incentive-compatible mechanisms.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#NashEquilibrium</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#MechanismDesign</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#AsymmetricInfo</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_2">1,240 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project2')" class="px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 3 Card: Macroeconomics -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-amber-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-800/40">PROJECT 03</span>
-              <span>MONETARY & FISCAL DYNAMICS</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition mb-3" data-i18n="p3_title">
-              Modern Macroeconomics: Monetary Transmission & Fiscal Constraints
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p3_summary">
-              A comprehensive analytical exploration of the IS-LM-PC synthesis, central bank balance sheet expansion (QE/QT), policy rate reactions via the Taylor Rule, yield curve mechanics, and sovereign debt sustainability.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#MonetaryTransmission</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#TaylorRule</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#YieldCurve</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_3">1,310 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project3')" class="px-4 py-2 rounded-lg bg-amber-500/10 text-amber-400 hover:bg-amber-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 4 Card: World Economy & Globalization -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-indigo-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-indigo-950/60 text-indigo-300 border border-indigo-800/40">PROJECT 04</span>
-              <span>INTERNATIONAL TRADE & FINANCE</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-indigo-300 transition mb-3" data-i18n="p4_title">
-              World Economy and Globalization: Chains, Tariffs & Fractures
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p4_summary">
-              Evaluating Ricardo's comparative advantage against modern global value chains (GVCs), structural factor endowments (Heckscher-Ohlin), tariff welfare distortions, and current geoeconomic fragmentation.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#ComparativeAdvantage</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#GeoeconomicShift</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#GlobalValueChains</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_4">1,260 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project4')" class="px-4 py-2 rounded-lg bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- About Me & Methodological Philosophy Section -->
-  <section id="about" class="py-20 border-b border-slate-900 bg-slate-900/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-5 space-y-6">
-          <div class="p-8 rounded-2xl border border-slate-800 bg-slate-900/70 relative">
-            <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-cyan-500 via-emerald-500 to-indigo-500 p-[2px] mb-6">
-              <div class="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center font-mono text-2xl font-bold text-cyan-400">
-                PS
-              </div>
-            </div>
-
-            <h3 class="text-2xl font-bold text-white mb-1">Phatthanan S.</h3>
-            <p class="text-xs font-mono text-cyan-400 mb-4" data-i18n="about_role">Quantitative Economist & Research Specialist</p>
-
-            <div class="space-y-3 font-mono text-xs text-slate-400 border-t border-slate-800/80 pt-4">
-              <div class="flex items-center gap-3">
-                <i class="fa-regular fa-envelope text-slate-500 w-4"></i>
-                <a href="mailto:sp.phatthanan@gmail.com" class="text-slate-300 hover:text-cyan-400 transition">sp.phatthanan@gmail.com</a>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-location-dot text-slate-500 w-4"></i>
-                <span data-i18n="about_location">Bangkok, Thailand (Global Coverage)</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-shield-halved text-slate-500 w-4"></i>
-                <span data-i18n="about_focus">Empirical Macro & Micro Foundations</span>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500">
-              <span>STATUS: AVAILABLE FOR RESEARCH</span>
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 space-y-6">
-          <div class="text-cyan-400 font-mono text-xs uppercase tracking-wider" data-i18n="about_tag">Intellectual Identity</div>
-          <h2 class="text-3xl font-bold text-white tracking-tight" data-i18n="about_title">
-            The Analytical Imperative: Clarifying Economic Mechanisms
-          </h2>
-          <div class="space-y-4 text-slate-400 leading-relaxed text-sm sm:text-base">
-            <p data-i18n="about_p1">
-              Economics often suffers from two opposing ailments: dry academic abstraction disconnected from ground realities, or short-sighted political interventions masquerading as benevolent solutions. My ethos adheres directly to Henry Hazlitt's foundational premise: real economic wisdom requires tracking not merely immediate effects on a single constituency, but the unseen secondary ramifications reverberating across all groups in the long run.
-            </p>
-            <p data-i18n="about_p2">
-              Whether analyzing the fragility of multi-echelon supply networks under geopolitical tariffs, dissecting the payoff matrices of strategic oligopolies, or tracking the monetary transmission channels of yield curve shifts, my research prioritizes transparency, mathematical soundness, and clear, pedagogical articulation.
-            </p>
-          </div>
-
-          <!-- Academic Principles Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs pt-4">
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-cyan-400 font-bold block mb-1">01. Causal Clarity</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_1">Uncovering the unseen opportunity cost.</span>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-emerald-400 font-bold block mb-1">02. Strategic Logic</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_2">Analyzing rational incentives & equilibria.</span>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-amber-400 font-bold block mb-1">03. Monetary Truth</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_3">Tracing balance-sheet expansion realities.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Collaboration Section -->
-  <section id="contact" class="py-20 bg-slate-950">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-300 font-mono text-xs mb-4">
-        <i class="fa-regular fa-paper-plane"></i>
-        <span data-i18n="contact_pill">Direct Inquiries & Scholarly Collaboration</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4" data-i18n="contact_title">
-        Let’s Demystify the Global Economy Together
-      </h2>
-      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base mb-8 leading-relaxed" data-i18n="contact_desc">
-        Interested in econometric consulting, academic dialogue, macroeconomic modeling, or strategic research? Get in direct touch.
+      <p class="text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto mb-10 leading-relaxed" data-i18n="hero_quote">
+        "Master Economics, the Simple Way."
       </p>
 
-      <div class="inline-flex flex-col sm:flex-row items-center gap-4">
-        <a href="mailto:sp.phatthanan@gmail.com" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold font-mono text-sm hover:opacity-90 transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20">
-          <i class="fa-solid fa-envelope"></i>
-          <span>sp.phatthanan@gmail.com</span>
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-mono">
+        <a href="#research" class="px-6 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20" data-i18n="btn_explore">
+          Explore 4 Research Treatises
         </a>
-        <button onclick="copyEmail()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 font-mono text-xs transition flex items-center justify-center gap-2">
-          <i class="fa-regular fa-copy" id="copyIcon"></i>
-          <span id="copyText" data-i18n="btn_copy_email">Copy Email Address</span>
-        </button>
+        <a href="#lab" class="px-6 py-3 rounded-lg border border-slate-700 bg-slate-900/80 text-slate-200 hover:border-cyan-500/40 hover:text-cyan-300 transition-all" data-i18n="btn_simulators">
+          Interactive Analytical Lab
+        </a>
+        <a href="index.html" class="px-6 py-3 rounded-lg border border-cyan-500/40 bg-cyan-950/30 text-cyan-300 hover:bg-cyan-500/20 transition-all" data-i18n="btn_pulse">
+          ⚡ The Pulse of Economies Simulator
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-8 font-mono text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        © 2026 <span class="text-slate-300">Phatthanan S.</span> All rights reserved.
+  <!-- INTERACTIVE ECONOMICS LAB (Nash & Taylor Rule) -->
+  <section id="lab" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="mb-12 text-center md:text-left">
+      <div class="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2" data-i18n="lab_tag">Interactive Simulation</div>
+      <h2 class="text-2xl sm:text-3xl font-bold font-mono text-white" data-i18n="lab_title">Quantitative Analytical Lab</h2>
+      <p class="text-sm text-slate-400 mt-2 max-w-2xl" data-i18n="lab_desc">Real-time mathematical simulations demonstrating strategic equilibrium dynamics and macroeconomic monetary policy response functions.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- 1. Nash Equilibrium Matrix Simulator -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <h3 class="font-mono text-base font-semibold text-cyan-300" data-i18n="sim1_title">Strategic Game Theory Matrix</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">2x2 Normal Form</span>
+          </div>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="sim1_desc">
+            Toggle between canonical game structures to compute dominant strategies and the pure-strategy Nash Equilibrium $(S_1^*, S_2^*)$ live.
+          </p>
+
+          <div class="flex space-x-2 mb-6">
+            <button onclick="setGamePreset('pd')" id="btnPd" class="px-3 py-1.5 rounded text-xs font-mono bg-cyan-500 text-slate-950 font-bold transition-all">Prisoner's Dilemma</button>
+            <button onclick="setGamePreset('stag')" id="btnStag" class="px-3 py-1.5 rounded text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700 hover:border-cyan-500/40 transition-all">Stag Hunt</button>
+          </div>
+
+          <!-- Matrix Grid -->
+          <div class="grid grid-cols-3 gap-2 font-mono text-xs text-center mb-6">
+            <div class="p-2 text-slate-500">P1 \ P2</div>
+            <div class="p-2 bg-slate-900 border border-slate-800 text-slate-300 font-semibold" id="c2ColLabel">Strategy A</div>
+            <div class="p-2 bg-slate-900 border border-slate-800 text-slate-300 font-semibold" id="d2ColLabel">Strategy B</div>
+
+            <div class="p-2 bg-slate-900 border border-slate-800 text-slate-300 font-semibold flex items-center justify-center" id="c1RowLabel">Strategy A</div>
+            <div id="cellCC" class="p-4 rounded border border-slate-800 bg-slate-900/60 flex flex-col items-center justify-center transition-all">
+              <span class="text-sm font-bold text-slate-200" id="valCC">(3, 3)</span>
+              <span class="text-[10px] text-slate-400 mt-1" id="tagCC">Pareto Optimal</span>
+            </div>
+            <div id="cellCD" class="p-4 rounded border border-slate-800 bg-slate-900/60 flex flex-col items-center justify-center transition-all">
+              <span class="text-sm font-bold text-slate-200" id="valCD">(0, 5)</span>
+              <span class="text-[10px] text-slate-400 mt-1" id="tagCD">Exploited</span>
+            </div>
+
+            <div class="p-2 bg-slate-900 border border-slate-800 text-slate-300 font-semibold flex items-center justify-center" id="d1RowLabel">Strategy B</div>
+            <div id="cellDC" class="p-4 rounded border border-slate-800 bg-slate-900/60 flex flex-col items-center justify-center transition-all">
+              <span class="text-sm font-bold text-slate-200" id="valDC">(5, 0)</span>
+              <span class="text-[10px] text-slate-400 mt-1" id="tagDC">Temptation</span>
+            </div>
+            <div id="cellDD" class="p-4 rounded border border-cyan-500/50 bg-cyan-950/20 flex flex-col items-center justify-center transition-all relative">
+              <span class="text-sm font-bold text-cyan-300" id="valDD">(1, 1)</span>
+              <span class="text-[10px] text-cyan-400 mt-1 font-bold" id="tagDD">Nash Equilibrium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300" id="gameTheoremNote">
+          <span class="text-cyan-400 font-bold">Equilibrium Theorem:</span> In the Prisoner's Dilemma, Defection strictly dominates Cooperation ($5>3, 1>0$), creating a unique strictly dominated equilibrium $(1,1)$ despite Pareto suboptimality.
+        </div>
       </div>
-      <div class="flex items-center gap-6">
-        <a href="index.html" class="text-cyan-400 hover:underline flex items-center gap-1"><i class="fa-solid fa-wave-square"></i> The Pulse of Economies (Story Engine)</a>
-        <span>Hosted via GitHub Pages</span>
-        <a href="#hero" class="text-cyan-400 hover:underline">↑ Top</a>
+
+      <!-- 2. Central Bank Policy & Taylor Rule Simulator -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+            <h3 class="font-mono text-base font-semibold text-cyan-300" data-i18n="sim2_title">Central Bank Taylor Rule Policy Engine</h3>
+            <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Monetary Policy</span>
+          </div>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="sim2_desc">
+            Adjust inflation $\pi_t$ and output gap $(y_t - y^*)$ to observe the theoretical policy rate reaction function $i_t = r^* + \pi_t + 0.5(\pi_t - 2\%) + 0.5(y_t - y^*)$.
+          </p>
+
+          <div class="space-y-5 mb-6">
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <span class="text-slate-300" data-i18n="slider_inf">Inflation Rate ($\pi_t$):</span>
+                <span class="text-cyan-400 font-bold" id="infVal">3.8%</span>
+              </div>
+              <input type="range" min="0.0" max="10.0" step="0.1" value="3.8" id="infSlider" oninput="updateTaylorRule()" class="w-full accent-cyan-400 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-mono mb-2">
+                <span class="text-slate-300" data-i18n="slider_gap">Output Gap ($y_t - y^*$):</span>
+                <span class="text-cyan-400 font-bold" id="gapVal">+1.2%</span>
+              </div>
+              <input type="range" min="-5.0" max="5.0" step="0.1" value="1.2" id="gapSlider" oninput="updateTaylorRule()" class="w-full accent-cyan-400 cursor-pointer">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 mb-6">
+            <div class="p-4 rounded bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[11px] font-mono text-slate-400 uppercase" data-i18n="lbl_rate">Target Policy Rate</div>
+              <div class="text-2xl font-mono font-bold text-cyan-300 mt-1" id="taylorRateResult">7.30%</div>
+            </div>
+            <div class="p-4 rounded bg-slate-900 border border-slate-800 text-center">
+              <div class="text-[11px] font-mono text-slate-400 uppercase" data-i18n="lbl_stance">Policy Stance</div>
+              <div class="text-sm font-mono font-bold text-amber-400 mt-2" id="policyStance">Restrictive (+330 bps)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-3 rounded bg-slate-900/90 border border-slate-800 text-xs font-mono text-slate-300">
+          <span class="text-cyan-400 font-bold">Taylor Principle:</span> Because $d i / d\pi = 1.5 > 1$, the monetary authority aggressively raises real interest rates $(r = i - \pi)$ to dampen excess aggregate demand and cool price expectations.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH & TREATISES SECTION (4 Extensive Projects) -->
+  <section id="research" class="py-20 px-4 max-w-7xl mx-auto border-t border-slate-850">
+    <div class="mb-12">
+      <div class="text-xs font-mono text-cyan-400 uppercase tracking-widest mb-2" data-i18n="res_tag">Treatises & Analytical Projects</div>
+      <h2 class="text-2xl sm:text-3xl font-bold font-mono text-white" data-i18n="res_title">Comprehensive Economic Papers</h2>
+      <p class="text-sm text-slate-400 mt-2" data-i18n="res_subtitle">Rigorous, full-length analytical research papers exceeding 1,000 words each, complete with formal mathematical foundations and econometric literature.</p>
+    </div>
+
+    <!-- 4 Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- PROJECT 1: Henry Hazlitt -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+            <span class="text-cyan-400 font-semibold">TREATISE 01</span>
+            <span>Hazlitt (1946) Review</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="p1_title">Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)</h3>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="p1_desc">
+            An extensive deconstruction of Bastiat's Broken Window Fallacy, secondary systemic costs, the deadweight losses of tariff protections, price-fixing price ceilings, and inflationary credit expansion.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6 text-[11px] font-mono text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Broken Window</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Opportunity Cost</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Secondary Effects</span>
+          </div>
+        </div>
+        <button onclick="openModal('hazlitt')" class="w-full py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 font-mono text-xs hover:bg-cyan-500 hover:text-slate-950 font-semibold transition-all" data-i18n="btn_read">
+          Read Full Treatise (>1,000 words) &rarr;
+        </button>
+      </div>
+
+      <!-- PROJECT 2: Game Theory -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+            <span class="text-cyan-400 font-semibold">TREATISE 02</span>
+            <span>Microeconomic Foundations</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="p2_title">Game Theory: Strategic Equilibrium, Repeated Games, and Mechanism Design</h3>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="p2_desc">
+            Mathematical modeling of simultaneous non-cooperative games, backward induction in subgame perfect Nash equilibria, Folk Theorems under infinite repeated iterations, and information revelation.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6 text-[11px] font-mono text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Nash Equilibrium</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Subgame Perfection</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Mechanism Design</span>
+          </div>
+        </div>
+        <button onclick="openModal('gametheory')" class="w-full py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 font-mono text-xs hover:bg-cyan-500 hover:text-slate-950 font-semibold transition-all" data-i18n="btn_read">
+          Read Full Treatise (>1,000 words) &rarr;
+        </button>
+      </div>
+
+      <!-- PROJECT 3: Macroeconomics -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+            <span class="text-cyan-400 font-semibold">TREATISE 03</span>
+            <span>Dynamic Stochastic General Equilibrium</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="p3_title">Modern Macroeconomics: Monetary Transmission, Fiscal Limits, and DSGE Frameworks</h3>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="p3_desc">
+            A comprehensive exposition on the New Keynesian 3-equation DSGE model, the bank lending transmission channel, Taylor rule dynamics, quantitative easing balance-sheet mechanics, and fiscal dominance.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6 text-[11px] font-mono text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">New Keynesian DSGE</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Taylor Rule</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Fiscal Dominance</span>
+          </div>
+        </div>
+        <button onclick="openModal('macro')" class="w-full py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 font-mono text-xs hover:bg-cyan-500 hover:text-slate-950 font-semibold transition-all" data-i18n="btn_read">
+          Read Full Treatise (>1,000 words) &rarr;
+        </button>
+      </div>
+
+      <!-- PROJECT 4: World Economy -->
+      <div class="glass-card rounded-xl p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between text-xs font-mono text-slate-400 mb-3">
+            <span class="text-cyan-400 font-semibold">TREATISE 04</span>
+            <span>Global Trade Architecture</span>
+          </div>
+          <h3 class="text-lg font-bold text-white mb-2" data-i18n="p4_title">World Economy and Globalization: Comparative Advantage, GVCs, and Geoeconomic Fragmentation</h3>
+          <p class="text-xs text-slate-300 mb-6 leading-relaxed" data-i18n="p4_desc">
+            Empirical and theoretical investigation into Ricardian and Heckscher-Ohlin trade dynamics, global value chain fragmentation, deadweight losses of protectionism, and the shift from efficiency to resilience.
+          </p>
+          <div class="flex flex-wrap gap-2 mb-6 text-[11px] font-mono text-slate-400">
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">GVC Integration</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Heckscher-Ohlin</span>
+            <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800">Geoeconomic Decoupling</span>
+          </div>
+        </div>
+        <button onclick="openModal('trade')" class="w-full py-2.5 rounded-lg border border-cyan-500/40 bg-cyan-950/20 text-cyan-300 font-mono text-xs hover:bg-cyan-500 hover:text-slate-950 font-semibold transition-all" data-i18n="btn_read">
+          Read Full Treatise (>1,000 words) &rarr;
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT & CONTACT SECTION -->
+  <section id="about" class="py-20 px-4 max-w-5xl mx-auto border-t border-slate-850">
+    <div class="glass-card rounded-2xl p-8 sm:p-12 relative overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div class="flex flex-col items-center text-center">
+          <div class="w-28 h-28 rounded-full bg-slate-900 border-2 border-cyan-500/40 p-3 flex items-center justify-center font-mono text-3xl font-bold text-cyan-400 mb-4 shadow-xl shadow-cyan-500/10 overflow-hidden">
+            <img src="black.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-mono text-3xl font-bold text-cyan-400\'>PS</span>';">
+          </div>
+          <h3 class="text-xl font-bold font-mono text-white">Phatthanan S.</h3>
+          <p class="text-xs font-mono text-cyan-400 mt-1" data-i18n="prof_role">Economist & Researcher</p>
+        </div>
+
+        <div class="md:col-span-2 space-y-4">
+          <h4 class="text-lg font-bold font-mono text-white" data-i18n="about_heading">Quantitative Rigor with Policy Purpose</h4>
+          <p class="text-sm text-slate-300 leading-relaxed font-light" data-i18n="about_bio">
+            Bridging formal microeconomic foundations, dynamic macroeconomic modelling, and empirical data analytics. Specializing in econometric analysis, strategic game theory structures, and international economic policy evaluation.
+          </p>
+          <div id="contact" class="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-mono text-slate-400 block" data-i18n="contact_lbl">Contact Inquiry:</span>
+              <a href="mailto:sp.phatthanan@gmail.com" class="font-mono text-sm text-cyan-300 hover:underline font-semibold">sp.phatthanan@gmail.com</a>
+            </div>
+            <button onclick="navigator.clipboard.writeText('sp.phatthanan@gmail.com'); alert('Email copied: sp.phatthanan@gmail.com');" class="px-4 py-2 rounded border border-slate-700 bg-slate-900 text-xs font-mono text-slate-300 hover:text-cyan-300 hover:border-cyan-500/40 transition-all" data-i18n="btn_copy">
+              Copy Email
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 text-xs font-mono text-slate-400 border-t border-slate-900 bg-slate-950/60">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Phatthanan S. All rights reserved. Master Economics, the Simple Way.</p>
+      <div class="flex items-center space-x-6">
+        <a href="index.html" class="text-cyan-400 hover:underline">⚡ Explore The Pulse of Economies Simulator</a>
+        <a href="#" class="text-slate-400 hover:text-white">↑ Top</a>
       </div>
     </div>
   </footer>
 
-  <!-- Modal / Reader Overlay for In-Depth 1,000+ Word Treatises -->
-  <div id="treatiseModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md overflow-y-auto">
-    <div class="min-h-screen px-4 py-8 sm:py-12 flex justify-center items-center">
-      <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden my-auto">
-        
-        <!-- Reader Header Bar -->
-        <div class="sticky top-0 z-20 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-6 py-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span id="modalCategoryBadge" class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono text-xs">PROJECT</span>
-            <span id="modalWordCount" class="text-xs font-mono text-slate-400">1,200+ words</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <!-- Modal Internal Lang Switcher -->
-            <button onclick="toggleLanguageInModal()" class="px-2.5 py-1 rounded border border-slate-700 bg-slate-800 text-xs font-mono text-slate-300 hover:text-white transition">
-              <span id="modalLangToggleLabel">Switch to TH</span>
-            </button>
-            <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
+  <!-- MODAL VIEWER FOR COMPREHENSIVE RESEARCH TREATISES (>1,000 Words) -->
+  <div id="treatiseModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-700 w-full max-w-4xl max-h-[90vh] rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-950/60">
+        <div>
+          <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold" id="modalCategory">TREATISE</span>
+          <h2 class="text-xl font-bold font-mono text-white mt-1" id="modalTitle">Treatise Title</h2>
         </div>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 flex items-center justify-center text-lg font-mono">
+          &times;
+        </button>
+      </div>
 
-        <!-- Article Container -->
-        <article class="p-6 sm:p-10 lg:p-12 text-slate-300 space-y-6 leading-relaxed max-w-none font-sans text-sm sm:text-base">
-          <h1 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug"></h1>
-          <div class="flex items-center gap-4 text-xs font-mono text-slate-500 pb-4 border-b border-slate-800">
-            <span>Author: Phatthanan S.</span>
-            <span>•</span>
-            <span>Empirical & Theoretical Analysis</span>
-          </div>
-          
-          <div id="modalBody" class="space-y-6 text-slate-300">
-            <!-- Dynamic treatise content loaded via JS -->
-          </div>
-        </article>
+      <!-- Modal Body (Comprehensive Scholarly Content) -->
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-slate-300 leading-relaxed font-light font-sans" id="modalContent">
+        <!-- Injected via JavaScript -->
+      </div>
 
-        <!-- Reader Footer -->
-        <div class="border-t border-slate-800 bg-slate-950 px-6 py-4 flex items-center justify-between font-mono text-xs text-slate-500">
-          <span>End of Analytical Module</span>
-          <button onclick="closeModal()" class="text-cyan-400 hover:underline">Close Reader</button>
-        </div>
-
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-800 bg-slate-950/80 flex justify-between items-center text-xs font-mono text-slate-400">
+        <span>Word Count: >1,000 words | Peer-Review Grade</span>
+        <button onclick="closeModal()" class="px-4 py-2 rounded bg-slate-800 text-slate-200 hover:bg-slate-700 transition-colors">
+          Close
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- Notification Toast for Copy -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-4 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-mono text-xs font-bold shadow-xl transition-all">
-    <i class="fa-solid fa-check mr-1.5"></i> Email copied to clipboard!
-  </div>
-
-  <!-- Interactive Scripts & Dual-Language Corpus -->
+  <!-- SCRIPT LOGIC: Ambient Canvas, Language Toggle, Game Matrix, Taylor Engine, and Full Content -->
   <script>
-    let currentLang = 'en'; // 'en' or 'th'
-    let currentOpenProjectId = null;
+    /* ==========================================================
+       1. AMBIENT SPARKLE & GENTLE DYNAMIC CURVE (วิบวับนุ่มนวล)
+       ========================================================== */
+    (function initAmbientCanvas() {
+      const canvas = document.getElementById('ambientCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h;
 
-    // Translations for UI Elements
-    const uiTranslations = {
+      function resize() {
+        w = canvas.width = canvas.parentElement.offsetWidth || window.innerWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight || 600;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      // Sparkles (ดาววิบวับขนาดเล็ก ละมุนตา ไม่แย่งสายตา)
+      const sparkleCount = 40;
+      const sparkles = [];
+      for (let i = 0; i < sparkleCount; i++) {
+        sparkles.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          size: Math.random() * 1.5 + 0.5,
+          alpha: Math.random(),
+          speed: Math.random() * 0.02 + 0.005,
+          phase: Math.random() * Math.PI * 2
+        });
+      }
+
+      let time = 0;
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        time += 0.008;
+
+        // 1. Draw Subtle Sparkles
+        sparkles.forEach(s => {
+          s.phase += s.speed;
+          const currentAlpha = 0.2 + 0.6 * (Math.sin(s.phase) * 0.5 + 0.5);
+          ctx.beginPath();
+          ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(56, 189, 248, ${currentAlpha * 0.7})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#38bdf8';
+          ctx.fill();
+        });
+
+        // 2. Draw Smooth, Serene Flowing Econometric Wave
+        ctx.beginPath();
+        const waveY = h * 0.55;
+        for (let x = 0; x <= w; x += 15) {
+          const y = waveY 
+            + Math.sin(x * 0.004 + time) * 35 
+            + Math.cos(x * 0.002 - time * 0.6) * 20;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'rgba(56, 189, 248, 0.22)';
+        ctx.lineWidth = 1.8;
+        ctx.shadowBlur = 15;
+        ctx.shadowColor = 'rgba(56, 189, 248, 0.4)';
+        ctx.stroke();
+
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* ==========================================================
+       2. BILINGUAL LANGUAGE ENGINE (TH / EN)
+       ========================================================== */
+    let currentLang = 'en';
+
+    const translations = {
       en: {
-        nav_projects: "Projects",
-        nav_lab: "Analytical Lab",
-        nav_about: "About & Philosophy",
-        nav_contact: "Contact",
-        btn_hire: "Get in Touch",
-        hero_status: "Applied Economist • Quantitative Research Specialist",
+        nav_about: 'About',
+        nav_lab: 'Analytical Lab',
+        nav_research: 'Projects',
+        nav_contact: 'Contact',
+        hero_badge: 'Economist • Quantitative & Strategic Research',
         hero_quote: '"Master Economics, the Simple Way."',
-        quote_sub: "— Precision over rhetoric; evaluating long-term systemic equilibrium over localized illusions.",
-        hero_desc: "Bridging rigorous econometric principles, strategic game theory, and empirical macroeconomic dynamics into clean, actionable analytical frameworks. Dedicated to unraveling complex economic phenomena through uncompromising logic and clarity.",
-        hero_btn_explore: "Explore Analytical Treatises (4)",
-        hero_btn_lab: "Interactive Simulator",
-        badge_methodology: "METHODOLOGICAL RIGOR",
-        rigor_1: "Hazlittian Long-Run Tracing",
-        rigor_2: "Nash & Subgame Perfect Equilibria",
-        rigor_3: "DSGE & Taylor Policy Rules",
-        rigor_4: "Geoeconomic Fragmentation Modeling",
-        stat_corpus_label: "TOTAL PROJECT CORPUS",
-        stat_bilingual_label: "DUAL-EDITION",
-        lab_subtitle: "Interactive Analytical Engine",
-        lab_title: "Quantitative Playground & Policy Simulators",
-        lab_disclaimer: "// Real-time algorithmic calculation for economic logic",
-        sim_game_title: "Strategic Dilemma Payoff Matrix",
-        sim_game_desc: "Adjust payoff values to observe dynamic dominance shifts and compute Nash Equilibrium instantly.",
-        sim_col_coop: "Cooperate (C)",
-        sim_col_defect: "Defect (D)",
-        sim_row_coop: "Coop (C)",
-        sim_row_defect: "Defect (D)",
-        sim_pareto: "Pareto Opt",
-        sim_sucker: "Exploited",
-        sim_tempt: "Temptation",
-        sim_nash: "★ NASH EQ",
-        sim_game_preset: "Preset Game:",
-        sim_nash_result: "Eq Status:",
-        sim_macro_title: "Central Bank Taylor Rule Policy Engine",
-        sim_macro_desc: "Simulate optimal central bank target policy rates based on real inflation divergence and GDP output gap.",
-        sim_inflation_rate: "Actual Inflation (π):",
-        sim_output_gap: "Output Gap (y - y*):",
-        sim_neutral_rate: "Assumed Neutral r*:",
-        sim_target_pi: "Inflation Target π*:",
-        sim_prescribed_rate: "PRESCRIBED POLICY RATE",
-        sim_stance_tight: "Aggressive Tightening",
-        sim_yield_inverted: "Yield Curve: Inversion Risk High",
-        projects_header_tag: "Analytical Research & Treatises",
-        projects_main_title: "Core Economic Foundations & Frameworks",
-        projects_main_desc: "Four foundational studies in political economy, game-theoretic equilibria, central banking, and international trade dynamics. Each analysis contains over 1,000 words of thorough, rigorous exposition.",
-        btn_read_treatise: "Read Full Treatise",
-        p1_title: "Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)",
-        p1_summary: "An exhaustive critique of the 'Broken Window Fallacy', the seen versus unseen secondary consequences, the destructive realities of government price ceilings, tariffs, and systemic monetary dilution.",
-        p2_title: "Game Theory: Equilibria, Information & Mechanism Design",
-        p2_summary: "Formal mathematical and behavioral foundations of strategic behavior: Simultaneous vs Sequential games, Nash equilibria, Cournot-Bertrand competition, signaling, and incentive-compatible mechanisms.",
-        p3_title: "Modern Macroeconomics: Monetary Transmission & Fiscal Constraints",
-        p3_summary: "A comprehensive analytical exploration of the IS-LM-PC synthesis, central bank balance sheet expansion (QE/QT), policy rate reactions via the Taylor Rule, yield curve mechanics, and sovereign debt sustainability.",
-        p4_title: "World Economy and Globalization: Chains, Tariffs & Fractures",
-        p4_summary: "Evaluating Ricardo's comparative advantage against modern global value chains (GVCs), structural factor endowments (Heckscher-Ohlin), tariff welfare distortions, and current geoeconomic fragmentation.",
-        about_tag: "Intellectual Identity",
-        about_title: "The Analytical Imperative: Clarifying Economic Mechanisms",
-        about_role: "Quantitative Economist & Research Specialist",
-        about_location: "Bangkok, Thailand (Global Coverage)",
-        about_focus: "Empirical Macro & Micro Foundations",
-        about_p1: "Economics often suffers from two opposing ailments: dry academic abstraction disconnected from ground realities, or short-sighted political interventions masquerading as benevolent solutions. My ethos adheres directly to Henry Hazlitt's foundational premise: real economic wisdom requires tracking not merely immediate effects on a single constituency, but the unseen secondary ramifications reverberating across all groups in the long run.",
-        about_p2: "Whether analyzing the fragility of multi-echelon supply networks under geopolitical tariffs, dissecting the payoff matrices of strategic oligopolies, or tracking the monetary transmission channels of yield curve shifts, my research prioritizes transparency, mathematical soundness, and clear, pedagogical articulation.",
-        principle_1: "Uncovering the unseen opportunity cost.",
-        principle_2: "Analyzing rational incentives & equilibria.",
-        principle_3: "Tracing balance-sheet expansion realities.",
-        contact_pill: "Direct Inquiries & Scholarly Collaboration",
-        contact_title: "Let’s Demystify the Global Economy Together",
-        contact_desc: "Interested in econometric consulting, academic dialogue, macroeconomic modeling, or strategic research? Get in direct touch.",
-        btn_copy_email: "Copy Email Address",
-        word_count_1: "1,180 Words (EN/TH)",
-        word_count_2: "1,240 Words (EN/TH)",
-        word_count_3: "1,310 Words (EN/TH)",
-        word_count_4: "1,260 Words (EN/TH)"
+        btn_explore: 'Explore 4 Research Treatises',
+        btn_simulators: 'Interactive Analytical Lab',
+        lab_tag: 'Interactive Simulation',
+        lab_title: 'Quantitative Analytical Lab',
+        lab_desc: 'Real-time mathematical simulations demonstrating strategic equilibrium dynamics and macroeconomic monetary policy response functions.',
+        sim1_title: 'Strategic Game Theory Matrix',
+        sim1_desc: 'Toggle between canonical game structures to compute dominant strategies and the pure-strategy Nash Equilibrium live.',
+        sim2_title: 'Central Bank Taylor Rule Policy Engine',
+        sim2_desc: 'Adjust inflation and output gap to observe the theoretical policy rate reaction function.',
+        slider_inf: 'Inflation Rate (π):',
+        slider_gap: 'Output Gap (y - y*):',
+        lbl_rate: 'Target Policy Rate',
+        lbl_stance: 'Policy Stance',
+        res_tag: 'Treatises & Analytical Projects',
+        res_title: 'Comprehensive Economic Papers',
+        res_subtitle: 'Rigorous, full-length analytical research papers exceeding 1,000 words each, complete with formal mathematical foundations.',
+        p1_title: 'Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)',
+        p1_desc: 'An extensive deconstruction of Bastiat\'s Broken Window Fallacy, secondary systemic costs, tariff deadweight loss, price fixing, and inflation.',
+        p2_title: 'Game Theory: Strategic Equilibrium, Repeated Games, and Mechanism Design',
+        p2_desc: 'Mathematical modeling of simultaneous non-cooperative games, backward induction in subgame perfection, Folk Theorems, and asymmetric information.',
+        p3_title: 'Modern Macroeconomics: Monetary Transmission, Fiscal Limits, and DSGE Frameworks',
+        p3_desc: 'A comprehensive exposition on the New Keynesian 3-equation DSGE model, the bank lending transmission channel, Taylor rule dynamics, and fiscal dominance.',
+        p4_title: 'World Economy and Globalization: Comparative Advantage, GVCs, and Geoeconomic Fragmentation',
+        p4_desc: 'Empirical and theoretical investigation into Ricardian trade dynamics, global value chain fragmentation, deadweight losses of protectionism, and reshoring.',
+        btn_read: 'Read Full Treatise (>1,000 words) →',
+        prof_role: 'Economist & Researcher',
+        about_heading: 'Quantitative Rigor with Policy Purpose',
+        about_bio: 'Bridging formal microeconomic foundations, dynamic macroeconomic modelling, and empirical data analytics. Specializing in econometric analysis, strategic game theory structures, and international economic policy evaluation.',
+        contact_lbl: 'Contact Inquiry:',
+        nav_pulse: 'Pulse Engine',
+        btn_pulse: '⚡ Pulse Engine (Canvas Simulation)',
+        btn_copy: 'Copy Email'
       },
       th: {
-        nav_projects: "ผลงานวิจัย (4 โครงการ)",
-        nav_lab: "ห้องทดลองเศรษฐมิติ",
-        nav_about: "แนวคิด & ปรัชญา",
-        nav_contact: "ติดต่อ",
-        btn_hire: "ติดต่อร่วมงาน",
-        hero_status: "นักเศรษฐศาสตร์ประยุกต์ • ผู้เชี่ยวชาญการวิจัยเชิงปริมาณ",
+        nav_about: 'เกี่ยวกับ',
+        nav_lab: 'ห้องทดลองวิเคราะห์',
+        nav_research: 'โครงการวิจัย',
+        nav_contact: 'ติดต่อ',
+        hero_badge: 'นักเศรษฐศาสตร์ • งานวิจัยเชิงปริมาณและยุทธศาสตร์',
         hero_quote: '"Master Economics, the Simple Way."',
-        quote_sub: "— แม่นยำเหนือวาทกรรม; ประเมินดุลยภาพของระบบระยะยาวมากกว่าภาพลวงตาระยะสั้น",
-        hero_desc: "ผสานหลักเศรษฐมิติอันเข้มงวด ทฤษฎีเกมเชิงกลยุทธ์ และพลวัตเศรษฐศาสตร์มหภาคเชิงประจักษ์ ให้กลายเป็นกรอบการวิเคราะห์ที่เฉียบคมและนำไปปฏิบัติได้จริง มุ่งมั่นถอดรหัสปรากฏการณ์ทางเศรษฐกิจที่ซับซ้อนด้วยตรรกะที่โปร่งใสและตรงประเด็น",
-        hero_btn_explore: "สำรวจบทความวิจัยฉบับเต็ม (4 โครงการ)",
-        hero_btn_lab: "แบบจำลองเชิงโต้ตอบ",
-        badge_methodology: "ระเบียบวิธีวิจัยอันเข้มงวด",
-        rigor_1: "การแกะรอยผลกระทบระยะยาวตามแนวคิด Hazlitt",
-        rigor_2: "ดุลยภาพแนชและเกมหลายช่วงเวลา",
-        rigor_3: "แบบจำลอง DSGE และกฎของเทย์เลอร์ (Taylor Rule)",
-        rigor_4: "แบบจำลองการแตกขั้วทางภูมิเศรษฐศาสตร์",
-        stat_corpus_label: "ปริมาณเนื้อหารวมของโครงการ",
-        stat_bilingual_label: "รองรับ 2 ภาษา",
-        lab_subtitle: "เครื่องมือวิเคราะห์เชิงโต้ตอบ",
-        lab_title: "พื้นที่ทดลองเชิงปริมาณและแบบจำลองนโยบาย",
-        lab_disclaimer: "// การประมวลผลอัลกอริทึมตามตรรกะทางเศรษฐศาสตร์แบบเรียลไทม์",
-        sim_game_title: "ตารางผลตอบแทนทฤษฎีเกมเชิงกลยุทธ์",
-        sim_game_desc: "ปรับเปลี่ยนค่าผลตอบแทนเพื่อดูการเปลี่ยนแปลงของกลยุทธ์เด่นและคำนวณหาจุดดุลยภาพแนช (Nash Equilibrium) ทันที",
-        sim_col_coop: "ร่วมมือ (C)",
-        sim_col_defect: "หักหลัง (D)",
-        sim_row_coop: "ร่วมมือ (C)",
-        sim_row_defect: "หักหลัง (D)",
-        sim_pareto: "ดุลยภาพพาเรโต",
-        sim_sucker: "ถูกเอาเปรียบ",
-        sim_tempt: "แรงจูงใจเบี่ยงเบน",
-        sim_nash: "★ จุดดุลยภาพแนช",
-        sim_game_preset: "เกมจำลองสำเร็จรูป:",
-        sim_nash_result: "สถานะดุลยภาพ:",
-        sim_macro_title: "เครื่องคำนวณอัตราดอกเบี้ยนโยบาย (Taylor Rule)",
-        sim_macro_desc: "จำลองอัตราดอกเบี้ยนโยบายที่เหมาะสมของธนาคารกลาง โดยอิงจากส่วนต่างอัตราเงินเฟ้อและช่องว่างผลผลิต (Output Gap)",
-        sim_inflation_rate: "เงินเฟ้อจริงปัจจุบัน (π):",
-        sim_output_gap: "ช่องว่างผลผลิต GDP (y - y*):",
-        sim_neutral_rate: "ดอกเบี้ยสมดุลธรรมชาติ r*:",
-        sim_target_pi: "เป้าหมายเงินเฟ้อ π*:",
-        sim_prescribed_rate: "อัตราดอกเบี้ยนโยบายที่คำนวณได้",
-        sim_stance_tight: "นโยบายการเงินตึงตัวเข้มงวด",
-        sim_yield_inverted: "เส้นผลตอบแทนพันธบัตร: ความเสี่ยง Inverted Yield Curve สูง",
-        projects_header_tag: "บทความวิชาการและการวิจัยเชิงลึก",
-        projects_main_title: "รากฐานและกรอบความคิดทางเศรษฐศาสตร์",
-        projects_main_desc: "สี่บทความวิจัยพื้นฐานด้านเศรษฐศาสตร์การเมือง ดุลยภาพทฤษฎีเกม นโยบายการเงินธนาคารกลาง และการค้าการเงินระหว่างประเทศ โดยแต่ละเรื่องมีความยาวมากกว่า 1,000 คำ พร้อมบทวิเคราะห์อันละเอียดถี่ถ้วน",
-        btn_read_treatise: "อ่านบทความวิจัยฉบับเต็ม",
-        p1_title: "แก่นความคิดเศรษฐศาสตร์จาก Economics in One Lesson (Henry Hazlitt, 1946)",
-        p1_summary: "การวิเคราะห์เชิงวิพากษ์อย่างละเอียดต่อภาพลวงตากระจกหน้าต่างแตก (Broken Window Fallacy) การมองเห็นผลกระทบขั้นที่สองที่ซ่อนอยู่ ความล้มเหลวของการควบคุมราคา ภาษีกีดกัน และการเสื่อมค่าของเงิน",
-        p2_title: "ทฤษฎีเกม (Game Theory): ดุลยภาพ สารสนเทศ และการออกแบบกลไก",
-        p2_summary: "รากฐานทางคณิตศาสตร์และพฤติกรรมศาสตร์ของการตัดสินใจเชิงกลยุทธ์: เกมพร้อมกันและเกมตามลำดับ จุดดุลยภาพแนช การแข่งขันแบบ Cournot-Bertrand ปัญหาสารสนเทศไม่สมมาตร และการออกแบบระบบสร้างแรงจูงใจ",
-        p3_title: "เศรษฐศาสตร์มหภาคสมัยใหม่: กลไกส่งผ่านนโยบายการเงินและข้อจำกัดการคลัง",
-        p3_summary: "การวิเคราะห์แบบจำลอง IS-LM-PC การขยายงบดุลของธนาคารกลาง (QE/QT) การกำหนดอัตราดอกเบี้ยตามกฎของเทย์เลอร์ พลวัตของเส้นอัตราผลตอบแทน (Yield Curve) และความยั่งยืนของหนี้สาธารณะ",
-        p4_title: "เศรษฐกิจโลกและโลกาภิวัตน์: ห่วงโซ่คุณค่า มาตรการภาษี และการแตกขั้วทางภูมิรัฐศาสตร์",
-        p4_summary: "การประเมินทฤษฎีความได้เปรียบโดยเปรียบเทียบของ Ricardo เทียบกับห่วงโซ่อุปทานระดับโลกยุคใหม่ (GVCs) ผลกระทบต่อสวัสดิการสังคมจากภาษีศุลกากร และความท้าทายจากการแตกขั้วของเศรษฐกิจโลก",
-        about_tag: "อัตลักษณ์ทางวิชาการ",
-        about_title: "พันธกิจเชิงวิเคราะห์: ถอดรหัสกลไกเศรษฐกิจอย่างโปร่งใส",
-        about_role: "นักเศรษฐศาสตร์ประยุกต์ & ผู้เชี่ยวชาญการวิจัยเชิงปริมาณ",
-        about_location: "กรุงเทพฯ ประเทศไทย (รองรับงานวิจัยทั่วโลก)",
-        about_focus: "รากฐานเศรษฐศาสตร์จุลภาคและมหภาคเชิงประจักษ์",
-        about_p1: "วงการเศรษฐศาสตร์มักเผชิญกับปัญหาสองขั้ว: ทางหนึ่งคือนามธรรมเชิงวิชาการที่ตัดขาดจากความจริง อีกทางคือนโยบายแทรกแซงระยะสั้นจากฝ่ายการเมืองที่แฝงมาในคราบความหวังดี ปรัชญาการทำงานของฉันยึดมั่นตามหลักการของ Henry Hazlitt โดยตรง นั่นคือ ปัญญาทางเศรษฐศาสตร์ที่แท้จริงต้องไม่มองเพียงผลลัพธ์ฉาบฉวยต่อกลุ่มคนกลุ่มเดียว แต่ต้องติดตามผลกระทบลูกโซ่ที่มองไม่เห็น (unseen consequences) ในระยะยาวต่อผู้คนทุกกลุ่มในระบบเศรษฐกิจ",
-        about_p2: "ไม่ว่าจะเป็นการวิเคราะห์ความเปราะบางของห่วงโซ่อุปทานหลายระดับภายใต้สงครามการค้า การจำลองผลตอบแทนของตลาดผู้ขายน้อยราย หรือการตรวจสอบช่องทางการส่งผ่านดอกเบี้ยของธนาคารกลาง งานวิจัยของฉันมุ่งเน้นความโปร่งใส ความถูกต้องทางคณิตศาสตร์ และการสื่อสารที่ตรงประเด็น เข้าใจได้ง่ายที่สุด",
-        principle_1: "เปิดเผยต้นทุนค่าเสียโอกาสที่มองไม่เห็น",
-        principle_2: "วิเคราะห์แรงจูงใจและดุลยภาพอันสมเหตุสมผล",
-        principle_3: "ตรวจสอบความจริงของงบดุลและสภาพคล่องทางการเงิน",
-        contact_pill: "ติดต่อสอบถาม & ร่วมงานวิจัยเชิงวิชาการ",
-        contact_title: "ร่วมถอดรหัสกลไกเศรษฐกิจโลกไปด้วยกัน",
-        contact_desc: "หากคุณสนใจการให้คำปรึกษาด้านเศรษฐมิติ การแลกเปลี่ยนมุมมองทางวิชาการ แบบจำลองเศรษฐศาสตร์มหภาค หรือการวิจัยเชิงกลยุทธ์ สามารถติดต่อโดยตรงได้ที่นี่",
-        btn_copy_email: "คัดลอกอีเมล",
-        word_count_1: "1,180 คำ (EN/TH)",
-        word_count_2: "1,240 คำ (EN/TH)",
-        word_count_3: "1,310 คำ (EN/TH)",
-        word_count_4: "1,260 คำ (EN/TH)"
+        btn_explore: 'สำรวจ 4 ผลงานวิจัยฉบับเต็ม',
+        btn_simulators: 'ห้องทดลองแบบจำลองเศรษฐศาสตร์',
+        lab_tag: 'แบบจำลองเชิงโต้ตอบ',
+        lab_title: 'ห้องทดลองเศรษฐศาสตร์เชิงปริมาณ',
+        lab_desc: 'แบบจำลองทางคณิตศาสตร์แบบเรียลไทม์ แสดงพลวัตจุดดุลยภาพเชิงกลยุทธ์และการตอบสนองของนโยบายการเงินตามหลักเศรษฐศาสตร์มหภาค',
+        sim1_title: 'เมทริกซ์ทฤษฎีเกมเชิงกลยุทธ์',
+        sim1_desc: 'สลับรูปแบบเกมเพื่อคำนวณหากลยุทธ์เด่นและจุดดุลยภาพแนช (Nash Equilibrium) แบบเรียลไทม์',
+        sim2_title: 'กลไกอัตราดอกเบี้ยนโยบายตามกฎของเทย์เลอร์',
+        sim2_desc: 'ปรับอัตราเงินเฟ้อและช่องว่างผลผลิต เพื่อวิเคราะห์การตอบสนองของอัตราดอกเบี้ยนโยบายของธนาคารกลาง',
+        slider_inf: 'อัตราเงินเฟ้อ (π):',
+        slider_gap: 'ช่องว่างผลผลิต (y - y*):',
+        lbl_rate: 'อัตราดอกเบี้ยเป้าหมาย',
+        lbl_stance: 'ทิศทางนโยบายการเงิน',
+        res_tag: 'บทความและงานวิจัยเชิงลึก',
+        res_title: 'บทความวิจัยเศรษฐศาสตร์ฉบับสมบูรณ์',
+        res_subtitle: 'บทความวิจัยเชิงวิชาการขนาดยาว (>1,000 คำต่อเรื่อง) ครบถ้วนด้วยรากฐานคณิตศาสตร์และการวิเคราะห์เชิงโครงสร้าง',
+        p1_title: 'แก่นเศรษฐศาสตร์จาก Economics in One Lesson (Henry Hazlitt, 1946)',
+        p1_desc: 'การวิเคราะห์ภาพลวงตากระจกแตกของ Bastiat, ต้นทุนแฝงระยะยาว, ความสูญเสียทางเศรษฐศาสตร์จากการตั้งกำแพงภาษี, การคุมราคา และเงินเฟ้อ',
+        p2_title: 'ทฤษฎีเกม: ดุลยภาพเชิงกลยุทธ์ เกมเล่นซ้ำ และการออกแบบกลไก',
+        p2_desc: 'แบบจำลองคณิตศาสตร์ของเกมแบบไม่ร่วมมือ, การอุปนัยย้อนกลับใน Subgame Perfect Nash Equilibrium, ทฤษฎีบทโฟล์ก และข้อมูลไม่สมมาตร',
+        p3_title: 'เศรษฐศาสตร์มหภาคสมัยใหม่: กลไกส่งผ่านนโยบายการเงิน ข้อจำกัดทางการคลัง และ DSGE',
+        p3_desc: 'วิเคราะห์โครงสร้างแบบจำลอง New Keynesian DSGE 3 สมการ, ช่องทางสินเชื่อสถาบันการเงิน, การทำงานของกฎเทย์เลอร์ และภาวะครอบงำทางการคลัง',
+        p4_title: 'เศรษฐกิจโลกและโลกาภิวัตน์: ความได้เปรียบโดยเปรียบเทียบ ห่วงโซ่คุณค่า และการแตกขั้วภูมิเศรษฐศาสตร์',
+        p4_desc: 'การสำรวจทฤษฎีการค้าระหว่างประเทศ, การกระจายตัวของห่วงโซ่การผลิตโลก (GVCs), ผลกระทบของลัทธิปกป้องทางการค้า และการย้ายฐานการผลิต',
+        btn_read: 'อ่านบทวิจัยฉบับเต็ม (>1,000 คำ) →',
+        prof_role: 'นักเศรษฐศาสตร์และนักวิจัย',
+        about_heading: 'ความแม่นยำเชิงปริมาณเพื่อการวางนโยบาย',
+        about_bio: 'เชื่อมโยงรากฐานจุลเศรษฐศาสตร์ แบบจำลองมหภาคพลวัต และการวิเคราะห์ข้อมูลเชิงประจักษ์ เชี่ยวชาญด้านเศรษฐมิติ โครงสร้างทฤษฎีเกม และการประเมินนโยบายเศรษฐกิจระหว่างประเทศ',
+        contact_lbl: 'ช่องทางติดต่อ:',
+        nav_pulse: 'แบบจำลองมหภาค',
+        btn_pulse: '⚡ แบบจำลองพลวัต The Pulse of Economies',
+        btn_copy: 'คัดลอกอีเมล'
       }
     };
 
-    // Treatises Database (Exceeds 1,000 words per project in both English and Thai)
-    const treatisesData = {
-      project1: {
-        badge: "PROJECT 01: CLASSICAL POLITICAL ECONOMY",
-        title_en: "Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)",
-        title_th: "แก่นความคิดและบทวิเคราะห์ Economics in One Lesson โดย Henry Hazlitt (1946)",
-        wordCount_en: "1,215 Words",
-        wordCount_th: "1,280 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 font-mono text-xs text-cyan-300">
-              <strong>Thesis:</strong> "The art of economics consists in looking not merely at the immediate but at the longer effects of any act or policy; it consists in tracing the consequences of that policy not merely for one group but for all groups."
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. The Broken Window Fallacy: Anatomy of Misallocated Capital</h3>
-            <p>
-              In 1946, financial journalist and classical economic thinker Henry Hazlitt formulated what remains one of the most enduring dissections of public policy fallacies in his seminal work <em>Economics in One Lesson</em>. Hazlitt begins with the classic parable of the broken window, initially conceived by Frédéric Bastiat in 1850. A young hooligan heaves a brick through the display window of a baker's shop. A crowd gathers, and inevitable sophistry emerges: spectators begin to rationalize that the vandalism possesses an economic silver lining. The glazier will earn fifty dollars to replace the pane; the glazier will subsequently spend those fifty dollars on shoes, enriching the cobbler; the cobbler will patronize the tailor, and thus purchasing power multiplies through the local economy.
-            </p>
-            <p>
-              Hazlitt meticulously dismantles this localized Keynesian multiplier illusion by distinguishing between <strong>what is seen</strong> versus <strong>what is unseen</strong>. What is seen is the physical replacement of the window and the direct monetary transfer from baker to glazier. What is unseen—and systematically ignored by special interests and interventionist policymakers—is the opportunity cost incurred by the shopkeeper. Had the window remained intact, the baker would have deployed those fifty dollars to purchase a tailored suit or invest in an additional baking oven to expand output. In that unmolested counterfactual scenario, the community would possess both the undamaged window <em>and</em> the new suit (or expanded production facility). Following the destruction, the community possesses merely the window, while the tailor has been deprived of employment. Destruction does not generate wealth; it merely diverts capital from productive expansion toward sheer replacement.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Curse of Specialization and Narrow Interests</h3>
-            <p>
-              Hazlitt generalizes the broken window fallacy to demonstrate how modern governments routinely justify harmful economic policies by examining solely the immediate benefits bestowed upon an organized, politically vocal minority, while ignoring the dispersed, long-run burdens shifted onto the silent majority. 
-            </p>
-            <p>
-              Consider the perennial advocacy for protective tariffs. A domestic manufacturer of steel petitions the state for an import tariff on foreign steel. What is immediately visible is that the domestic steel mill preserves its operational margin and retains 5,000 domestic laborers. Politicians hold press conferences celebrating the protection of domestic industry. However, the unseen consequence is that every automobile manufacturer, construction firm, and domestic consumer who purchases products utilizing steel must now pay an elevated price. Consequently, domestic consumers possess fewer real dollars to spend on domestic electronics, agriculture, and services. The tariff does not increase aggregate national employment; it merely subsidizes inefficient domestic steel production while cannibalizing competitive, unsubsidized export sectors and suppressing aggregate consumer purchasing power.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. The Pathology of Price Fixing and Rent Controls</h3>
-            <p>
-              Hazlitt’s analysis of price ceilings provides a devastating critique of administrative fiat overriding supply-and-demand equilibrium. When government authorities legislate price controls below clearing levels—typically under the populist banner of consumer affordability—they inevitably trigger shortages. In competitive markets, price serves as an informational signal: an elevated price reflects acute consumer demand or supply scarcity, incentivizing entrepreneurs to allocate capital, ramp up production, and attract investment until supply expands and prices moderate.
-            </p>
-            <p>
-              When a mandatory ceiling is imposed on apartment rents, the economic repercussions follow inexorable trajectories:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>Erosion of Supply:</strong> Private developers halt investment in new multi-family housing complexes because projected rental returns fall below the cost of capital.</li>
-              <li><strong>Capital Deterioration:</strong> Landlords cannot recover repair and maintenance outlays, resulting in the rapid degradation of existing housing stock into slums.</li>
-              <li><strong>Black Markets and Rationing:</strong> When price cannot allocate scarce square footage, non-price rationing mechanisms emerge: bribery, key money, cronyism, and perpetual waiting lists.</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Inflation as Covert Taxation and Systemic Distortion</h3>
-            <p>
-              Perhaps the most urgent lesson Hazlitt imparted concerns monetary expansion. Inflation is frequently portrayed by governments not as an increase in the quantity of fiat currency and credit, but rather as the rising price of commodities—a sleight of hand attributing the consequence to the symptom. Hazlitt demonstrates that state-engineered monetary dilution functions as a regressive, invisible tax.
-            </p>
-            <p>
-              New money does not enter the economic bloodstream uniformly or simultaneously. The earliest recipients of newly created liquidity—typically the state, primary government contractors, and commercial financial institutions—spend this money at pre-inflation prices. By the time this expanded money supply trickles down to wage laborers, retirees, and fixed-income savers, aggregate retail prices have already escalated. Inflation inherently redistributes wealth away from prudent savers and creditors toward sovereign debtors and initial recipients of state liquidity, while simultaneously blinding entrepreneurs by distorting the price signals essential for accurate capital calculation.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. Contemporary Synthesis and Enduring Relevance</h3>
-            <p>
-              Eight decades after Hazlitt penned <em>Economics in One Lesson</em>, the global economy continues to battle the identical fallacies. The modern iterations of "stimulus through destruction" manifest in subsidies for premature industrial obsolescence, quantitative easing rationalized as cost-free liquidity, and geopolitical tariff walls framed as national rejuvenation. 
-            </p>
-            <p>
-              To master economics the simple way is not to oversimplify human desires, but to adhere rigorously to intellectual honesty: never analyze an economic intervention by isolating the first-order beneficiaries without computing the second-order, long-run incidence upon the entire social fabric.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 font-mono text-xs text-cyan-300">
-              <strong>ใจความสำคัญ (Thesis):</strong> "ศิลปะแห่งเศรษฐศาสตร์ไม่ได้อยู่ที่การมองเพียงผลลัพธ์เฉพาะหน้า แต่ต้องสืบเสาะไปถึงผลกระทบระยะยาวของนโยบายใดๆ และไม่ได้อยู่ที่การตรวจสอบผลกระทบต่อคนกลุ่มใดกลุ่มหนึ่ง แต่ต้องประเมินผลลัพธ์ที่มีต่อคนทุกกลุ่มในระบบเศรษฐกิจทั้งหมด"
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. ภาพลวงตากระจกหน้าต่างแตก (The Broken Window Fallacy): กายวิภาคของการจัดสรรทุนผิดพลาด</h3>
-            <p>
-              ในปี ค.ศ. 1946 Henry Hazlitt นักหนังสือพิมพ์การเงินและนักคิดเศรษฐศาสตร์สำนักคลาสสิก ได้นำเสนอผลงานระดับตำนาน <em>Economics in One Lesson</em> ซึ่งเริ่มต้นด้วยการรื้อฟื้นนิทานเปรียบเทียบเรื่อง "หน้าต่างร้านขนมปังที่แตก" ของ Frédéric Bastiat (1850) เมื่อเด็กเกเรคนหนึ่งปาหินใส่กระจกหน้าร้านขนมปังจนแตกกระจาย ฝูงชนที่มุงดูเริ่มแสดงความคิดเห็นที่ดูเหมือนมีเหตุผล: กระจกที่แตกจะกระตุ้นเศรษฐกิจ ช่างกระจกจะได้เงิน 50 ดอลลาร์เพื่อมาเปลี่ยนกระจก จากนั้นช่างกระจกจะนำเงินไปซื้อรองเท้า ช่างทำรองเท้าก็นำเงินไปตัดสูท เงินหมุนเวียนในระบบเศรษฐกิจท้องถิ่นอย่างต่อเนื่อง
-            </p>
-            <p>
-              Hazlitt ได้ชี้ให้เห็นข้อผิดพลาดร้ายแรงของตรรกะนี้ด้วยการแยกแยะระหว่าง <strong>สิ่งที่มองเห็น (What is seen)</strong> กับ <strong>สิ่งที่มองไม่เห็น (What is unseen)</strong> สิ่งที่มองเห็นคือการติดตั้งกระจกบานใหม่และการจ่ายเงินให้ช่างกระจก แต่สิ่งที่มองไม่เห็น—และมักถูกละเลยโดยกลุ่มผลประโยชน์ทางการเมือง—คือ "ต้นทุนค่าเสียโอกาส" ของเจ้าของร้านขนมปัง หากหน้าต่างไม่แตก เจ้าของร้านอาจนำเงิน 50 ดอลลาร์นั้นไปซื้อเตาอบใหม่เพื่อเพิ่มผลผลิต หรือซื้อสูทตัวใหม่ ในกรณีที่ไม่มีการทำลายล้าง ชุมชนจะมีทั้งหน้าต่างและเตาอบใหม่ แต่หลังเกิดการทำลายล้าง ชุมชนเหลือเพียงหน้าต่างสภาพเดิม และช่างตัดเสื้อก็สูญเสียโอกาสทางธุรกิจ การทำลายล้างจึงไม่เคยสร้างความมั่งคั่งที่แท้จริง แต่เป็นการเบี่ยงเบนเงินทุนจากการขยายผลผลิตไปสู่การซ่อมแซมสิ่งเดิมโดยสูญเปล่า
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. กับดักของผลประโยชน์เฉพาะกลุ่มและการปกป้องภาษีศุลกากร</h3>
-            <p>
-              Hazlitt ขยายภาพลวงตากระจกแตกไปสู่การวิพากษ์นโยบายสาธารณะของรัฐบาล ซึ่งมักอ้างการช่วยเหลือกลุ่มผลประโยชน์กลุ่มเล็กๆ ที่มีอำนาจต่อรองทางการเมืองสูง โดยผลักภาระและต้นทุนระยะยาวไปให้แก่ประชาชนส่วนใหญ่ที่ไม่มีกระบอกเสียง
-            </p>
-            <p>
-              ตัวอย่างคลาสสิกคือ "การตั้งกำแพงภาษีนำเข้าเพื่อปกป้องอุตสาหกรรมในประเทศ" เมื่อผู้ผลิตเหล็กในประเทศขอให้รัฐขึ้นภาษีเหล็กนำเข้า สิ่งที่มองเห็นเด่นชัดคือโรงงานเหล็กในประเทศไม่ล้มละลายและยังรักษาแรงงานไว้ได้ 5,000 อัตรา นักการเมืองแถลงข่าวประกาศชัยชนะในการปกป้องคนในชาติ ทว่าสิ่งที่มองไม่เห็นคือ ผู้ผลิตยานยนต์ บริษัทรับเหมาก่อสร้าง และผู้บริโภคทุกคนในประเทศต้องซื้อเหล็กในราคาที่แพงขึ้น ส่งผลให้เงินในกระเป๋าของประชาชนลดลง ทำให้พวกเขามีเงินน้อยลงสำหรับการซื้อสินค้าอุตสาหกรรมอื่นๆ หรือสินค้าเกษตร ภาษีศุลกากรจึงไม่ได้เพิ่มการจ้างงานโดยรวมของประเทศเลยแม้แต่น้อย แต่เป็นการอุ้มชูอุตสาหกรรมที่ไร้ประสิทธิภาพด้วยการบั่นทอนกำลังซื้อของประชาชนและทำลายอุตสาหกรรมส่งออกที่แข่งขันได้อย่างแท้จริง
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. ผลลัพธ์วิบัติจากการควบคุมราคาและการจำกัดค่าเช่า</h3>
-            <p>
-              บทวิเคราะห์ของ Hazlitt ต่อการควบคุมราคา (Price Ceilings) เผยให้เห็นความพังทลายของระบบเมื่ออำนาจรัฐฝืนกลไกราคาตลาด ในระบบตลาดเสรี ราคาทำหน้าที่เป็นสัญญาณส่งข้อมูล (Price Signal) หากราคาสินค้าพุ่งสูงขึ้น นั่นแสดงถึงภาวะขาดแคลนหรือความต้องการสูง ซึ่งจะเป็นแรงจูงใจให้ผู้ประกอบการเร่งลงทุนและผลิตสินค้าเพิ่มจนปริมาณสินค้ากลับมาสมดุลและราคาลดลงในที่สุด
-            </p>
-            <p>
-              เมื่อรัฐบาลออกกฎหมายจำกัดเพดานค่าเช่าอะพาร์ตเมนต์เพื่อเอาใจผู้มีสิทธิเลือกตั้ง ผลลัพธ์ที่ตามมาในระยะยาวจะดำเนินไปตามวงจรอุบาทว์เสมอ:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>อุปทานที่อยู่อาศัยหดตัว:</strong> นักลงทุนเอกชนหยุดสร้างอะพาร์ตเมนต์ใหม่ เพราะผลตอบแทนจากการปล่อยเช่าไม่คุ้มกับต้นทุนทางการเงิน</li>
-              <li><strong>การทรุดโทรมของทรัพย์สิน:</strong> เจ้าของตึกไม่มีรายได้เพียงพอที่จะซ่อมแซมและบำรุงรักษาอาคาร ส่งผลให้อสังหาริมทรัพย์เสื่อมโทรมกลายเป็นชุมชนแออัดอย่างรวดเร็ว</li>
-              <li><strong>เกิดตลาดมืดและการจัดสรรแบบเล่นพรรคเล่นพวก:</strong> เมื่อราคาไม่สามารถทำหน้าที่คัดกรองอุปสงค์ได้ การจัดสรรจึงตกไปอยู่ใต้โต๊ะ ผ่านการติดสินบน ค่าน้ำร้อนน้ำชา และการเข้าคิวรออย่างไม่มีที่สิ้นสุด</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. ภาวะเงินเฟ้อ: ภาษีแฝงที่ทำลายระบบราคา</h3>
-            <p>
-              หนึ่งในบทเรียนที่ทรงพลังที่สุดของ Hazlitt คือการทำความเข้าใจ "เงินเฟ้อ" รัฐบาลมักเบี่ยงเบนว่าเงินเฟ้อคือราคาสินค้าที่พุ่งสูงขึ้น แต่แท้จริงแล้วต้นเหตุของเงินเฟ้อคือการพิมพ์เงินและขยายปริมาณสินเชื่อของรัฐโดยไม่มีผลผลิตรองรับ Hazlitt อธิบายว่าเงินเฟ้อแท้จริงแล้วคือภาษีแฝงที่ขูดรีดอย่างเงียบงันและไม่เป็นธรรมที่สุด
-            </p>
-            <p>
-              เงินที่ถูกพิมพ์ขึ้นมาใหม่ไม่ได้กระจายไปยังทุกคนพร้อมๆ กัน คนกลุ่มแรกที่ได้รับเงินใหม่ (เช่น รัฐบาล ผู้รับเหมาโครงการรัฐ ธนาคารพาณิชย์) จะได้ใช้เงินนั้นในขณะที่ราคาสินค้าในตลาดยังไม่ปรับตัว แต่เมื่อเงินใหม่หมุนเวียนไปถึงมือประชาชน คนทำงานรายวัน ผู้รับบำนาญ และผู้ฝากเงิน ราคาสินค้าอุปโภคบริโภคก็ปรับตัวพุ่งขึ้นไปรอแล้ว เงินเฟ้อจึงปล้นความมั่งคั่งจากผู้ประหยัดอดออมและเจ้าหนี้ ไปประเคนให้แก่ลูกหนี้อธิปไตยและกลุ่มอำนาจที่อยู่ใกล้ชิดแท่นพิมพ์เงิน ทั้งยังทำลายระบบการคำนวณต้นทุนทางเศรษฐกิจของภาคธุรกิจจนบิดเบี้ยว
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. บทสรุปและความร่วมสมัยในศตวรรษที่ 21</h3>
-            <p>
-              กว่า 80 ปีหลังจาก Hazlitt เขียนหนังสือเล่มนี้ โลกยังคงเผชิญกับภาพลวงตาเดิมๆ การกระตุ้นเศรษฐกิจผ่านการทำลายสิ่งเก่า นโยบายผ่อนคลายทางการเงินแบบไร้ขีดจำกัด (QE) และการตั้งกำแพงภาษีในยุคสงครามภูมิเศรษฐศาสตร์ ล้วนเป็นมรดกทางความคิดที่ Hazlitt เคยเตือนไว้ล่วงหน้า
-            </p>
-            <p>
-              การเข้าใจเศรษฐศาสตร์อย่างเรียบง่ายไม่ใช่การทำให้ตื้นเขิน แต่คือการยึดมั่นในความซื่อสัตย์ทางปัญญา: จงอย่าวิเคราะห์นโยบายเศรษฐกิจใดๆ โดยมองแค่ผลประโยชน์เฉพาะหน้าต่อคนกลุ่มเดียว แต่ต้องคำนวณผลกระทบขั้นที่สองและสามที่จะส่งผลต่อระบบเศรษฐกิจทั้งหมดในระยะยาวเสมอ
-            </p>
-          </div>
-        `
-      },
-      project2: {
-        badge: "PROJECT 02: MICRO & STRATEGIC FOUNDATIONS",
-        title_en: "Game Theory: Equilibria, Strategic Credibility & Mechanism Design",
-        title_th: "ทฤษฎีเกม (Game Theory): ดุลยภาพ ความน่าเชื่อถือเชิงกลยุทธ์ และการออกแบบกลไก",
-        wordCount_en: "1,270 Words",
-        wordCount_th: "1,310 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 font-mono text-xs text-emerald-300">
-              <strong>Analytical Axiom:</strong> In interactive environments with rational agents, an outcome is governed not by independent optimization, but by the mutual consistency of strategic conjectures—formalized through Nash equilibria and backward induction.
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. Foundations of Non-Cooperative Strategic Behavior</h3>
-            <p>
-              Classical microeconomics largely operated under the assumption of parametric prices: atomistic firms and individual consumers take prevailing prices as exogenous market parameters. However, in reality, markets are dominated by strategic interdependencies—oligopolies, labor-management wage bargaining, central bank forward guidance, and international tariff disputes. Game theory transforms this paradigm by formalizing strategic interaction: an agent's optimal decision depends intrinsically on their beliefs regarding the expected actions of all rival agents.
-            </p>
-            <p>
-              Formally, a normal-form game is characterized by a triple $G = \\langle N, (S_i)_{i \\in N}, (u_i)_{i \\in N} \\rangle$, where $N$ represents the finite set of players, $S_i$ denotes the strategy space available to player $i$, and $u_i: \\prod_{j \\in N} S_j \\to \\mathbb{R}$ represents player $i$'s payoff function. The cornerstone of non-cooperative game theory, formulated by John Forbes Nash in 1950, defines a strategy profile $s^* = (s_1^*, s_2^*, \\dots, s_n^*)$ as a <strong>Nash Equilibrium</strong> if and only if no player possesses a unilateral incentive to deviate:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-cyan-300">
-              u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*) \quad \forall s_i \in S_i, \quad \forall i \in N
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Prisoner's Dilemma and Market Failure</h3>
-            <p>
-              The iconic Prisoner's Dilemma illustrates the profound chasm between individual rationality and systemic welfare maximization. When two suspects face prosecution under asymmetric evidentiary payoffs, each player possesses a <strong>strictly dominant strategy</strong> to defect. Regardless of whether Player 2 cooperates or defects, Player 1 achieves a strictly superior personal payoff by defecting:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li>If the rival cooperates, defecting captures the exploitation windfall ($u_{defect} = 5 > u_{coop} = 3$).</li>
-              <li>If the rival defects, defecting avoids the catastrophic sucker's payoff ($u_{defect} = 1 > u_{coop} = 0$).</li>
-            </ul>
-            <p>
-              Consequently, the unique, strictly dominant Nash Equilibrium resides at $(Defect, Defect)$, generating a payoff vector of $(1, 1)$. Paradoxically, mutual cooperation $(Cooperate, Cooperate)$ would have yielded $(3, 3)$—a strict Pareto improvement. This formalizes a ubiquitous economic reality: uncoordinated self-interest in the presence of externalities and public goods often yields sub-optimal, socially deficient outcomes (e.g., competitive tariff wars, environmental overexploitation, and patent arms races).
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. Extensive Games, Subgame Perfection, and Credible Commitments</h3>
-            <p>
-              While static games assume simultaneous decisions, real-world economics unfolds sequentially. In dynamic, extensive-form games modeled through game trees, the standard Nash equilibrium concept permits non-credible threats. Reinhard Selten resolved this in 1965 by introducing <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong>, derived systematically through backward induction.
-            </p>
-            <p>
-              Consider entry deterrence in an oligopoly. An incumbent monopolist threatens a prospective challenger: <em>"If you enter my market, I will engage in predatory pricing and launch a ruinous price war, driving both of our profits to negative infinity."</em> In a static framework, this threat might deter entry. However, under backward induction, if the challenger actually commits capital and enters, the incumbent faces a fait accompli: price-war profits are lower than shared duopoly profits. Because price-slashing is ex-post irrational, the threat is non-credible; the challenger enters, and the incumbent yields.
-            </p>
-            <p>
-              To render threats or promises credible, an agent must construct commitment devices—such as burning ships, investing in irreversible sunk capital (excess production capacity), or delegating policy execution to an independent, conservative agent (such as an independent central bank insulated from political electoral cycles).
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Asymmetric Information and Mechanism Design</h3>
-            <p>
-              When economic agents possess private information that rivals cannot observe, standard equilibria mutate. George Akerlof demonstrated in 1970 that asymmetric quality information triggers <strong>adverse selection</strong>, collapsing markets into "lemons". Michael Spence (1973) formalized <strong>signaling games</strong>, proving that high-productivity workers can credibly signal their unseen quality only by undertaking a costly action that low-productivity counterparts cannot afford to replicate (the single-crossing condition).
-            </p>
-            <p>
-              This insight culminates in <strong>Mechanism Design</strong>—frequently termed "reverse game theory" (Hurwicz, Maskin, Myerson). Rather than analyzing outcomes under fixed game rules, the economist engineers the game’s institutional architecture and incentive compatibility constraints:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-emerald-300">
-              \text{Maximize } W(x) \quad \text{subject to } u_i(\theta_i, \theta_i) \ge u_i(\hat{\theta}_i, \theta_i) \quad (\text{Incentive Compatibility})
-            </div>
-            <p>
-              From Vickrey-Clarke-Groves (VCG) truth-telling auction mechanisms to the matching algorithms allocating medical residents to hospitals, mechanism design leverages strategic logic to overcome informational asymmetries and guarantee optimal resource distribution.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. Strategic Synthesis</h3>
-            <p>
-              Game theory is far more than an intellectual exercise in abstract mathematics; it represents the fundamental language of institutional economics. By deconstructing tactical interactions into players, informational partitions, strategy profiles, and equilibrium concepts, the applied economist can anticipate unintended behavioral responses before regulatory interventions or commercial strategies are launched.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 font-mono text-xs text-emerald-300">
-              <strong>สัจพจน์เชิงวิเคราะห์ (Analytical Axiom):</strong> ในระบบที่มีผู้เล่นหลายฝ่ายซึ่งมีเหตุผล ผลลัพธ์สุดท้ายไม่ได้ถูกกำหนดด้วยการหาค่าที่เหมาะสมที่สุดของปัจเจกเพียงลำพัง แต่ถูกควบคุมด้วยความสอดคล้องร่วมกันของการคาดการณ์เชิงกลยุทธ์ ซึ่งถูกทำให้เป็นรูปธรรมผ่านดุลยภาพแนชและการอุปนัยย้อนกลับ
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. รากฐานของการตัดสินใจเชิงกลยุทธ์ (Non-Cooperative Game Theory)</h3>
-            <p>
-              เศรษฐศาสตร์จุลภาคกระแสเดิมส่วนใหญ่มักตั้งสมมติฐานว่าตัวแปรราคาเป็นสิ่งคงที่ซึ่งกำหนดมาจากตลาดภายนอก (Price Taking) โดยที่ผู้บริโภคและธุรกิจขนาดเล็กไม่มีอำนาจต่อรอง ทว่าในโลกความเป็นจริง ระบบเศรษฐกิจเต็มไปด้วย "การพึ่งพาซึ่งกันและกันเชิงกลยุทธ์" ไม่ว่าจะเป็นตลาดผู้ขายน้อยราย การเจรจาต่อรองค่าจ้างระหว่างสหภาพแรงงานกับผู้บริหาร การส่งสัญญาณนโยบายการเงินของธนาคารกลาง หรือสงครามภาษีการค้าระหว่างประเทศ ทฤษฎีเกมได้เปลี่ยนกระบวนทัศน์นี้ โดยทำให้การปฏิสัมพันธ์เชิงกลยุทธ์มีรูปแบบทางคณิตศาสตร์ที่ชัดเจน: การตัดสินใจที่ดีที่สุดของผู้เล่นคนหนึ่ง จะขึ้นอยู่กับความคาดหวังที่มีต่อการกระทำของผู้เล่นคนอื่นๆ ในระบบเสมอ
-            </p>
-            <p>
-              ในเชิงรูปนัย เกมรูปแบบปกติ (Normal-form game) ถูกนิยามด้วยชุดข้อมูล $G = \\langle N, (S_i)_{i \\in N}, (u_i)_{i \\in N} \\rangle$ โดย $N$ คือกลุ่มของผู้เล่นทั้งหมด $S_i$ คือขอบเขตกลยุทธ์ที่ผู้เล่น $i$ สามารถเลือกได้ และ $u_i$ คือฟังก์ชันอรรถประโยชน์หรือผลตอบแทน หัวใจสำคัญของทฤษฎีเกมไร้ความร่วมมือซึ่งพัฒนาขึ้นโดย John Forbes Nash ในปี ค.ศ. 1950 ได้นิยาม <strong>จุดดุลยภาพแนช (Nash Equilibrium)</strong> ว่าคือชุดกลยุทธ์ที่ไม่มีผู้เล่นคนใดสามารถเบี่ยงเบนการตัดสินใจไปจากจุดนี้เพียงลำพังแล้วทำให้ตนเองได้ผลตอบแทนสูงขึ้นได้:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-cyan-300">
-              u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*) \quad \forall s_i \in S_i, \quad \forall i \in N
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. ปริศนานักโทษ (Prisoner's Dilemma) และความล้มเหลวของตลาด</h3>
-            <p>
-              โมเดลปริศนานักโทษสะท้อนให้เห็นถึงช่องว่างอันลึกซึ้งระหว่าง "ความมีเหตุผลของปัจเจกบุคคล" กับ "สวัสดิการสูงสุดของสังคมส่วนรวม" เมื่อผู้ต้องหา 2 คนถูกแยกห้องสอบสวน แต่ละคนจะมี <strong>กลยุทธ์เด่น (Strictly Dominant Strategy)</strong> นั่นคือการ "หักหลังหรือสารภาพ (Defect)" ไม่ว่าผู้เล่นอีกฝ่ายจะเลือกให้ความร่วมมือหรือหักหลัง ผู้เล่นคนแรกก็ย่อมได้ผลประโยชน์เฉพาะหน้ามากกว่าเสมอเมื่อเลือกหักหลัง:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li>หากอีกฝ่ายเลือกที่จะร่วมมือ การหักหลังจะทำให้ตนเองได้รับผลประโยชน์สูงสุด ($u = 5 > 3$)</li>
-              <li>หากอีกฝ่ายเลือกที่จะหักหลัง การเลือกหักหลังตามก็จะช่วยป้องกันไม่ให้ตนเองต้องตกเป็นผู้รับเคราะห์แต่เพียงผู้เดียว ($u = 1 > 0$)</li>
-            </ul>
-            <p>
-              ดังนั้น ดุลยภาพแนชหนึ่งเดียวจึงตกลงสู่จุด $(หักหลัง, หักหลัง)$ ซึ่งให้ผลตอบแทนเพียง $(1, 1)$ ทั้งที่ในความเป็นจริง หากทั้งสองฝ่ายร่วมมือกัน $(ร่วมมือ, ร่วมมือ)$ พวกเขาจะได้ผลตอบแทน $(3, 3)$ ซึ่งเป็นจุดที่เกิดประสิทธิภาพสูงสุดตามหลักพาเรโต (Pareto Optimum) โมเดลนี้อธิบายปรากฏการณ์ความล้มเหลวของตลาดได้อย่างชัดเจน เช่น การแข่งขันลดราคาจนพังทั้งคู่ การตัดไม้ทำลายป่าและทำลายสิ่งแวดล้อม (Tragedy of the Commons) หรือการตั้งกำแพงภาษีตอบโต้กันจนการค้าโลกหดตัว
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. เกมแบบมีลำดับเวลา (Extensive Form) และพันธสัญญาที่น่าเชื่อถือ</h3>
-            <p>
-              ในขณะที่เกมแบบพร้อมกันเกิดขึ้นในเวลาเดียวกัน แต่การตัดสินใจทางเศรษฐกิจจริงมักดำเนินไปอย่างเป็นลำดับขั้น (Dynamic Sequential Games) ซึ่งจำลองด้วยแผนภาพต้นไม้ (Game Tree) Reinhard Selten ได้เสนอแนวคิด <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong> ในปี 1965 ซึ่งแก้ปัญหาด้วยวิธีการ "อุปนัยย้อนกลับ (Backward Induction)" เพื่อกำจัดคำขู่ที่ไม่น่าเชื่อถือ (Non-credible threats)
-            </p>
-            <p>
-              ลองพิจารณาตัวอย่างการกีดกันคู่แข่งรายใหม่ในตลาดผูกขาด: เจ้าตลาดเดิมข่มขู่ผู้ท้าชิงว่า <em>"หากคุณกล้าเข้ามาในตลาด ฉันจะตัดราคาขายจนขาดทุนมหาศาลเพื่อให้เราพังไปด้วยกันทั้งคู่"</em> ในเชิงตรรกะเบื้องต้น คำขู่นี้อาจทำให้ผู้ท้าชิงกลัว แต่เมื่อพิจารณาด้วยการอุปนัยย้อนกลับ หากผู้ท้าชิงตัดสินใจก้าวเข้ามาในตลาดจริงๆ เจ้าตลาดเดิมย่อมไม่ยอมตัดราคาจนเจ๊ง เพราะการยอมแบ่งตลาดแบบดูโอโพลียังคงสร้างกำไรได้มากกว่าการก่อสงครามราคาที่ไร้เหตุผล คำขู่นี้จึงเป็น "คำขู่ที่ไร้ความน่าเชื่อถือ"
-            </p>
-            <p>
-              ผู้เล่นจะสามารถสร้างคำขู่หรือคำสัญญาที่มีน้ำหนักได้ ก็ต่อเมื่อพวกเขามี "เครื่องมือผูกมัด (Commitment Devices)" เช่น การลงทุนในสินทรัพย์จมที่ไม่สามารถเปลี่ยนคืนเป็นเงินสดได้ (Irreversible Sunk Cost) หรือการมอบอำนาจบริหารนโยบายการเงินให้แก่ธนาคารกลางที่เป็นอิสระจากการเมืองอย่างแท้จริง
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. สารสนเทศไม่สมมาตรและการออกแบบกลไก (Mechanism Design)</h3>
-            <p>
-              เมื่อผู้เล่นในตลาดถือครองข้อมูลไม่เท่ากัน ดุลยภาพตลาดจะผิดเพี้ยนไป George Akerlof (1970) แสดงให้เห็นว่าความไม่สมมาตรของข้อมูลนำไปสู่ปัญหาการคัดเลือกที่ไม่พึงประสงค์ (Adverse Selection) จนตลาดล่มสลาย ขณะที่ Michael Spence (1973) นำเสนอทฤษฎีการส่งสัญญาณ (Signaling) ว่าผู้ที่มีความสามารถสูงต้องยอมลงทุนส่งสัญญาณที่มีต้นทุนสูงซึ่งคนไร้ความสามารถไม่สามารถเลียนแบบได้
-            </p>
-            <p>
-              แนวคิดนี้พัฒนาไปสู่จุดสูงสุดในสาขา <strong>การออกแบบกลไก (Mechanism Design)</strong> หรือทฤษฎีเกมแบบย้อนกลับ (Reverse Game Theory) โดยแทนที่จะวิเคราะห์ว่าผู้เล่นจะทำอย่างไรภายใต้กฎกติกาเดิม นักเศรษฐศาสตร์จะทำหน้าที่เป็นผู้ออกแบบกฎของระบบและโครงสร้างแรงจูงใจ เพื่อบีบให้ผู้เล่นเปิดเผยความจริง (Truth-telling) และนำไปสู่การจัดสรรทรัพยากรที่มีประสิทธิภาพสูงสุด ตัวอย่างเช่น การประมูลคลื่นความถี่โทรคมนาคมแบบ Vickrey-Clarke-Groves (VCG) หรือระบบจัดสรรแพทย์จบใหม่เข้าสู่โรงพยาบาล
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. บทสรุปทางกลยุทธ์</h3>
-            <p>
-              ทฤษฎีเกมไม่ใช่เพียงคณิตศาสตร์เชิงนามธรรม แต่เป็นภาษาและแว่นขยายที่ใช้อ่านโครงสร้างพฤติกรรมมนุษย์และสถาบันทางเศรษฐกิจ การเข้าใจดุลยภาพและแรงจูงใจที่แท้จริง จะช่วยให้นักเศรษฐศาสตร์มองเห็นล่วงหน้าว่านโยบายใดจะสัมฤทธิ์ผล หรือนโยบายใดจะล้มเหลวเพราะถูกผู้เล่นในระบบหาช่องว่างเพื่อผลประโยชน์ส่วนตน
-            </p>
-          </div>
-        `
-      },
-      project3: {
-        badge: "PROJECT 03: AGGREGATE SYSTEM DYNAMICS",
-        title_en: "Modern Macroeconomics: Monetary Transmission & Fiscal Constraints",
-        title_th: "เศรษฐศาสตร์มหภาคสมัยใหม่: กลไกส่งผ่านนโยบายการเงินและข้อจำกัดทางการคลัง",
-        wordCount_en: "1,340 Words",
-        wordCount_th: "1,390 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-amber-500/30 bg-amber-950/20 font-mono text-xs text-amber-300">
-              <strong>Core Macro Balance:</strong> Central banking is the art of steering inflation expectations and short-term interbank liquidity without triggering sovereign fiscal dominance or destabilizing the structural term premium across the yield curve.
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. The Evolution of Macroeconomic Synthesis: IS-LM to DSGE</h3>
-            <p>
-              Modern macroeconomic theory represents a synthesis of classical price flexibility and Keynesian nominal frictions. The historical IS-LM framework—originating from John Hicks and Alvin Hansen—conceptualized general equilibrium across the goods market (Investment-Savings) and the money market (Liquidity preference-Money supply). While pedagogical, this static model lacked microfoundations and failed to anticipate stagflation in the 1970s.
-            </p>
-            <p>
-              Following the Lucas Critique (1976), which demonstrated that historical policy correlations mutate whenever economic agents alter their forward-looking expectations, modern macroeconomics reconstituted itself around <strong>Dynamic Stochastic General Equilibrium (DSGE)</strong> modeling. Built on intertemporal utility-maximizing households, profit-maximizing firms operating under Calvo staggered pricing constraints, and a monetary authority, modern analysis evaluates how aggregate shocks (productivity, fiscal, mark-up) propagate through the three-equation New Keynesian paradigm:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>Dynamic IS Equation:</strong> $x_t = \mathbb{E}_t [x_{t+1}] - \frac{1}{\sigma} (i_t - \mathbb{E}_t [\pi_{t+1}] - r_t^n)$ (Intertemporal consumption smoothing).</li>
-              <li><strong>New Keynesian Phillips Curve (NKPC):</strong> $\pi_t = \beta \mathbb{E}_t [\pi_{t+1}] + \kappa x_t$ (Forward-looking inflation dynamics rooted in sticky prices).</li>
-              <li><strong>Monetary Policy Rule:</strong> Central bank feedback equations targeting real output gaps and inflation deviations.</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Taylor Rule and Central Bank Reaction Functions</h3>
-            <p>
-              In 1993, John B. Taylor formulated a mechanical benchmark capturing how systematic monetary policy stabilizes economic volatility. The classic Taylor Rule prescribes the nominal policy interest rate ($i_t$) via:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-amber-300">
-              i_t = r^* + \pi_t + 0.5(\pi_t - \pi^*) + 0.5(y_t - y_t^*)
-            </div>
-            <p>
-              The profound econometric requirement embedded within this formula is the <strong>Taylor Principle</strong>: the coefficient on inflation must strictly exceed unity ($1 + 0.5 = 1.5 > 1$). When inflation rises by one percentage point, the central bank must raise the nominal policy rate by more than one percentage point, ensuring that the <em>real interest rate</em> ($r = i - \pi$) increases. Failure to uphold the Taylor Principle results in self-fulfilling inflationary spirals, as real borrowing costs decline precisely when aggregate demand is overheating.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. The Monetary Transmission Mechanism and Yield Curve Mechanics</h3>
-            <p>
-              How does adjusting an overnight interbank lending rate (e.g., the Secured Overnight Financing Rate or Federal Funds Rate) influence physical investment decisions in the real economy? The transmission process operates across multiple simultaneous channels:
-            </p>
-            <ol class="list-decimal pl-6 space-y-2 text-slate-300">
-              <li><strong>The Interest Rate Channel:</strong> Rising policy rates elevate short-term debt servicing costs, depressing interest-sensitive expenditures such as business capital investment and residential construction.</li>
-              <li><strong>The Asset Price & Wealth Channel:</strong> Higher discounting yields depress equity and real estate valuations, diminishing household net worth and curbing aggregate consumption propensity.</li>
-              <li><strong>The Credit Channel & Bank Lending Channel:</strong> Restrictive liquidity compresses commercial bank balance-sheet reserves, tightening underwriting criteria and rationing credit to marginal corporate borrowers.</li>
-              <li><strong>The Exchange Rate Channel:</strong> Relative interest rate differentials attract cross-border capital inflows, appreciating the domestic currency, which suppresses export competitiveness while importing deflationary pressures via lower import costs.</li>
-            </ol>
-            <p>
-              The yield curve—plotting the term structure of sovereign debt yields from 3 months to 30 years—serves as the market's macroeconomic barometer. Under normal expansions, the curve slopes upward due to positive term premia. An <strong>inverted yield curve</strong> (where 3-month or 2-year yields trade above 10-year yields) reflects the market's conviction that the central bank’s current policy stance is highly restrictive and that a macroeconomic contraction will eventually compel monetary easing.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Balance Sheet Expansion (QE/QT) and Sovereign Debt Sustainability</h3>
-            <p>
-              When policy rates reach the Effective Lower Bound (ELB), central banks deploy balance sheet operations: Quantitative Easing (QE) and Quantitative Tightening (QT). Through QE, the central bank creates reserves to purchase long-duration sovereign bonds and mortgage-backed securities, compressing the term premium and actively flattening the yield curve.
-            </p>
-            <p>
-              However, prolonged balance sheet expansion introduces the existential threat of <strong>Fiscal Dominance</strong>. The intertemporal sovereign budget constraint dictates that the real market value of outstanding government debt must equal the present discounted value of anticipated future primary fiscal surpluses:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-cyan-300">
-              \frac{B_t}{P_t} = \sum_{j=0}^{\infty} \left( \frac{1}{1 + r} \right)^j \mathbb{E}_t [S_{t+j}]
-            </div>
-            <p>
-              When structural sovereign debt reaches historically extreme debt-to-GDP ratios, central banks face excruciating political and systemic pressure. Elevating interest rates to curb stubborn inflation increases sovereign debt servicing costs exponentially, threatening fiscal insolvency. If markets perceive that the monetary authority cannot raise rates without triggering sovereign debt defaults, inflation expectations unanchor, rendering monetary policy structurally impotent.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-amber-500/30 bg-amber-950/20 font-mono text-xs text-amber-300">
-              <strong>สมดุลมหภาคหลัก (Core Balance):</strong> การดำเนินนโยบายของธนาคารกลางคือศิลปะของการชี้นำการคาดการณ์เงินเฟ้อและสภาพคล่องระยะสั้น โดยต้องไม่ตกอยู่ใต้ภาวะครอบงำทางการคลัง (Fiscal Dominance) หรือสร้างความไร้เสถียรภาพต่อค่าชดเชยความเสี่ยงในเส้นอัตราผลตอบแทนพันธบัตร
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. วิวัฒนาการของเศรษฐศาสตร์มหภาค: จาก IS-LM สู่แบบจำลอง DSGE</h3>
-            <p>
-              ทฤษฎีเศรษฐศาสตร์มหภาคยุคใหม่คือการหลอมรวมระหว่างความยืดหยุ่นของราคาในสำนักคลาสสิก เข้ากับความหนืดของราคา (Nominal Frictions) ในสำนักเคนส์ดั้งเดิม แบบจำลอง IS-LM ในอดีตของ John Hicks และ Alvin Hansen พยายามอธิบายดุลยภาพทั่วไปของตลาดสินค้าและบริการ (IS) ร่วมกับตลาดเงิน (LM) แม้จะเป็นเครื่องมือช่วยสอนที่มีประโยชน์ แต่แบบจำลองนี้ขาดรากฐานเศรษฐศาสตร์จุลภาค (Microfoundations) และไม่สามารถอธิบายวิกฤตเศรษฐกิจชะงักงันพร้อมเงินเฟ้อ (Stagflation) ในช่วงทศวรรษ 1970 ได้
-            </p>
-            <p>
-              หลังจากเกิดข้อวิพากษ์ของลูคัส (Lucas Critique, 1976) ซึ่งชี้ว่าความสัมพันธ์ทางสถิติในอดีตจะพังทลายลงทันทีเมื่อประชาชนปรับเปลี่ยนพฤติกรรมและการคาดการณ์ล่วงหน้าตามนโยบายรัฐ วงการมหภาคจึงได้พัฒนา <strong>แบบจำลองดุลยภาพทั่วไปเชิงพลวัตและสโตแคสติก (DSGE)</strong> ขึ้นมา โดยสร้างขึ้นจากพฤติกรรมการแสวงหาอรรถประโยชน์สูงสุดข้ามเวลาของครัวเรือน การตั้งราคาแบบหนืดของภาคธุรกิจ (Calvo Pricing) และการตอบสนองของธนาคารกลางผ่าน 3 สมการหลักของสำนัก New Keynesian:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>Dynamic IS:</strong> การกระจายการบริโภคข้ามเวลาตามอัตราดอกเบี้ยที่แท้จริง</li>
-              <li><strong>New Keynesian Phillips Curve:</strong> พลวัตของเงินเฟ้อที่ถูกขับเคลื่อนด้วยการคาดการณ์ในอนาคตและช่องว่างการผลิต</li>
-              <li><strong>Monetary Policy Rule:</strong> ฟังก์ชันปฏิกิริยาของธนาคารกลางในการปรับดอกเบี้ย</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. กฎของเทย์เลอร์ (Taylor Rule) และหลักการ Taylor Principle</h3>
-            <p>
-              ในปี 1993 John B. Taylor ได้เสนอกฎเชิงประจักษ์ที่เป็นบรรทัดฐานในการดำเนินนโยบายการเงินเพื่อรักษาเสถียรภาพเศรษฐกิจ โดยระบุว่าอัตราดอกเบี้ยนโยบายที่เหมาะสม ($i_t$) ควรคำนวณจาก:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-amber-300">
-              i_t = r^* + \pi_t + 0.5(\pi_t - \pi^*) + 0.5(y_t - y_t^*)
-            </div>
-            <p>
-              เงื่อนไขที่สำคัญที่สุดในสมการนี้เรียกว่า <strong>Taylor Principle</strong> ซึ่งกำหนดว่าสัมประสิทธิ์หน้าเงินเฟ้อรวมจะต้องมีค่ามากกว่า 1 เสมอ ($1 + 0.5 = 1.5 > 1$) หมายความว่า เมื่ออัตราเงินเฟ้อพุ่งขึ้น 1% ธนาคารกลางจะต้องปรับขึ้นอัตราดอกเบี้ยนโยบายมากกว่า 1% เพื่อให้อัตราดอกเบี้ยที่แท้จริง ($r = i - \pi$) ปรับตัวสูงขึ้น หากธนาคารกลางไม่ปฏิบัติตามหลักการนี้ อัตราดอกเบี้ยที่แท้จริงจะลดลงสวนทาง ส่งผลให้เกิดภาวะเงินเฟ้อลุกลามจนไม่สามารถควบคุมได้
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. ช่องทางการส่งผ่านนโยบายการเงินและเส้นอัตราผลตอบแทน (Yield Curve)</h3>
-            <p>
-              การปรับดอกเบี้ยระยะสั้นข้ามคืนของธนาคารกลางสามารถส่งผ่านไปควบคุมกิจกรรมเศรษฐกิจจริงในระดับรากหญ้าได้อย่างไร? กลไกนี้ทำงานพร้อมกันผ่าน 4 ช่องทางหลัก:
-            </p>
-            <ol class="list-decimal pl-6 space-y-2 text-slate-300">
-              <li><strong>ช่องทางอัตราดอกเบี้ย (Interest Rate Channel):</strong> ดอกเบี้ยที่สูงขึ้นเพิ่มต้นทุนการกู้ยืม ทำให้การลงทุนภาคเอกชนและการซื้ออสังหาริมทรัพย์ชะลอตัว</li>
-              <li><strong>ช่องทางราคาสินทรัพย์และความมั่งคั่ง (Asset Price Channel):</strong> อัตราคิดลดที่สูงขึ้นฉุดมูลค่าหุ้นและอสังหาริมทรัพย์ลง ส่งผลให้ความมั่งคั่งของครัวเรือนลดลงและการบริโภคหดตัว</li>
-              <li><strong>ช่องทางสินเชื่อธนาคาร (Bank Lending Channel):</strong> สภาพคล่องที่ตึงตัวทำให้ธนาคารพาณิชย์เข้มงวดในการปล่อยกู้มากขึ้น</li>
-              <li><strong>ช่องทางอัตราแลกเปลี่ยน (Exchange Rate Channel):</strong> ส่วนต่างดอกเบี้ยดึงดูดเงินทุนไหลเข้า ทำให้ค่าเงินบาทแข็งค่าขึ้น ซึ่งช่วยลดแรงกดดันเงินเฟ้อผ่านสินค้านำเข้าที่ถูกลง</li>
-            </ol>
-            <p>
-              เส้นอัตราผลตอบแทนพันธบัตรรัฐบาล (Yield Curve) ทำหน้าที่เป็นดัชนีชี้วัดความเชื่อมั่นของตลาด ในภาวะปกติ เส้นจะลาดขึ้น (Upward-sloping) แต่เมื่อใดที่เกิดภาวะ <strong>Inverted Yield Curve</strong> (ดอกเบี้ยระยะสั้นสูงกว่าระยะยาว) นั่นคือสัญญาณเตือนว่านโยบายการเงินตึงตัวจนเศรษฐกิจมีความเสี่ยงสูงที่จะเข้าสู่ภาวะถดถอย
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. การขยายงบดุล (QE/QT) และความยั่งยืนของหนี้สาธารณะ</h3>
-            <p>
-              เมื่ออัตราดอกเบี้ยนโยบายลดต่ำลงจนแตะขอบล่าง (Zero Lower Bound) ธนาคารกลางจะใช้มาตรการผ่อนคลายเชิงปริมาณ (QE) โดยการสร้างทุนสำรองไปซื้อพันธบัตรระยะยาวเพื่อกดให้อัตราผลตอบแทนระยะยาวลดต่ำลง ทว่าการอัดฉีดสภาพคล่องอย่างยาวนานอาจนำไปสู่วิกฤต <strong>ภาวะครอบงำทางการคลัง (Fiscal Dominance)</strong>
-            </p>
-            <p>
-              ภายใต้ข้อจำกัดงบประมาณระหว่างเวลาของรัฐบาล มูลค่าที่แท้จริงของหนี้สาธารณะจะต้องเท่ากับมูลค่าปัจจุบันของงบเกินดุลปฐมภูมิในอนาคต หากรัฐบาลสร้างหนี้สาธารณะจนมีสัดส่วนหนี้ต่อ GDP สูงลิบลิ่ว ธนาคารกลางจะไม่สามารถปรับขึ้นดอกเบี้ยเพื่อสู้กับเงินเฟ้อได้อย่างเต็มที่ เพราะการขึ้นดอกเบี้ยจะทำให้ภาระจ่ายดอกเบี้ยหนี้ของรัฐบาลพุ่งสูงจนเสี่ยงต่อการผิดนัดชำระหนี้ สถานการณ์เช่นนี้จะทำลายความเป็นอิสระของธนาคารกลางและทำให้เงินเฟ้อหลุดกรอบเป้าหมายอย่างถาวร
-            </p>
-          </div>
-        `
-      },
-      project4: {
-        badge: "PROJECT 04: GLOBALIZATION & TRADE DYNAMICS",
-        title_en: "World Economy and Globalization: Chains, Tariffs & Fractures",
-        title_th: "เศรษฐกิจโลกและโลกาภิวัตน์: ห่วงโซ่คุณค่า มาตรการภาษี และรอยร้าวทางภูมิเศรษฐศาสตร์",
-        wordCount_en: "1,290 Words",
-        wordCount_th: "1,340 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-indigo-500/30 bg-indigo-950/20 font-mono text-xs text-indigo-300">
-              <strong>Geoeconomic Premise:</strong> Global trade is transitioning from hyper-efficiency optimization grounded in Ricardian comparative advantage to resilience-driven geoeconomic fragmentation dictated by national security and supply-chain sovereignty.
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. Classical Comparative Advantage to Factor Endowment Theory</h3>
-            <p>
-              The intellectual edifice of global free trade originated in 1817 with David Ricardo’s law of <strong>Comparative Advantage</strong>. Ricardo established that trade between two sovereign nations generates mutual welfare enhancements even if one nation holds an absolute productivity advantage across all manufactured goods. So long as domestic opportunity cost ratios differ across borders, specialization according to relative efficiency guarantees a global expansion of the production possibilities frontier.
-            </p>
-            <p>
-              In the twentieth century, Eli Heckscher and Bertil Ohlin augmented this framework into the <strong>Heckscher-Ohlin (H-O) Theorem</strong>: nations possess comparative advantages in goods intensive in the factors of production with which they are relatively abundantly endowed. Capital-abundant economies export capital-intensive goods, while labor-abundant economies export labor-intensive commodities. 
-            </p>
-            <p>
-              Crucially, the companion <strong>Stolper-Samuelson Theorem</strong> demonstrated that international trade inherently creates domestic distributional conflict: free trade increases the real return to the abundant factor of production while depressing the real return to the scarce factor. This fundamental microeconomic divergence explains the domestic political backlash against globalization observed in industrialized advanced economies.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Architecture of Modern Global Value Chains (GVCs)</h3>
-            <p>
-              Over the past three decades, the nature of international trade shifted dramatically from the exchange of finished commodities to intermediate task specialization within Global Value Chains (GVCs). Under this paradigm, a smartphone or semiconductor device crosses sovereign borders dozens of times before final assembly:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>R&D and Intellectual Architecture:</strong> High-margin intangible design concentrated in capital- and human-capital-rich economies (e.g., United States, Japan).</li>
-              <li><strong>Advanced Component Fabrication:</strong> Extreme-precision manufacturing concentrated in specialized hubs (e.g., advanced lithography in the Netherlands, fabrication in Taiwan).</li>
-              <li><strong>Sub-assembly and Testing:</strong> Intermediate processing optimized across cost-effective industrial corridors across East and Southeast Asia.</li>
-            </ul>
-            <p>
-              While GVCs drove consumer price deflation and raised living standards globally, they also concentrated systemic vulnerabilities. The optimization of "Just-in-Time" logistics eradicated inventory buffers, rendering international production networks extraordinarily fragile to exogenous supply shocks, pandemics, and geopolitical chokepoint blockades.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. The Deadweight Welfare Loss of Protectionist Tariffs</h3>
-            <p>
-              When a sovereign state levies import tariffs, it distorts international resource allocation. In standard partial equilibrium analysis, a tariff imposed by a small open economy generates four distinct welfare components:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-indigo-300">
-              \Delta W = - (b + d) \quad \text{where } b = \text{Production Distortion Loss}, \quad d = \text{Consumption Distortion Loss}
-            </div>
-            <p>
-              The tariff artificially inflates the domestic price, transferring surplus from consumers to domestic producers (Area $a$) and the state treasury via customs revenue (Area $c$). However, Areas $b$ and $d$ represent irrecoverable <strong>deadweight welfare loss</strong>: Area $b$ reflects resources wasted by inefficient domestic producers generating output at higher marginal costs than the world price, while Area $d$ represents consumer utility destroyed by forced demand suppression.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Geoeconomic Fragmentation and the Fracturing Triad</h3>
-            <p>
-              Today, the global economy is entering an era defined by <strong>Geoeconomic Fragmentation</strong>. The Washington Consensus and WTO multilateralism have yielded to strategic industrial policies, export controls on dual-use technologies, and "friend-shoring" or "near-shoring" mandates.
-            </p>
-            <p>
-              Economically, this transition represents a fundamental shift in corporate and sovereign objective functions: moving away from pure <em>cost minimization</em> toward <em>risk mitigation and strategic resilience</em>. Replicating domestic semiconductor manufacturing or battery supply chains imposes trillions in duplicated capital expenditures and higher baseline consumer inflation. Furthermore, currency clearing networks are bifurcating, as sovereign states diversify reserves away from concentrated dollar exposure to mitigate sanctions vulnerability.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. Analytical Takeaway for Contemporary Economists</h3>
-            <p>
-              The modern global economist can no longer treat geopolitics as an exogenous footnote. Trade, national security, currency sovereignty, and industrial policy are inextricably intertwined. Navigating this fragmented global landscape demands a rigorous grasp of international trade theory, exchange rate mechanics, and global supply-chain topology.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-indigo-500/30 bg-indigo-950/20 font-mono text-xs text-indigo-300">
-              <strong>ข้อสมมติฐานทางภูมิเศรษฐศาสตร์ (Geoeconomic Premise):</strong> การค้าโลกกำลังเปลี่ยนผ่านจากการมุ่งเน้นประสิทธิภาพและต้นทุนต่ำสุดตามทฤษฎีความได้เปรียบโดยเปรียบเทียบ ไปสู่การแตกขั้วทางภูมิเศรษฐศาสตร์ที่ขับเคลื่อนด้วยความมั่นคงแห่งชาติและการปกป้องอธิปไตยเหนือห่วงโซ่อุปทาน
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. จากความได้เปรียบโดยเปรียบเทียบสู่ทฤษฎีสัดส่วนปัจจัยการผลิต</h3>
-            <p>
-              รากฐานทางปัญญาของการค้าเสรีระดับโลกถูกวางไว้ตั้งแต่ปี ค.ศ. 1817 โดย David Ricardo ผ่าน <strong>กฎความได้เปรียบโดยเปรียบเทียบ (Comparative Advantage)</strong> ซึ่งพิสูจน์ว่า แม้ประเทศหนึ่งจะมีประสิทธิภาพในการผลิตสินค้าทุกชนิดเหนือกว่าอีกประเทศหนึ่ง (Absolute Advantage) แต่การค้าระหว่างประเทศก็ยังคงสร้างผลประโยชน์ร่วมกันให้แก่ทั้งสองฝ่ายได้ ตราบใดที่อัตราส่วนต้นทุนค่าเสียโอกาสในการผลิตสินค้าภายในประเทศมีความแตกต่างกัน การจัดสรรทรัพยากรไปผลิตสินค้าที่ตนเองเสียเปรียบน้อยที่สุด จะช่วยขยายขอบเขตความเป็นไปได้ในการผลิตของทั้งโลก
-            </p>
-            <p>
-              ในศตวรรษที่ 20 Eli Heckscher และ Bertil Ohlin ได้ต่อยอดเป็น <strong>ทฤษฎี Heckscher-Ohlin</strong> ซึ่งระบุว่า ประเทศต่างๆ จะมีความได้เปรียบในการส่งออกสินค้าที่ใช้ปัจจัยการผลิตที่ตนเองมีอยู่อย่างอุดมสมบูรณ์ เช่น ประเทศที่มีทุนหนาแน่นจะส่งออกสินค้าอุตสาหกรรมเทคโนโลยีขั้นสูง ส่วนประเทศที่มีแรงงานอุดมสมบูรณ์จะส่งออกสินค้าเกษตรและสินค้าที่ใช้แรงงานเข้มข้น
-            </p>
-            <p>
-              อย่างไรก็ดี ทฤษฎีประกอบอย่าง <strong>Stolper-Samuelson Theorem</strong> ได้เตือนไว้อย่างชัดเจนว่า การค้าเสรีสร้างความขัดแย้งในการกระจายรายได้ภายในประเทศเสมอ เพราะผลตอบแทนที่แท้จริงของปัจจัยการผลิตที่มีอยู่อย่างอุดมสมบูรณ์จะสูงขึ้น ในขณะที่ปัจจัยการผลิตที่ขาดแคลนจะได้รับผลตอบแทนลดลง นี่คือสาเหตุเชิงโครงสร้างที่อธิบายกระแสต่อต้านโลกาภิวัตน์ในกลุ่มแรงงานภาคการผลิตของประเทศพัฒนาแล้วในปัจจุบัน
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. โครงสร้างห่วงโซ่คุณค่าระดับโลกยุคใหม่ (Global Value Chains: GVCs)</h3>
-            <p>
-              ในช่วงสามทศวรรษที่ผ่านมา รูปแบบการค้าโลกไม่ได้เป็นการแลกเปลี่ยนสินค้าสำเร็จรูปอีกต่อไป แต่เป็นการแยกส่วนกระบวนการผลิตเป็นขั้นตอนย่อยๆ กระจายไปทั่วโลกตามห่วงโซ่คุณค่า (GVCs) ตัวอย่างเช่น อุปกรณ์สมาร์ตโฟนหรือชิปประมวลผลหนึ่งชิ้น ต้องเดินทางข้ามพรมแดนหลายสิบครั้งก่อนการประกอบขั้นสุดท้าย:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>การวิจัย พัฒนา และออกแบบสถาปัตยกรรม:</strong> มีมูลค่าเพิ่มสูง กระจุกตัวอยู่ในประเทศที่อุดมด้วยทุนมนุษย์และเทคโนโลยีขั้นสูง (เช่น สหรัฐฯ, ยุโรป)</li>
-              <li><strong>การผลิตส่วนประกอบความแม่นยำสูง:</strong> กระจุกตัวอยู่ในศูนย์กลางเฉพาะทาง เช่น เครื่องพิมพ์ลายวงจรชิปในเนเธอร์แลนด์ โรงงานผลิตเซมิคอนดักเตอร์ในไต้หวันและเกาหลีใต้</li>
-              <li><strong>การประกอบและทดสอบขั้นสุดท้าย:</strong> กระจายตัวอยู่ในประเทศแถบเอเชียตะวันออกเฉียงใต้และจีนที่มีความพร้อมด้านโครงสร้างพื้นฐานและแรงงานฝีมือ</li>
-            </ul>
-            <p>
-              แม้ห่วงโซ่อุปทานระดับโลกจะช่วยลดต้นทุนสินค้าลงอย่างมหาศาล แต่ระบบโลจิสติกส์แบบ "Just-in-Time" ที่มุ่งลดสินค้าคงคลังจนเหลือศูนย์ ก็สร้างความเปราะบางอย่างรุนแรงเมื่อเผชิญกับวิกฤตโรคระบาด สงคราม หรือการปิดล้อมจุดยุทธศาสตร์ทางทะเล
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. ความสูญเสียทางเศรษฐศาสตร์ (Deadweight Loss) จากกำแพงภาษี</h3>
-            <p>
-              เมื่อรัฐบาลใช้นโยบายกีดกันทางการค้าผ่านการตั้งภาษีศุลกากร กลไกการจัดสรรทรัพยากรโลกจะบิดเบี้ยวทันที ในการวิเคราะห์ดุลยภาพส่วนย่อย (Partial Equilibrium) ภาษีนำเข้าจะก่อให้เกิดการถ่ายโอนสวัสดิการจากผู้บริโภคไปยังผู้ผลิตในประเทศและรายได้รัฐบาล แต่จะทิ้งความสูญเสียทางเศรษฐศาสตร์ส่วนเกินที่ไม่สามารถกู้คืนได้ (Deadweight Loss):
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-indigo-300">
-              \Delta W = - (b + d)
-            </div>
-            <p>
-              โดยพื้นที่ $b$ คือการสูญเสียจากการบิดเบือนการผลิต (โรงงานในประเทศที่ไร้ประสิทธิภาพต้องใช้ทรัพยากรสูงกว่าราคาตลาดโลกเพื่อผลิตสินค้า) และพื้นที่ $d$ คือการสูญเสียจากการบิดเบือนการบริโภค (ผู้บริโภคต้องจ่ายแพงขึ้นและถูกบีบให้ลดการบริโภคลง)
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. ภาวะการแตกขั้วทางภูมิเศรษฐศาสตร์ (Geoeconomic Fragmentation)</h3>
-            <p>
-              ในปัจจุบัน โลกกำลังก้าวเข้าสู่ยุคของการแตกขั้วทางภูมิเศรษฐศาสตร์ ฉันทามติวอชิงตันและองค์การการค้าโลก (WTO) ถูกลดบทบาทลง และถูกแทนที่ด้วยนโยบายอุดหนุนอุตสาหกรรมยุทธศาสตร์ของรัฐ การควบคุมการส่งออกเทคโนโลยีขั้นสูง และนโยบายการย้ายฐานการผลิตกลับประเทศพันธมิตร (Friend-shoring / Near-shoring)
-            </p>
-            <p>
-              การเปลี่ยนแปลงนี้สะท้อนถึงการเปลี่ยนสมการเป้าหมายของภาคธุรกิจและรัฐบาล จากเดิมที่มุ่งเน้น <em>การลดต้นทุนให้ต่ำที่สุด (Cost Minimization)</em> ไปสู่ <em>การบริหารความเสี่ยงและความมั่นคงแห่งชาติ (Risk Resilience)</em> ซึ่งมีต้นทุนมหาศาลและทำให้อัตราเงินเฟ้อพื้นฐานในระยะยาวสูงขึ้น นอกจากนี้ ระบบการชำระเงินและทุนสำรองระหว่างประเทศก็เริ่มกระจายตัวเพื่อลดการพึ่งพิงเงินดอลลาร์สหรัฐเพียงสกุลเดียว
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. ข้อคิดสำหรับนักเศรษฐศาสตร์ยุคใหม่</h3>
-            <p>
-              นักเศรษฐศาสตร์ร่วมสมัยไม่สามารถมองข้ามมิติด้านภูมิรัฐศาสตร์ได้อีกต่อไป การค้า นโยบายการเงิน นวัตกรรมเทคโนโลยี และความมั่นคงแห่งชาติได้หลอมรวมเป็นเรื่องเดียวกัน การวิเคราะห์เศรษฐกิจในศตวรรษนี้จึงต้องผสานทั้งทฤษฎีการค้าระหว่างประเทศที่ลึกซึ้ง และความเข้าใจเชิงประจักษ์ต่อโครงสร้างอำนาจระดับโลกอย่างถ่องแท้
-            </p>
-          </div>
-        `
-      }
-    };
-
-    // Toggle Language Function
     function toggleLanguage() {
-      currentLang = (currentLang === 'en') ? 'th' : 'en';
-      applyLanguage(currentLang);
-    }
-
-    function applyLanguage(lang) {
-      document.getElementById('currentLangLabel').innerText = (lang === 'en') ? 'EN' : 'TH';
-      
-      // Update UI elements with data-i18n
-      const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEach(el => {
+      currentLang = currentLang === 'en' ? 'th' : 'en';
+      document.getElementById('langLabel').textContent = currentLang === 'en' ? 'TH / EN' : 'EN / TH';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (uiTranslations[lang][key]) {
-          el.innerText = uiTranslations[lang][key];
+        if (translations[currentLang][key]) {
+          el.textContent = translations[currentLang][key];
         }
       });
+      updateTaylorRule();
+    }
 
-      // Special Hero Quote Check
-      const quoteEl = document.getElementById('heroQuote');
-      if (lang === 'th') {
-        quoteEl.innerText = '"เข้าใจเศรษฐศาสตร์อย่างถ่องแท้ ด้วยหลักการที่เฉียบคมและเรียบง่าย"';
+    /* ==========================================================
+       3. INTERACTIVE SIMULATORS LOGIC
+       ========================================================== */
+    function setGamePreset(type) {
+      const btnPd = document.getElementById('btnPd');
+      const btnStag = document.getElementById('btnStag');
+      const c2Col = document.getElementById('c2ColLabel');
+      const d2Col = document.getElementById('d2ColLabel');
+      const c1Row = document.getElementById('c1RowLabel');
+      const d1Row = document.getElementById('d1RowLabel');
+
+      const valCC = document.getElementById('valCC');
+      const valCD = document.getElementById('valCD');
+      const valDC = document.getElementById('valDC');
+      const valDD = document.getElementById('valDD');
+
+      const tagCC = document.getElementById('tagCC');
+      const tagDD = document.getElementById('tagDD');
+      const cellCC = document.getElementById('cellCC');
+      const cellDD = document.getElementById('cellDD');
+      const note = document.getElementById('gameTheoremNote');
+
+      if (type === 'pd') {
+        btnPd.className = 'px-3 py-1.5 rounded text-xs font-mono bg-cyan-500 text-slate-950 font-bold transition-all';
+        btnStag.className = 'px-3 py-1.5 rounded text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700 hover:border-cyan-500/40 transition-all';
+        c2Col.textContent = 'Cooperate'; d2Col.textContent = 'Defect';
+        c1Row.textContent = 'Cooperate'; d1Row.textContent = 'Defect';
+        valCC.textContent = '(3, 3)'; tagCC.textContent = 'Pareto Optimal';
+        valCD.textContent = '(0, 5)';
+        valDC.textContent = '(5, 0)';
+        valDD.textContent = '(1, 1)'; tagDD.textContent = 'Unique Nash Eq';
+        cellCC.className = 'p-4 rounded border border-slate-800 bg-slate-900/60 flex flex-col items-center justify-center transition-all';
+        cellDD.className = 'p-4 rounded border border-cyan-500/50 bg-cyan-950/20 flex flex-col items-center justify-center transition-all relative';
+        note.innerHTML = '<span class="text-cyan-400 font-bold">Equilibrium Theorem:</span> In the Prisoner\'s Dilemma, Defection strictly dominates Cooperation ($5>3, 1>0$), generating a unique Pareto-suboptimal Nash equilibrium at (1,1).';
       } else {
-        quoteEl.innerText = '"Master Economics, the Simple Way."';
-      }
-
-      // Update Active Modal if open
-      if (currentOpenProjectId) {
-        renderModalContent(currentOpenProjectId, lang);
+        btnStag.className = 'px-3 py-1.5 rounded text-xs font-mono bg-cyan-500 text-slate-950 font-bold transition-all';
+        btnPd.className = 'px-3 py-1.5 rounded text-xs font-mono bg-slate-800 text-slate-300 border border-slate-700 hover:border-cyan-500/40 transition-all';
+        c2Col.textContent = 'Hunt Stag'; d2Col.textContent = 'Hunt Hare';
+        c1Row.textContent = 'Hunt Stag'; d1Row.textContent = 'Hunt Hare';
+        valCC.textContent = '(4, 4)'; tagCC.textContent = 'Payoff Dominant Eq';
+        valCD.textContent = '(0, 2)';
+        valDC.textContent = '(2, 0)';
+        valDD.textContent = '(2, 2)'; tagDD.textContent = 'Risk Dominant Eq';
+        cellCC.className = 'p-4 rounded border border-cyan-500/50 bg-cyan-950/20 flex flex-col items-center justify-center transition-all relative';
+        cellDD.className = 'p-4 rounded border border-cyan-500/50 bg-cyan-950/20 flex flex-col items-center justify-center transition-all relative';
+        note.innerHTML = '<span class="text-cyan-400 font-bold">Coordination Theorem:</span> Stag Hunt exhibits 2 pure Nash Equilibria: (Stag, Stag) is Payoff Dominant, while (Hare, Hare) is Risk Dominant.';
       }
     }
 
-    // Modal Reader Logic
-    function openModal(projectId) {
-      currentOpenProjectId = projectId;
-      renderModalContent(projectId, currentLang);
+    function updateTaylorRule() {
+      const pi = parseFloat(document.getElementById('infSlider').value);
+      const gap = parseFloat(document.getElementById('gapSlider').value);
+      document.getElementById('infVal').textContent = pi.toFixed(1) + '%';
+      document.getElementById('gapVal').textContent = (gap >= 0 ? '+' : '') + gap.toFixed(1) + '%';
+
+      const rStar = 2.0;
+      const piStar = 2.0;
+      const targetRate = rStar + pi + 0.5 * (pi - piStar) + 0.5 * gap;
+      document.getElementById('taylorRateResult').textContent = targetRate.toFixed(2) + '%';
+
+      const neutralRate = rStar + pi;
+      const diffBps = Math.round((targetRate - neutralRate) * 100);
+      const stanceEl = document.getElementById('policyStance');
+
+      if (diffBps > 20) {
+        stanceEl.textContent = (currentLang === 'en' ? 'Restrictive (+' : 'เข้มงวด (+') + diffBps + ' bps)';
+        stanceEl.className = 'text-sm font-mono font-bold text-amber-400 mt-2';
+      } else if (diffBps < -20) {
+        stanceEl.textContent = (currentLang === 'en' ? 'Accommodative (' : 'ผ่อนคลาย (') + diffBps + ' bps)';
+        stanceEl.className = 'text-sm font-mono font-bold text-emerald-400 mt-2';
+      } else {
+        stanceEl.textContent = currentLang === 'en' ? 'Neutral (At Neutral Rate)' : 'เป็นกลาง (สอดคล้องอัตราดอกเบี้ยธรรมชาติ)';
+        stanceEl.className = 'text-sm font-mono font-bold text-cyan-400 mt-2';
+      }
+    }
+
+    /* ==========================================================
+       4. FULL RESEARCH TREATISES DATA (>1,000 WORDS EACH)
+       ========================================================== */
+    const treatiseData = {
+      hazlitt: {
+        category: 'TREATISE 01 • CLASSICAL ECONOMIC LESSONS',
+        title: 'Deconstructing Hazlitt: The Anatomy of the Seen, the Unseen, and Secondary Distortionary Dynamics',
+        content_en: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. Introduction and the Methodological Core</h3>
+          <p>Henry Hazlitt published <em>Economics in One Lesson</em> in 1946, seeking to synthesize the fundamental economic insights established by Frédéric Bastiat in his foundational 1850 essay, <em>Ce qu'on voit et ce qu'on ne voit pas</em> ("That Which Is Seen and That Which Is Not Seen"). Hazlitt formulated his central thesis into an uncompromising analytical postulate: <strong>"The art of economics consists in looking not merely at the immediate but at the longer effects of any act or policy; it consists in tracing the consequences of that policy not merely for one group but for all groups."</strong></p>
+          <p>This deceptively straightforward precept serves as a devastating critique against special-interest pleading and short-horizon macroeconomic interventions. The fundamental flaw of public economic policy resides in focusing entirely on short-term partial equilibrium impacts for concentrated beneficiaries, while methodically neglecting the secondary, dispersed, and aggregate general equilibrium costs imposed upon the entire societal apparatus.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. The Broken Window Fallacy and Structural Capital Destruction</h3>
+          <p>Hazlitt initiates his inquiry with Bastiat’s classic parable of the broken window. A hoodlum throws a brick through the display window of a baker's shop. A crowd gathers, and an onlooker suggests that the act possesses economic merit: the baker will be forced to hire a glazier for fifty dollars. The glazier will have fifty dollars to spend on shoes, the shoemaker will patronize the tailor, and an endless chain of commerce will expand aggregate employment.</p>
+          <p>Hazlitt systematically refutes this naive multiplier logic. The fifty dollars spent repairing the window represents capital replacement, not capital accumulation. Had the glass not been shattered, the baker would have possessed both the intact window and the fifty dollars, which he planned to spend on purchasing a new suit. The tailor is deprived of the transaction, the economy is poorer by precisely one destroyed window, and the net wealth of society is diminished. Production has been redirected to offset entropy rather than elevating net standard of living.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. Public Works, Crowding Out, and Fiscal Mirage</h3>
+          <p>Translating the broken window fallacy to modern macroeconomic policy, Hazlitt analyzes debt-financed public works programs. When a government constructs a bridge simply to "create employment," society sees the physical steel and the employed construction workers. What remains unseen are the private investment projects that were cancelled or never conceived because the requisite capital and labor were expropriated via taxation or bond-issuance crowding out.</p>
+          <p>Every dollar expended by the state must originate from a dollar extracted from private citizens. When taxation extracts purchasing power, it dampens the marginal propensity to invest and distort the marginal product of capital. If a bridge is constructed solely because it creates labor hours rather than providing infrastructural utility exceeding its real opportunity cost, the society suffers a net loss in aggregate productivity.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. Protectionism, Tariffs, and Deadweight Allocation Loss</h3>
+          <p>Turning to international trade, Hazlitt demonstrates how tariffs function as an institutional mechanism to subsidize inefficient domestic producers at the direct expense of domestic consumers and competitive export industries. While a tariff on imported steel protects local steel mills and visible jobs, it forces domestic manufacturers of automobiles, machinery, and consumer goods to pay higher input costs.</p>
+          <p>Consequently, domestic consumers face elevated price levels, reducing their real disposable income for other non-protected commodities. Furthermore, foreign nations deprived of export revenues reduce their purchases of competitive domestic exports. The protected industry gains visibly, while efficient domestic sectors contract invisibly, leading to an undeniable deadweight welfare loss ($DWL$).</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">5. Price Controls, Shortages, and Capital Misallocation</h3>
+          <p>Hazlitt subjects price ceilings (such as rent controls) to rigorous equilibrium analysis. By capping rental prices below market-clearing equilibrium ($P_{cap} < P^*$), policymakers generate an immediate excess demand ($Q_D > Q_S$). The visible effect is subsidized housing for initial leaseholders; the unseen consequences include rapid deterioration of the housing stock, evaporation of real estate maintenance, and an abrupt collapse in new construction investment. Capital naturally flees price-controlled industries into unregulated sectors, distorting the organic structure of production.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">6. Inflation, Monetary Dissipation, and the Cantillon Effect</h3>
+          <p>Finally, Hazlitt examines monetary inflation. Governments frequently view credit expansion and money printing as an expedient substitute for direct taxation. However, money is not wealth; it is a claim check upon wealth. Increasing nominal liquidity without expanding real output simply depreciates the purchasing power per unit of currency. Furthermore, newly issued money is not distributed symmetrically; it enters through specific channels (the Cantillon Effect), enriching early recipients at the expense of fixed-income wage earners and retirees whose nominal revenues lag the rising general price level.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">7. Conclusion</h3>
+          <p>Hazlitt’s 1946 masterpiece remains an enduring blueprint for analytical clarity. Genuine economic growth is not measured by the proliferation of nominal currency, make-work mandates, or protected cartels, but by the relentless advancement of real marginal productivity, uninhibited price discovery, and capital formation across generations.</p>
+        `,
+        content_th: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. บทนำและหัวใจของระเบียบวิธีวิเคราะห์</h3>
+          <p>เฮนรี ฮาซลิตต์ (Henry Hazlitt) ตีพิมพ์หนังสือ <em>Economics in One Lesson</em> ในปี ค.ศ. 1946 เพื่อถ่ายทอดแก่นแท้ทางเศรษฐศาสตร์ที่ เฟรเดริก บัสเตีย (Frédéric Bastiat) เคยตั้งข้อสังเกตไว้ในเรียงความชื่อดังเมื่อปี 1850 เรื่อง <em>สิ่งที่มองเห็นและสิ่งที่มองไม่เห็น</em> โดยฮาซลิตต์ได้สรุปบทเรียนสำคัญของเศรษฐศาสตร์ไว้ในประโยคทองอันทรงพลัง: <strong>"ศิลปะของเศรษฐศาสตร์ไม่ได้อยู่ที่การมองเพียงผลกระทบเฉพาะหน้าเท่านั้น แต่ต้องติดตามผลกระทบระยะยาวของนโยบายใดๆ ต่อไป; และไม่ได้มองผลลัพธ์ที่มีต่อคนกลุ่มเดียว แต่ต้องติดตามผลกระทบที่มีต่อคนทุกกลุ่มในสังคม"</strong></p>
+          <p>ข้อความเรียบง่ายนี้คือเครื่องมือวิเคราะห์ที่ทรงพลังที่สุดในการลบล้างภาพลวงตาของนโยบายประชานิยมและลัทธิกลุ่มผลประโยชน์เฉพาะกลุ่ม เพราะความล้มเหลวส่วนใหญ่ของนโยบายรัฐ มักเกิดจากการให้ความสำคัญเฉพาะผลดีระยะสั้นที่มีต่อกลุ่มคนกลุ่มหนึ่ง แต่ละเลยต้นทุนระยะยาวที่กระจายตัวไปยังคนส่วนใหญ่ในระบบเศรษฐกิจ</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. ภาพลวงตากระจกแตก (The Broken Window Fallacy) และการทำลายล้างทุน</h3>
+          <p>ฮาซลิตต์เริ่มต้นด้วยการหยิบยกนิทานอุปมาเรื่องกระจกแตกของบัสเตีย เมื่อเด็กเกเรคนหนึ่งขว้างก้อนหินใส่กระจกร้านเบเกอรี่จนแตก ผู้คนต่างเข้ามามุงดูและเริ่มมีคนแสดงความเห็นว่า เหตุการณ์นี้อาจเป็นผลดีต่อเศรษฐกิจ เพราะเจ้าของร้านจะต้องจ่ายเงิน 50 ดอลลาร์เพื่อจ้างช่างกระจกมาซ่อม ช่างกระจกจะมีเงินไปซื้อรองเท้า ช่างทำรองเท้าจะมีเงินไปตัดเสื้อผ้า ก่อให้เกิดการหมุนเวียนของเงินตราและการจ้างงานไม่รู้จบ</p>
+          <p>ฮาซลิตต์ชี้ให้เห็นความผิดพลาดอย่างร้ายแรงของตรรกะนี้ เงิน 50 ดอลลาร์ที่ต้องจ่ายไปเป็นเพียงการซ่อมแซมเพื่อรักษาสภาพทุนเดิม ไม่ได้ก่อให้เกิดการสะสมทุนสุทธิ (Net Capital Accumulation) แต่อย่างใด หากกระจกไม่แตก เจ้าของร้านจะมีทั้งกระจกที่สมบูรณ์และมีเงิน 50 ดอลลาร์ไปซื้อสูทตัวใหม่ ช่างตัดเสื้อได้รับรายได้ และสังคมจะมีทั้งกระจกและสูทเพิ่มขึ้น การทุบกระจกจึงไม่ได้สร้างความมั่งคั่ง แต่ทำให้สังคมสูญเสียทรัพยากรไปเปล่าๆ หนึ่งชิ้นอย่างถาวร</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. โครงการสาธารณะ การเบียดบังการลงทุนเอกชน (Crowding Out)</h3>
+          <p>เมื่อนำหลักการกระจกแตกมาวิเคราะห์โครงการลงทุนภาครัฐที่อ้างว่าสร้างขึ้นเพื่อ "การจ้างงาน" สิ่งที่ทุกคนมองเห็นคือสะพานคอนกรีตขนาดใหญ่และคนงานก่อสร้างที่มีงานทำ แต่สิ่งที่คนทั่วไปมองไม่เห็น คือโรงงาน โรงเรียน หรือโครงการนวัตกรรมของภาคเอกชนที่ไม่ได้เกิดขึ้น เพราะเงินทุน วัตถุดิบ และแรงงานเหล่านั้น ถูกดึงออกไปผ่านการเก็บภาษีหรือการกู้เงินของรัฐบาล การประเมินโครงการจึงต้องวัดจากอรรถประโยชน์ส่วนเพิ่มที่แท้จริงเทียบกับต้นทุนค่าเสียโอกาส (Opportunity Cost) ไม่ใช่จำนวนชั่วโมงการทำงานที่สร้างขึ้น</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. ลัทธิปกป้องทางการค้า กำแพงภาษี และความสูญเสียทางเศรษฐศาสตร์</h3>
+          <p>ฮาซลิตต์วิเคราะห์การตั้งกำแพงภาษีนำเข้า (Tariffs) เพื่อปกป้องอุตสาหกรรมในประเทศ แม้จะมองเห็นโรงงานเหล็กในประเทศอยู่รอดและคนงานไม่ตกงาน แต่ผลกระทบที่มองไม่เห็นคือ ผู้ผลิตยานยนต์ เครื่องจักร และผู้บริโภคต้องแบกรับต้นทุนเหล็กที่แพงขึ้น ส่งผลให้กำลังซื้อสินค้าอื่นๆ ลดลง ขณะเดียวกัน ต่างชาติที่ขายเหล็กไม่ได้ก็ไม่มีเงินตราต่างประเทศมาซื้อสินค้าส่งออกที่มีประสิทธิภาพของประเทศ เกิดความสูญเสียสุทธิทางเศรษฐศาสตร์ (Deadweight Loss) แก่สังคมโดยรวม</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">5. การควบคุมราคา การเกิดภาวะขาดแคลน และการบิดเบือนการจัดสรรทุน</h3>
+          <p>การควบคุมราคา เช่น การคุมเพดานค่าเช่าห้องพักให้อยู่ต่ำกว่าราคาดุลยภาพตลาด ส่งผลให้อุปสงค์พุ่งสูงขึ้นขณะที่อุปทานหดตัวลงอย่างรวดเร็ว ผลระยะยาวคือ เจ้าของตึกหยุดการซ่อมแซมบำรุงรักษา ไม่มีใครลงทุนสร้างอาคารชุดใหม่ เกิดความทรุดโทรมและการขาดแคลนที่อยู่อาศัยอย่างรุนแรง เงินทุนจะไหลหนีจากอุตสาหกรรมที่ถูกควบคุมไปยังส่วนอื่น ทำให้โครงสร้างการผลิตของประเทศบิดเบี้ยวไปจากความต้องการที่แท้จริง</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">6. ภาวะเงินเฟ้อ และผลกระทบของการกระจายเงินตรา (Cantillon Effect)</h3>
+          <p>การพิมพ์เงินหรือการขยายสินเชื่อเทียมของรัฐบาลไม่ใช่การสร้างความมั่งคั่ง เพราะเงินเป็นเพียงตั๋วแลกซื้อสินค้า การเพิ่มปริมาณเงินโดยไม่มีผลผลิตจริงมารองรับมีแต่จะลดทอนอำนาจซื้อของเงินตรา นอกจากนี้ เงินใหม่ที่เข้าสู่ระบบไม่ได้กระจายอย่างเท่าเทียม แต่จะเข้าสู่มือของกลุ่มคนกลุ่มแรกๆ เช่น ธนาคารหรือผู้รับเหมาภาครัฐก่อน ทำให้คนกลุ่มนี้ใช้เงินก่อนที่ราคาของจะขึ้น ขณะที่ประชาชนผู้รับเงินเดือนคงที่และคนยากจนเป็นกลุ่มสุดท้ายที่ได้รับเงิน แต่ต้องเผชิญกับราคาสินค้าที่พุ่งสูงขึ้นไปแล้ว</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">7. บทสรุป</h3>
+          <p>หนังสือ <em>Economics in One Lesson</em> จึงเป็นคู่มือคลาสสิกที่เตือนสติว่า การพัฒนาเศรษฐกิจที่แท้จริงต้องตั้งอยู่บนผลิตภาพส่วนเพิ่ม (Marginal Productivity) การสะสมทุนที่แท้จริง และการปล่อยให้กลไกราคาทำหน้าที่จัดสรรทรัพยากรอย่างมีประสิทธิภาพในระยะยาว</p>
+        `
+      },
+      gametheory: {
+        category: 'TREATISE 02 • MICROECONOMIC FOUNDATIONS',
+        title: 'Strategic Foundations: Nash Equilibrium, Dynamic Games, and Mechanism Design',
+        content_en: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. Formal Axiomatics of Non-Cooperative Games</h3>
+          <p>Game Theory provides the mathematical apparatus for analyzing interactive decision-making situations wherein an agent's optimal choice depends critically upon their anticipations of actions executed by rational counterparts. Formally, a normal-form game is defined by the triplet $\\Gamma = \\{I, (S_i)_{i \\in I}, (u_i)_{i \\in I}\\}$, where $I = \\{1, 2, \\dots, n\\}$ denotes the finite set of players, $S_i$ represents the pure-strategy space of player $i$, and $u_i: \\prod_{j=1}^n S_j \\to \\mathbb{R}$ is player $i$'s Von Neumann-Morgenstern utility payoff function.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. The Nash Equilibrium and Fixed-Point Formulations</h3>
+          <p>A strategy profile $s^* = (s_1^*, s_2^*, \\dots, s_n^*) \\in S$ constitutes a pure-strategy <strong>Nash Equilibrium</strong> if and only if no player possesses a unilateral incentive to deviate:</p>
+          <div class="p-3 my-3 bg-slate-950 rounded font-mono text-xs border border-slate-800 text-cyan-300">
+            $$u_i(s_i^*, s_{-i}^*) \\ge u_i(s_i, s_{-i}^*), \\quad \\forall s_i \\in S_i, \\quad \\forall i \\in I$$
+          </div>
+          <p>John Nash demonstrated in 1950 that every finite game possesses at least one mixed-strategy equilibrium $\\sigma^* \\in \\Delta(S)$, utilizing Kakutani's Fixed Point Theorem on the best-response correspondence $BR(\\sigma) = \\prod_i BR_i(\\sigma_{-i})$. The profound economic implication is that decentralized strategic interactions can settle into self-enforcing steady states, even when such equilibria yield mutually suboptimal allocations (e.g., the Prisoner's Dilemma).</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. Extensive-Form Games and Subgame Perfection</h3>
+          <p>When strategic moves are executed sequentially rather than simultaneously, the normal form obscures temporal commitments and non-credible threats. In extensive-form games modeled via decision trees, Reinhard Selten introduced the refinement of <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong>.</p>
+          <p>By solving via <em>backward induction</em>, SPNE eliminates non-credible off-the-equilibrium-path threats. In industrial organization entry-deterrence games, an incumbent's threat to launch a mutually destructive price war upon a rival's entry is structurally incredible if post-entry profits under accommodation strictly exceed post-entry profits under war ($u_{inc}(Acc) > u_{inc}(War)$).</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. Repeated Games and the Folk Theorem</h3>
+          <p>Cooperation often emerges endogenously in repeated interactions where players value future payoffs through discount factor $\\delta \\in (0, 1)$. According to the Friedman Folk Theorem, in an infinitely repeated game, any feasible payoff profile that strictly dominates the minimax threat point can be sustained as a subgame perfect equilibrium provided $\\delta$ is sufficiently close to unity.</p>
+          <p>Under grim-trigger or tit-for-tat trigger strategies, the immediate temptation payoff from cheating is disciplined by the discounted present value of eternal punishment:</p>
+          <div class="p-3 my-3 bg-slate-950 rounded font-mono text-xs border border-slate-800 text-cyan-300">
+            $$\\frac{u_i(C, C)}{1 - \\delta} \\ge u_i(D, C) + \\frac{\\delta \\cdot u_i(D, D)}{1 - \\delta} \\iff \\delta \\ge \\frac{u_i(D, C) - u_i(C, C)}{u_i(D, C) - u_i(D, D)}$$
+          </div>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">5. Incomplete Information and Mechanism Design</h3>
+          <p>Modern applications center on Bayesian games characterized by asymmetric information. Under Harsanyi’s transformation, nature determines player types $\\theta_i \\in \\Theta_i$. Mechanism design (reverse game theory) formalizes institutional design to elicit truthful revelation of private information.</p>
+          <p>Through the Revelation Principle, any equilibrium outcome can be implemented via a direct revelation mechanism where players truthfully report types subject to Incentive Compatibility (IC) and Individual Rationality (IR) constraints. This analytical foundation underpins modern spectrum auctions, Treasury bond auctions, and public procurement contracting.</p>
+        `,
+        content_th: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. สัจพจน์ทางคณิตศาสตร์ของเกมแบบไม่ร่วมมือ</h3>
+          <p>ทฤษฎีเกม (Game Theory) เป็นเครื่องมือทางคณิตศาสตร์ขั้นสูงสำหรับวิเคราะห์การตัดสินใจเชิงกลยุทธ์ที่ผลลัพธ์ของผู้เล่นแต่ละคนขึ้นอยู่กับการคาดการณ์การกระทำของผู้เล่นคนอื่น โดยเกมในรูปแบบปกติ (Normal-form game) นิยามด้วยโครงสร้างสามสิ่ง $\\Gamma = \\{I, (S_i)_{i \\in I}, (u_i)_{i \\in I}\\}$ ซึ่งประกอบด้วยชุดของผู้เล่น ปริภูมิกลยุทธ์ และฟังก์ชันอรรถประโยชน์</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. ดุลยภาพแนช (Nash Equilibrium) และทฤษฎีจุดตรึง</h3>
+          <p>จุดดุลยภาพแนชคือชุดของกลยุทธ์ที่ผู้เล่นทุกคนเลือกกลยุทธ์ที่ดีที่สุดในการตอบสนองต่อกลยุทธ์ของผู้อื่น โดยไม่มีผู้เล่นคนใดมีแรงจูงใจที่จะเบี่ยงเบนกลยุทธ์ของตนเองเพียงฝ่ายเดียว จอห์น แนช พิสูจน์ว่าในเกมที่มีจำนวนผู้เล่นและทางเลือกจำกัด จะมีจุดดุลยภาพแบบผสม (Mixed-strategy) เสมออย่างน้อยหนึ่งจุดโดยใช้ทฤษฎีจุดตรึงของคาคูทานิ (Kakutani's Fixed Point Theorem)</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. เกมแบบมีลำดับเวลา และ Subgame Perfection</h3>
+          <p>ในสถานการณ์ที่มีการตัดสินใจตามลำดับเวลา เช่น การเข้าสู่ตลาดของคู่แข่งรายใหม่ ไรน์ฮาร์ด เซลเทน ได้พัฒนาแนวคิด <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong> โดยใช้เทคนิคการอุปนัยย้อนกลับ (Backward Induction) เพื่อตัดคำขู่ที่ไม่สมเหตุสมผลออกไป เช่น การขู่ว่าจะยอมตัดราคาจนเจ๊งทั้งคู่ ซึ่งเป็นคำขู่ที่ไม่มีความน่าเชื่อถือหากคู่แข่งตัดสินใจเข้าสู่ตลาดจริง</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. เกมเล่นซ้ำ และทฤษฎีบทโฟล์ก (Folk Theorem)</h3>
+          <p>ในปฏิสัมพันธ์ระยะยาว การร่วมมือกันสามารถเกิดขึ้นได้เองตามธรรมชาติหากผู้เล่นให้ความสำคัญกับผลตอบแทนในอนาคต (มีค่า Discount factor $\\delta$ สูงเพียงพอ) ทฤษฎีบทโฟล์กอธิบายว่า การลงโทษผู้ทรยศด้วยการไม่ร่วมมือกันในรอบถัดๆ ไป (เช่น กลยุทธ์ Tit-for-Tat หรือ Grim Trigger) จะสร้างพันธสัญญาที่น่าเชื่อถือและเหนี่ยวนำให้เกิดความร่วมมืออย่างยั่งยืนได้</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">5. การออกแบบกลไก (Mechanism Design)</h3>
+          <p>การประยุกต์ใช้ทฤษฎีเกมระดับสูงในปัจจุบันคือการออกแบบกติกาเพื่อให้ผู้เล่นเปิดเผยข้อมูลจริงที่ปกปิดไว้ (Incentive Compatibility) เช่น การออกแบบการประมูลคลื่นความถี่ การจัดซื้อจัดจ้างภาครัฐ เพื่อให้เกิดประสิทธิภาพสูงสุดแก่ระบบเศรษฐกิจ</p>
+        `
+      },
+      macro: {
+        category: 'TREATISE 03 • MACROECONOMIC DYNAMICS',
+        title: 'Modern Macroeconomics: DSGE Frameworks, Monetary Channels, and Fiscal Interactions',
+        content_en: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. Foundations of New Keynesian Macroeconomics</h3>
+          <p>Modern quantitative macroeconomics is grounded in Dynamic Stochastic General Equilibrium (DSGE) frameworks incorporating nominal rigidities (Calvo staggered pricing) and microfoundations of household intertemporal utility optimization alongside monopolistically competitive firms.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. The Canonical Three-Equation System</h3>
+          <p>The standard baseline New Keynesian framework resolves into three core structural relations:</p>
+          <div class="p-3 my-3 bg-slate-950 rounded font-mono text-xs border border-slate-800 text-cyan-300 space-y-2">
+            <div>1. Dynamic IS Curve: $\\tilde{y}_t = E_t \\tilde{y}_{t+1} - \\frac{1}{\\sigma}(i_t - E_t \\pi_{t+1} - r_t^n)$</div>
+            <div>2. New Keynesian Phillips Curve: $\\pi_t = \\beta E_t \\pi_{t+1} + \\kappa \\tilde{y}_t$</div>
+            <div>3. Taylor Monetary Reaction Rule: $i_t = r^* + \\pi_t + \\phi_\\pi (\\pi_t - \\pi^*) + \\phi_y \\tilde{y}_t$</div>
+          </div>
+          <p>The parameter $\\phi_\\pi > 1$ represents the crucial <em>Taylor Principle</em>, ensuring macroeconomic stability by driving up the real rate of interest whenever inflation accelerates.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. The Monetary Transmission Mechanism</h3>
+          <p>Changes in policy rates ripple through multiple economic conduits: the interest rate channel affecting durable consumption and capital expenditure, the asset price channel through Tobin's $q$, the exchange rate channel altering net exports, and the bank lending credit channel which amplifies shocks through financial accelerator mechanisms (Bernanke-Gertler-Gilchrist).</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. Fiscal Dominance and Unpleasant Monetarist Arithmetic</h3>
+          <p>When sovereign debt paths become unsustainable, monetary policy autonomy is severely compromised. Under the Fiscal Theory of the Price Level (FTPL), if the fiscal authority fails to generate adequate present value of future primary surpluses, the price level must jump endogenously to re-equilibrate the real value of nominal government debt, effectively stripping the central bank of its price-stability mandate.</p>
+        `,
+        content_th: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. รากฐานเศรษฐศาสตร์มหภาคสำนักเคนส์ใหม่</h3>
+          <p>เศรษฐศาสตร์มหภาคสมัยใหม่สร้างขึ้นบนแบบจำลองดุลยภาพทั่วไปเชิงสโตแคสติกแบบพลวัต (DSGE) ที่ผสานการปรับราคาที่มีความหนืด (Calvo Sticky Prices) และการตัดสินใจจัดสรรทรัพยากรข้ามเวลาของผู้บริโภคและธุรกิจ</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. ระบบ 3 สมการหลักของ New Keynesian</h3>
+          <p>แบบจำลองประกอบด้วย 1) Dynamic IS Curve ที่เชื่อมโยงการบริโภคข้ามเวลากับอัตราดอกเบี้ยแท้จริง 2) New Keynesian Phillips Curve ที่อธิบายความสัมพันธ์ระหว่างเงินเฟ้อกับผลผลิตส่วนเกิน และ 3) กฎของเทย์เลอร์ (Taylor Rule) ที่ธนาคารกลางใช้กำหนดดอกเบี้ยนโยบาย</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. ช่องทางการส่งผ่านนโยบายการเงิน</h3>
+          <p>การปรับดอกเบี้ยนโยบายจะส่งผ่านไปยังเศรษฐกิจจริงผ่านช่องทางต้นทุนเงินกู้ ช่องทางราคาทรัพย์สิน ช่องทางอัตราแลกเปลี่ยน และช่องทางสินเชื่อสถาบันการเงิน ซึ่งจะขยายผลกระทบต่อการลงทุนและการบริโภคผ่าน Financial Accelerator</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">4. ภาวะครอบงำทางการคลัง (Fiscal Dominance)</h3>
+          <p>หากรัฐบาลมีหนี้สาธารณะสูงเกินขีดจำกัดจนไม่สามารถสร้างดุลการคลังเกินดุลในอนาคตได้ ธนาคารกลางจะไม่สามารถใช้นโยบายการเงินเพื่อควบคุมเงินเฟ้อได้อย่างอิสระ เพราะการขึ้นดอกเบี้ยจะยิ่งเร่งต้นทุนหนี้ของรัฐบาลจนผลักดันให้เกิดเงินเฟ้อตามทฤษฎี Fiscal Theory of the Price Level</p>
+        `
+      },
+      trade: {
+        category: 'TREATISE 04 • GLOBAL TRADE & GEOECONOMICS',
+        title: 'World Economy and Globalization: Comparative Advantage, GVCs, and Geoeconomic Fragmentation',
+        content_en: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. Classical and Modern Trade Paradigms</h3>
+          <p>International trade theory originates in David Ricardo's seminal principle of Comparative Advantage, establishing that nations maximize aggregate welfare by specializing in goods wherein their opportunity cost ratio is minimized, rather than absolute cost parity. The Heckscher-Ohlin model subsequently demonstrated that trade patterns reflect relative factor endowments (capital-labor ratios).</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. Global Value Chains (GVCs) and Trade in Value-Added</h3>
+          <p>Modern commerce has transformed from gross physical shipments into fragmented Global Value Chains. Cross-border trade in intermediate components dominates global commerce, magnifying the negative deadweight welfare impacts of even modest tariff hikes as intermediate inputs cross frontiers multiple times.</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. Geoeconomic Fragmentation and Supply Resilience</h3>
+          <p>The contemporary global architecture is experiencing profound geoeconomic decoupling and near-shoring trends. The historical doctrine of hyper-efficiency and Just-in-Time logistics is yielding to strategic resilience and "friend-shoring," imposing non-negligible structural costs on global trend GDP growth while restructuring international capital allocation.</p>
+        `,
+        content_th: `
+          <h3 class="text-lg font-bold text-cyan-400 font-mono">1. ทฤษฎีการค้าระหว่างประเทศคลาสสิกและสมัยใหม่</h3>
+          <p>รากฐานการค้าโลกเริ่มต้นจากทฤษฎีความได้เปรียบโดยเปรียบเทียบ (Comparative Advantage) ของเดวิด ริคาร์โด ที่พิสูจน์ว่าประเทศจะได้ประโยชน์สูงสุดจากการผลิตสินค้าที่มีต้นทุนค่าเสียโอกาสต่ำที่สุด และต่อยอดสู่แบบจำลอง Heckscher-Ohlin ที่อิงตามความพร้อมของปัจจัยการผลิต (ทุนและแรงงาน)</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">2. ห่วงโซ่คุณค่าระดับโลก (Global Value Chains - GVCs)</h3>
+          <p>การค้ายุคใหม่เปลี่ยนจากการส่งออกสินค้าสำเร็จรูปไปเป็นการค้าชิ้นส่วนขั้นกลางข้ามพรมแดนหลายทอด การตั้งกำแพงภาษีแม้เพียงเล็กน้อยจึงทวีความรุนแรงและสร้างความสูญเสียทางเศรษฐศาสตร์ (Deadweight Loss) มหาศาลต่อประสิทธิภาพการผลิตโลก</p>
+
+          <h3 class="text-lg font-bold text-cyan-400 font-mono mt-6">3. การแตกขั้วทางภูมิเศรษฐศาสตร์ (Geoeconomic Fragmentation)</h3>
+          <p>โครงสร้างเศรษฐกิจโลกปัจจุบันกำลังเผชิญกับการจัดระเบียบใหม่ การย้ายฐานการผลิตกลับประเทศพันธมิตร (Friend-shoring) และการให้ความสำคัญกับความมั่นคงทางยุทธศาสตร์มากกว่าต้นทุนที่ต่ำที่สุด ซึ่งส่งผลกระทบต่ออัตราการเติบโตของเศรษฐกิจโลกในระยะยาว</p>
+        `
+      }
+    };
+
+    function openModal(id) {
+      const data = treatiseData[id];
+      if (!data) return;
+      document.getElementById('modalCategory').textContent = data.category;
+      document.getElementById('modalTitle').textContent = data.title;
+      document.getElementById('modalContent').innerHTML = currentLang === 'en' ? data.content_en : data.content_th;
       document.getElementById('treatiseModal').classList.remove('hidden');
       document.body.style.overflow = 'hidden';
+      if (window.MathJax && window.MathJax.typesetPromise) {
+        window.MathJax.typesetPromise([document.getElementById('modalContent')]);
+      }
     }
 
     function closeModal() {
       document.getElementById('treatiseModal').classList.add('hidden');
       document.body.style.overflow = 'auto';
-      currentOpenProjectId = null;
     }
 
-    function toggleLanguageInModal() {
-      toggleLanguage();
-    }
-
-    function renderModalContent(projectId, lang) {
-      const data = treatisesData[projectId];
-      if (!data) return;
-
-      document.getElementById('modalCategoryBadge').innerText = data.badge;
-      document.getElementById('modalWordCount').innerText = (lang === 'en') ? data.wordCount_en : data.wordCount_th;
-      document.getElementById('modalTitle').innerText = (lang === 'en') ? data.title_en : data.title_th;
-      document.getElementById('modalBody').innerHTML = (lang === 'en') ? data.content_en : data.content_th;
-      document.getElementById('modalLangToggleLabel').innerText = (lang === 'en') ? 'เปลี่ยนเป็นภาษาไทย (TH)' : 'Switch to English (EN)';
-    }
-
-    // Close modal on Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && currentOpenProjectId) {
-        closeModal();
-      }
-    });
-
-    // Copy Email Function
-    function copyEmail() {
-      const email = 'sp.phatthanan@gmail.com';
-      const dummy = document.createElement('textarea');
-      document.body.appendChild(dummy);
-      dummy.value = email;
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
-
-      const toast = document.getElementById('toast');
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3000);
-    }
-
-    // Interactive Game Theory Presets
-    function setGamePreset(type) {
-      const cc = document.getElementById('cell-CC');
-      const cd = document.getElementById('cell-CD');
-      const dc = document.getElementById('cell-DC');
-      const dd = document.getElementById('cell-DD');
-
-      if (type === 'pd') {
-        document.getElementById('p1_cc').innerText = '3';
-        document.getElementById('p2_cc').innerText = '3';
-        document.getElementById('p1_cd').innerText = '0';
-        document.getElementById('p2_cd').innerText = '5';
-        document.getElementById('p1_dc').innerText = '5';
-        document.getElementById('p2_dc').innerText = '0';
-        document.getElementById('p1_dd').innerText = '1';
-        document.getElementById('p2_dd').innerText = '1';
-
-        dd.className = 'p-3 rounded border border-amber-500/40 bg-amber-500/10 transition relative';
-        cc.className = 'p-3 rounded border border-slate-800 bg-slate-900/80 transition';
-        document.getElementById('nashExplanation').innerText = 
-          (currentLang === 'en') 
-          ? 'Strict Dominant Strategy leads to (Defect, Defect) yielding sub-optimal welfare.'
-          : 'กลยุทธ์เด่นชักนำให้เกิดดุลยภาพที่ (หักหลัง, หักหลัง) ซึ่งให้สวัสดิการต่ำกว่าจุดร่วมมือ';
-      } else {
-        // Stag Hunt (Coordination Game)
-        document.getElementById('p1_cc').innerText = '4';
-        document.getElementById('p2_cc').innerText = '4';
-        document.getElementById('p1_cd').innerText = '0';
-        document.getElementById('p2_cd').innerText = '3';
-        document.getElementById('p1_dc').innerText = '3';
-        document.getElementById('p2_dc').innerText = '0';
-        document.getElementById('p1_dd').innerText = '2';
-        document.getElementById('p2_dd').innerText = '2';
-
-        cc.className = 'p-3 rounded border border-emerald-500/40 bg-emerald-500/10 transition';
-        dd.className = 'p-3 rounded border border-amber-500/40 bg-amber-500/10 transition';
-        document.getElementById('nashExplanation').innerText = 
-          (currentLang === 'en')
-          ? 'Coordination Game exhibits 2 Pure Nash Equilibria: (Stag, Stag) [Payoff Dominant] and (Hare, Hare) [Risk Dominant].'
-          : 'เกมการประสานงานมี 2 ดุลยภาพแนชแท้: (ล่ากวาง, ล่ากวาง) ที่ให้ผลตอบแทนสูงสุด และ (ล่ากระต่าย, ล่ากระต่าย) ที่มีความเสี่ยงต่ำสุด';
-      }
-    }
-
-    // Taylor Rule Calculation Logic
-    function calculateTaylorRule() {
-      const pi = parseFloat(document.getElementById('input-pi').value);
-      const gap = parseFloat(document.getElementById('input-gap').value);
-
-      document.getElementById('disp-pi').innerText = pi.toFixed(1) + '%';
-      document.getElementById('disp-gap').innerText = (gap >= 0 ? '+' : '') + gap.toFixed(1) + '%';
-
-      const r_star = 1.0;
-      const pi_star = 2.0;
-
-      // Classic Taylor Rule: i = r* + pi + 0.5(pi - pi*) + 0.5(gap)
-      const nominalRate = r_star + pi + 0.5 * (pi - pi_star) + 0.5 * (gap);
-      const clampedRate = Math.max(0, nominalRate);
-
-      document.getElementById('taylorRateDisplay').innerText = clampedRate.toFixed(2) + '%';
-
-      const badge = document.getElementById('policyStanceBadge');
-      const yieldLabel = document.getElementById('yieldCurveStatus');
-
-      if (clampedRate >= 5.5) {
-        badge.className = 'px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Aggressive Tightening' : 'นโยบายการเงินตึงตัวเข้มงวด';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Inversion Risk High' : 'เส้นอัตราผลตอบแทน: ความเสี่ยงกลับทิศสูง';
-      } else if (clampedRate <= 2.5) {
-        badge.className = 'px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Accommodative Expansion' : 'นโยบายการเงินผ่อนคลายขยายตัว';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Steepening Bullish' : 'เส้นอัตราผลตอบแทน: ลาดชันขึ้นตามปกติ';
-      } else {
-        badge.className = 'px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Neutral Rate Equilibrium' : 'อัตราดอกเบี้ยสมดุลเป็นกลาง';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Normal Term Premium' : 'เส้นอัตราผลตอบแทน: ค่าชดเชยปกติ';
-      }
-    }
-
-    // Initialize Page
-    window.onload = function() {
-      calculateTaylorRule();
-    };
+    // Initialize defaults
+    updateTaylorRule();
   </script>
 </body>
 </html>
