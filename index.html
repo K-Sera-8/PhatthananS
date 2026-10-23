@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Phatthanan S. | Economist & Research Specialist</title>
+  <title>The Pulse of Economies: Macro Cycles & Shocks | Phatthanan S.</title>
   <link rel="icon" type="image/png" href="black.png">
   
-  <!-- Fonts: JetBrains Mono -->
+  <!-- Fonts: JetBrains Mono & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -23,19 +23,13 @@
         extend: {
           fontFamily: {
             mono: ['"JetBrains Mono"', 'monospace'],
-            sans: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Inter"', 'sans-serif'],
           },
           colors: {
             slate: {
               850: '#0f172a',
               900: '#0b1120',
-              950: '#060a12',
-            },
-            accent: {
-              teal: '#06b6d4',
-              emerald: '#10b981',
-              amber: '#f59e0b',
-              indigo: '#6366f1'
+              950: '#050811',
             }
           }
         }
@@ -45,1111 +39,1078 @@
 
   <style>
     /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #050811; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #334155; }
+
+    /* Fine Grid Mesh */
+    .bg-grid-mesh {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     }
-    ::-webkit-scrollbar-track {
-      background: #0b1120;
+
+    /* Ambient Lighting Animations */
+    @keyframes pulse-slow {
+      0%, 100% { opacity: 0.25; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(1.04); }
     }
-    ::-webkit-scrollbar-thumb {
-      background: #1e293b;
-      border-radius: 3px;
+    .animate-ambient {
+      animation: pulse-slow 8s ease-in-out infinite;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #334155;
-    }
-    .math-formula {
-      font-family: 'JetBrains Mono', monospace;
-      letter-spacing: -0.025em;
-    }
-    .line-clamp-3 {
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-mono antialiased min-h-screen selection:bg-cyan-500/20 selection:text-cyan-300">
+<body class="bg-slate-950 text-slate-200 font-sans antialiased min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200 overflow-x-hidden flex flex-col justify-between">
 
-  <!-- Top Sticky Header -->
-  <header class="sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+  <!-- Top Sticky Navigation & Telemetry Header -->
+  <header class="sticky top-0 z-50 w-full border-b border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       
-      <!-- Brand & Terminal Indicator -->
-      <a href="#hero" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 p-1 flex items-center justify-center group-hover:border-cyan-500/50 transition overflow-hidden">
-          <img src="black.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'text-cyan-400 font-bold text-sm\'>PS</span>';">
+      <!-- Brand & Title (Links back to main portfolio) -->
+      <a href="index.html" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-slate-900 border border-slate-800 p-1 flex items-center justify-center shadow-lg shadow-cyan-500/10 group-hover:border-cyan-500/40 transition overflow-hidden">
+          <img src="black.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-mono text-cyan-400 font-bold text-xs\'>PS</span>';">
         </div>
-        <div class="flex flex-col">
-          <span class="font-mono text-sm font-semibold tracking-tight text-white group-hover:text-cyan-400 transition">Phatthanan S.</span>
-          <span class="text-[10px] font-mono text-slate-500 tracking-wider">ECONOMIST & RESEARCH</span>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-mono text-sm font-bold text-white tracking-tight group-hover:text-cyan-400 transition">The Pulse of Economies</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-mono bg-cyan-950 text-cyan-400 border border-cyan-800/50 hidden sm:inline-block" data-i18n="badge_interactive">
+              Story Engine
+            </span>
+          </div>
+          <span class="text-[10px] font-mono text-slate-500 block -mt-0.5" data-i18n="header_sub">
+            Phatthanan S. • Quantitative Macroeconomic Research
+          </span>
         </div>
       </a>
 
-      <!-- Navigation & Action Controls -->
-      <nav class="hidden md:flex items-center gap-6 font-mono text-xs">
-        <a href="#projects" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_projects">Projects</a>
-        <a href="#lab" class="text-slate-400 hover:text-emerald-400 transition" data-i18n="nav_lab">Analytical Lab</a>
-        <a href="pulse.html" class="text-slate-400 hover:text-cyan-400 transition flex items-center gap-1"><i class="fa-solid fa-wave-square text-[10px] text-cyan-400"></i> Pulse Engine</a>
-        <a href="#about" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_about">About & Philosophy</a>
-        <a href="#contact" class="text-slate-400 hover:text-cyan-400 transition" data-i18n="nav_contact">Contact</a>
-      </nav>
-
-      <!-- Language Switcher & Terminal Status -->
+      <!-- Global Controls: Bilingual & Status & Portfolio Link -->
       <div class="flex items-center gap-3">
-        <!-- Bilingual Toggle Button -->
-        <button id="langToggle" onclick="toggleLanguage()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-slate-700 bg-slate-900/90 text-xs font-mono font-medium text-slate-200 hover:border-cyan-500 transition shadow-sm">
-          <i class="fa-solid fa-language text-cyan-400 text-sm"></i>
-          <span id="currentLangLabel">TH / EN</span>
+        <!-- Live Playback Status Indicator -->
+        <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs">
+          <span id="liveStatusDot" class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span id="liveStatusText" class="text-slate-300">Live Simulation</span>
+        </div>
+
+        <!-- Link to Portfolio / Research Treatises -->
+        <a href="portfolio.html" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900/90 hover:border-cyan-500 text-xs font-mono text-slate-200 transition shadow-sm">
+          <i class="fa-solid fa-book-bookmark text-cyan-400"></i>
+          <span>Research Treatises</span>
+        </a>
+
+        <!-- Language Toggle -->
+        <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-900/90 hover:border-cyan-500 text-xs font-mono text-slate-200 transition shadow-sm">
+          <i class="fa-solid fa-language text-cyan-400"></i>
+          <span id="langLabel">TH / EN</span>
         </button>
 
-        <a href="mailto:sp.phatthanan@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-mono text-xs transition">
+        <!-- Direct Contact -->
+        <a href="mailto:sp.phatthanan@gmail.com" class="hidden lg:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-mono text-xs transition">
           <i class="fa-regular fa-envelope"></i>
-          <span data-i18n="btn_hire">Get in Touch</span>
+          <span>sp.phatthanan@gmail.com</span>
         </a>
       </div>
+
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="relative overflow-hidden py-20 lg:py-28 border-b border-slate-900">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(6,182,212,0.15),rgba(255,255,255,0))]"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <!-- System Tag -->
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-300 font-mono text-xs mb-6">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-        <span data-i18n="hero_status">Economist • Quantitative & Strategic Research</span>
-      </div>
+  <!-- Main Narrative Presentation Canvas Stage -->
+  <main class="relative flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
 
-      <!-- Core Header with Persona Quote -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        <div class="lg:col-span-8">
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight mb-6">
-            Phatthanan S.
-          </h1>
-          
-          <div class="relative pl-6 border-l-2 border-cyan-400 mb-8 py-1">
-            <blockquote class="text-xl sm:text-2xl font-mono text-cyan-200/90 font-light italic" id="heroQuote">
-              "Master Economics, the Simple Way."
-            </blockquote>
-            <p class="text-sm font-mono text-slate-500 mt-2" data-i18n="quote_sub">
-              — Precision over rhetoric; evaluating long-term systemic equilibrium over localized illusions.
+    <!-- Ambient Visual Glow Orbs -->
+    <div id="ambientGlow" class="absolute -top-10 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-r from-amber-500/15 via-cyan-500/15 to-rose-500/15 blur-[120px] pointer-events-none rounded-full animate-ambient -z-10"></div>
+
+    <!-- Epoch Narrative Progress Stepper -->
+    <section class="glass-card rounded-2xl border border-slate-800 p-3 sm:p-4 shadow-xl">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        
+        <!-- Epoch Navigation Chips -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-2 lg:pb-0 scrollbar-none font-mono text-xs" id="epochChipsContainer">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Autoplay & Scrub Controls -->
+        <div class="flex items-center justify-between sm:justify-end gap-3 font-mono text-xs pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-800">
+          <div class="flex items-center gap-2">
+            <button id="playPauseBtn" onclick="togglePlay()" class="px-3.5 py-1.5 rounded-lg bg-cyan-500 text-slate-950 font-bold hover:bg-cyan-400 transition flex items-center gap-1.5 shadow-md shadow-cyan-500/20">
+              <i id="playIcon" class="fa-solid fa-pause"></i>
+              <span id="playText" data-i18n="btn_pause">Pause</span>
+            </button>
+            <button onclick="prevEpoch()" class="w-8 h-8 rounded-lg border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 flex items-center justify-center transition" title="Previous Epoch">
+              <i class="fa-solid fa-chevron-left text-xs"></i>
+            </button>
+            <button onclick="nextEpoch()" class="w-8 h-8 rounded-lg border border-slate-700 bg-slate-900 hover:bg-slate-800 text-slate-300 flex items-center justify-center transition" title="Next Epoch">
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+          </div>
+          <div class="hidden sm:flex items-center gap-1 text-[11px] text-slate-500">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span id="epochProgressLabel">Epoch 1 of 5</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Interactive Canvas Visualizer Arena -->
+    <section class="relative rounded-3xl border border-slate-800 bg-slate-900/90 overflow-hidden shadow-2xl">
+      
+      <!-- Canvas Graphics Layer -->
+      <canvas id="macroCanvas" class="absolute inset-0 w-full h-full cursor-crosshair z-0"></canvas>
+      
+      <!-- Coordinate Grid Mesh Overlay -->
+      <div class="absolute inset-0 bg-grid-mesh opacity-50 pointer-events-none z-10"></div>
+      
+      <!-- Corner Vignettes -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_90%_90%_at_50%_50%,transparent_40%,rgba(5,8,17,0.85)_100%)] pointer-events-none z-10"></div>
+
+      <!-- Foreground Interactive Overlay Content -->
+      <div class="relative z-20 p-5 sm:p-8 lg:p-10 pointer-events-none">
+        
+        <!-- Header Info Overlay -->
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+          <div class="space-y-1.5 max-w-2xl pointer-events-auto">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono backdrop-blur-md" id="epochCategoryBadge">
+              <span class="w-2 h-2 rounded-full animate-ping" id="badgePulse"></span>
+              <span id="epochPeriodLabel">1970 — 1982</span>
+            </div>
+            
+            <h1 id="epochHeadline" class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-snug">
+              The Great Stagflation & Structural Breakdown
+            </h1>
+            
+            <p id="epochSubline" class="text-xs sm:text-sm text-slate-400 font-mono leading-relaxed">
+              OPEC Oil Shocks • Cost-Push Spiral • Volcker Nominal Policy Shock
             </p>
           </div>
 
-          <p class="text-base sm:text-lg text-slate-400 max-w-2xl leading-relaxed mb-8" data-i18n="hero_desc">
-            Bridging rigorous economic principles, strategic game theory, and empirical market dynamics into clean, actionable analytical frameworks. Dedicated to unraveling complex economic phenomena through uncompromising logic and clarity.
+          <!-- Phase Indicator Badge -->
+          <div class="pointer-events-auto flex flex-col items-end">
+            <div class="px-3 py-1.5 rounded-xl border border-slate-700/80 bg-slate-950/80 backdrop-blur-md font-mono text-right">
+              <span class="text-[10px] text-slate-500 uppercase tracking-wider block" data-i18n="regime_label">System Regime</span>
+              <span id="epochRegime" class="text-xs font-bold text-amber-400">COST-PUSH VOLATILITY</span>
+            </div>
+            <div class="text-[10px] font-mono text-slate-500 mt-1 flex items-center gap-1">
+              <i class="fa-solid fa-arrows-to-dot text-cyan-400"></i>
+              <span data-i18n="hover_inspect">Hover Canvas to Probe Points</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry Indicators HUD (Live Reactive Gauges) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 font-mono text-xs max-w-4xl pt-2 pb-4 pointer-events-auto">
+          
+          <div class="p-3 rounded-xl bg-slate-950/85 border border-slate-800/90 backdrop-blur-md transition-all duration-300 hover:border-slate-700">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span data-i18n="metric_pi">Inflation Rate (&pi;)</span>
+              <i class="fa-solid fa-fire text-amber-400 text-[10px]"></i>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span id="hudPi" class="text-xl sm:text-2xl font-bold text-white tracking-tight">13.5%</span>
+              <span id="hudPiDelta" class="text-[10px] text-amber-400 font-semibold">+3.8%</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div id="barPi" class="bg-amber-400 h-full rounded-full transition-all duration-500" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/85 border border-slate-800/90 backdrop-blur-md transition-all duration-300 hover:border-slate-700">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span data-i18n="metric_gap">Output Gap (y - y*)</span>
+              <i class="fa-solid fa-chart-area text-rose-400 text-[10px]"></i>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span id="hudGap" class="text-xl sm:text-2xl font-bold text-white tracking-tight">-4.2%</span>
+              <span id="hudGapDelta" class="text-[10px] text-rose-400 font-semibold">Recessionary</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div id="barGap" class="bg-rose-400 h-full rounded-full transition-all duration-500" style="width: 35%;"></div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/85 border border-slate-800/90 backdrop-blur-md transition-all duration-300 hover:border-slate-700">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span data-i18n="metric_rate">Policy Rate (i)</span>
+              <i class="fa-solid fa-building-columns text-cyan-400 text-[10px]"></i>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span id="hudRate" class="text-xl sm:text-2xl font-bold text-white tracking-tight">20.0%</span>
+              <span id="hudRateDelta" class="text-[10px] text-cyan-400 font-semibold">Max Hawkish</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div id="barRate" class="bg-cyan-400 h-full rounded-full transition-all duration-500" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950/85 border border-slate-800/90 backdrop-blur-md transition-all duration-300 hover:border-slate-700">
+            <div class="flex items-center justify-between text-[11px] text-slate-400 mb-1">
+              <span data-i18n="metric_vix">Stress / VIX</span>
+              <i class="fa-solid fa-wave-square text-emerald-400 text-[10px]"></i>
+            </div>
+            <div class="flex items-baseline gap-1.5">
+              <span id="hudVix" class="text-xl sm:text-2xl font-bold text-white tracking-tight">38.4</span>
+              <span id="hudVixDelta" class="text-[10px] text-emerald-400 font-semibold">Systemic Alert</span>
+            </div>
+            <div class="w-full bg-slate-800 h-1 rounded-full mt-2 overflow-hidden">
+              <div id="barVix" class="bg-emerald-400 h-full rounded-full transition-all duration-500" style="width: 70%;"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Canvas Inspection Hover Tooltip Box -->
+        <div id="canvasTooltip" class="hidden absolute z-30 pointer-events-none p-3 rounded-xl border border-cyan-500/40 bg-slate-900/95 backdrop-blur-md shadow-2xl font-mono text-xs max-w-xs transition-opacity duration-150">
+          <div class="text-[10px] text-cyan-400 font-bold uppercase tracking-wider mb-1" id="tooltipDate">Epoch Coordinate</div>
+          <div class="text-white font-semibold mb-1" id="tooltipEvent">Shock Event Inflection</div>
+          <p class="text-[11px] text-slate-300 leading-tight" id="tooltipDesc">Details of transmission shock...</p>
+        </div>
+
+      </div>
+
+      <!-- Canvas Height Spacer (Maintains aesthetic proportions) -->
+      <div class="h-64 sm:h-72 md:h-80 w-full pointer-events-none"></div>
+
+      <!-- Interactive Canvas Scrubber Bar (Bottom Edge of Canvas) -->
+      <div class="relative z-20 px-6 py-3 border-t border-slate-800/80 bg-slate-950/80 backdrop-blur flex items-center justify-between font-mono text-xs text-slate-400">
+        <div class="flex items-center gap-3">
+          <span class="text-cyan-400 font-bold" id="scrubberEpochName">1970s Stagflation</span>
+          <span class="text-slate-600 hidden sm:inline">•</span>
+          <span class="text-slate-400 text-[11px] hidden sm:inline" id="scrubberMechanismHint">Supply Curve Shifts & Leftward AS Contraction</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-[10px] text-slate-500">CYCLE PROGRESS</span>
+          <div class="w-24 sm:w-36 bg-slate-800 h-1.5 rounded-full overflow-hidden">
+            <div id="cycleProgressBar" class="h-full bg-gradient-to-r from-cyan-400 to-emerald-400 transition-all duration-100" style="width: 0%;"></div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Deep Analytical Story & Institutional Response Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Left Column: Causal Mechanism & Institutional Narrative (7 cols) -->
+      <div class="lg:col-span-7 glass-card rounded-2xl border border-slate-800 p-6 sm:p-8 space-y-6">
+        <div>
+          <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs uppercase tracking-wider mb-1.5">
+            <i class="fa-solid fa-book-open-reader"></i>
+            <span data-i18n="causal_header">Economic Transmission Mechanism</span>
+          </div>
+          <h2 id="storyCardTitle" class="text-xl sm:text-2xl font-bold text-white tracking-tight">
+            How the Crisis Propagated Through Markets
+          </h2>
+        </div>
+
+        <p id="storyCardBody" class="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
+          The 1970s shattered the empirical stability of the traditional Phillips Curve. Exogenous geopolitical oil embargoes triggered simultaneous supply contraction ($\Delta AS < 0$) and imported cost inflation. When institutional monetary authorities accommodated higher energy prices with loose liquidity, rational inflation expectations ($\mathbb{E}[\pi]$) unanchored into an accelerating wage-price spiral.
+        </p>
+
+        <!-- Dynamic Structural Formula Display -->
+        <div class="p-4 rounded-xl border border-slate-800 bg-slate-950/70 font-mono text-xs">
+          <div class="text-[10px] text-slate-500 uppercase tracking-wider mb-1.5" data-i18n="formula_label">
+            GOVERNING EQUILIBRIUM EQUATION
+          </div>
+          <div id="storyFormula" class="text-cyan-300 font-semibold text-sm sm:text-base overflow-x-auto py-1">
+            &pi;_t = &pi;^e_t + &gamma;(y_t - y*) + &epsilon;^{supply}_t
+          </div>
+          <div id="storyFormulaDesc" class="text-[11px] text-slate-400 mt-2 border-t border-slate-800/80 pt-2">
+            Where severe supply shocks (&epsilon; > 0) drive inflation regardless of standard output slack, defying static demand stimulus.
+          </div>
+        </div>
+
+        <!-- Institutional Policy Verdict -->
+        <div class="space-y-2">
+          <h3 class="text-xs font-mono text-emerald-400 uppercase tracking-wider font-semibold" data-i18n="policy_label">
+            Central Bank & Institutional Resolution
+          </h3>
+          <p id="storyPolicyResolution" class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Paul Volcker redefined monetary credibility by abandoning interest rate targets in favor of strict non-borrowed reserve targeting, driving nominal policy rates to 20% to violently break adaptive expectations.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Counterfactual & Structural Insights (5 cols) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- Interactive Counterfactual Analysis Card ("What If?") -->
+        <div class="glass-card rounded-2xl border border-slate-800 p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono text-amber-400 font-semibold uppercase tracking-wider flex items-center gap-1.5">
+              <i class="fa-solid fa-code-compare"></i>
+              <span data-i18n="counterfactual_tag">Counterfactual Scenario</span>
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
+              SIMULATED
+            </span>
+          </div>
+
+          <h3 id="cfTitle" class="text-base font-bold text-white">
+            What if the Fed Hiked Aggressively in 1974 Instead of 1979?
+          </h3>
+
+          <p id="cfExplanation" class="text-xs text-slate-300 leading-relaxed font-sans">
+            Under forward-looking Calvo pricing models, pre-emptive rate hikes would have contained unanchored inflation expectations five years earlier, averting the severe double-dip recessions of 1980–1982 at the cost of immediate transitory unemployment.
           </p>
 
-          <div class="flex flex-wrap items-center gap-4 font-mono text-xs">
-            <a href="#projects" class="px-5 py-3 rounded-lg bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition flex items-center gap-2 shadow-lg shadow-cyan-500/20">
-              <i class="fa-solid fa-layer-group"></i>
-              <span data-i18n="hero_btn_explore">Explore Analytical Treatises (2)</span>
-            </a>
-            <a href="#lab" class="px-5 py-3 rounded-lg border border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-200 transition flex items-center gap-2">
-              <i class="fa-solid fa-calculator text-emerald-400"></i>
-              <span data-i18n="hero_btn_lab">Interactive Simulator</span>
-            </a>
+          <div class="pt-2 border-t border-slate-800 text-xs font-mono text-slate-400 flex items-center justify-between">
+            <span data-i18n="welfare_label">Estimated Welfare Delta:</span>
+            <span id="cfMetric" class="text-emerald-400 font-bold">+2.4% Cumulative GDP</span>
           </div>
         </div>
 
-        <!-- Analytical Badge Cards (Character Snapshot) -->
-        <div class="lg:col-span-4 space-y-4">
-          <div class="p-5 rounded-xl border border-slate-800 bg-slate-900/50 backdrop-blur-sm">
-            <div class="flex items-center justify-between text-xs font-mono text-slate-400 pb-3 border-b border-slate-800">
-              <span class="flex items-center gap-2">
-                <i class="fa-solid fa-microchip text-cyan-400"></i>
-                <span data-i18n="badge_methodology">METHODOLOGICAL RIGOR</span>
-              </span>
-              <span class="text-emerald-400">99.9%</span>
-            </div>
-            <ul class="mt-4 space-y-2.5 text-xs font-mono text-slate-300">
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_1">Hazlittian Long-Run Tracing</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_2">Nash & Subgame Perfect Equilibria</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_3">Mechanism Design & Incentives</span>
-              </li>
-              <li class="flex items-center gap-2">
-                <i class="fa-solid fa-check text-cyan-400 text-[10px]"></i>
-                <span data-i18n="rigor_4">Price Signal Distortion Analysis</span>
-              </li>
-            </ul>
+        <!-- Macroeconomic Lessons for Modern Quantitative Modeling -->
+        <div class="glass-card rounded-2xl border border-slate-800 p-6 space-y-3 font-mono text-xs">
+          <span class="text-slate-400 uppercase tracking-wider block text-[10px]" data-i18n="takeaway_label">
+            CONTEMPORARY ECONOMETRIC LESSON
+          </span>
+          <div class="text-white font-semibold text-sm" id="lessonHeadline">
+            The Lucas Critique Validated
           </div>
-
-          <div class="p-4 rounded-xl border border-emerald-950/60 bg-emerald-950/10 font-mono text-xs text-slate-400 flex items-center justify-between">
-            <div>
-              <span class="text-slate-500 block text-[10px]" data-i18n="stat_corpus_label">RESEARCH CORPUS</span>
-              <span class="text-lg font-bold text-emerald-400">2,500+ Words</span>
-            </div>
-            <div class="text-right">
-              <span class="text-slate-500 block text-[10px]" data-i18n="stat_bilingual_label">DUAL-EDITION</span>
-              <span class="text-xs font-semibold text-white">EN & TH Fully Synced</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Interactive Econometric Lab (Custom Character Gimmick) -->
-  <section id="lab" class="py-16 border-b border-slate-900 bg-slate-950">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
-        <div>
-          <div class="flex items-center gap-2 text-emerald-400 font-mono text-xs font-medium uppercase tracking-wider mb-2">
-            <i class="fa-solid fa-terminal"></i>
-            <span data-i18n="lab_subtitle">Interactive Analytical Engine</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight" data-i18n="lab_title">
-            Quantitative Playground & Policy Simulators
-          </h2>
-        </div>
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
-          <div class="text-xs font-mono text-slate-500">
-            <span data-i18n="lab_disclaimer">// Real-time algorithmic calculation for economic logic</span>
-          </div>
-          <a href="pulse.html" class="px-3 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold font-mono text-xs hover:opacity-90 transition flex items-center gap-1.5 shadow-md shadow-cyan-500/20">
-            <i class="fa-solid fa-wave-square text-xs"></i>
-            <span>Pulse Engine →</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        
-        <!-- Interactive Widget 1: Strategic Game Theory (Payoff Matrix Simulator) -->
-        <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/60 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 font-mono text-xs">MODULE 01</span>
-                <h3 class="font-bold text-white text-base" data-i18n="sim_game_title">Strategic Dilemma Payoff Matrix</h3>
-              </div>
-              <span class="text-xs font-mono text-slate-500">2x2 Strategic Form</span>
-            </div>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed" data-i18n="sim_game_desc">
-              Adjust payoff values to observe dynamic dominance shifts and compute Nash Equilibrium instantly.
-            </p>
-
-            <!-- Payoff Matrix Grid -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 mb-6 font-mono text-xs">
-              <div class="grid grid-cols-3 gap-2 text-center items-center">
-                <div class="text-slate-600 italic">P1 \ P2</div>
-                <div class="text-cyan-400 font-semibold" data-i18n="sim_col_coop">Cooperate (C)</div>
-                <div class="text-cyan-400 font-semibold" data-i18n="sim_col_defect">Defect (D)</div>
-
-                <!-- Row 1 Cooperate -->
-                <div class="text-emerald-400 font-semibold text-left" data-i18n="sim_row_coop">Coop (C)</div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-CC">
-                  <span class="text-emerald-400 font-bold" id="p1_cc">3</span>, <span class="text-cyan-400 font-bold" id="p2_cc">3</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_pareto">Pareto Opt</div>
-                </div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-CD">
-                  <span class="text-emerald-400 font-bold" id="p1_cd">0</span>, <span class="text-cyan-400 font-bold" id="p2_cd">5</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_sucker">Exploited</div>
-                </div>
-
-                <!-- Row 2 Defect -->
-                <div class="text-emerald-400 font-semibold text-left" data-i18n="sim_row_defect">Defect (D)</div>
-                <div class="p-3 rounded border border-slate-800 bg-slate-900/80 hover:border-slate-600 transition" id="cell-DC">
-                  <span class="text-emerald-400 font-bold" id="p1_dc">5</span>, <span class="text-cyan-400 font-bold" id="p2_dc">0</span>
-                  <div class="text-[9px] text-slate-500 mt-1" data-i18n="sim_tempt">Temptation</div>
-                </div>
-                <div class="p-3 rounded border border-amber-500/40 bg-amber-500/10 transition relative" id="cell-DD">
-                  <span class="text-emerald-400 font-bold" id="p1_dd">1</span>, <span class="text-cyan-400 font-bold" id="p2_dd">1</span>
-                  <div class="text-[9px] text-amber-400 font-bold mt-1" data-i18n="sim_nash">★ NASH EQ</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Controls -->
-            <div class="flex items-center justify-between text-xs font-mono">
-              <span class="text-slate-400" data-i18n="sim_game_preset">Preset Game:</span>
-              <div class="flex gap-2">
-                <button onclick="setGamePreset('pd')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Prisoner's Dilemma</button>
-                <button onclick="setGamePreset('coord')" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition">Stag Hunt</button>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-6 pt-4 border-t border-slate-800 text-xs font-mono text-slate-400">
-            <span class="text-emerald-400 font-semibold" data-i18n="sim_nash_result">Eq Status:</span>
-            <span id="nashExplanation" class="text-slate-300 ml-1">Strict Dominant Strategy leads to (Defect, Defect) yielding sub-optimal welfare.</span>
-          </div>
-        </div>
-
-        <!-- Interactive Widget 2: Macroeconomic Taylor Rule Simulator -->
-        <div class="p-6 rounded-2xl border border-slate-800 bg-slate-900/60 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono text-xs">MODULE 02</span>
-                <h3 class="font-bold text-white text-base" data-i18n="sim_macro_title">Central Bank Taylor Rule Policy Engine</h3>
-              </div>
-              <span class="text-xs font-mono text-slate-500">i = r* + π + 0.5(π - π*) + 0.5(y - y*)</span>
-            </div>
-            <p class="text-xs text-slate-400 mb-6 leading-relaxed" data-i18n="sim_macro_desc">
-              Simulate optimal central bank target policy rates based on real inflation divergence and GDP output gap.
-            </p>
-
-            <!-- Sliders -->
-            <div class="space-y-4 font-mono text-xs mb-6">
-              <div>
-                <div class="flex justify-between text-slate-300 mb-1">
-                  <span data-i18n="sim_inflation_rate">Actual Inflation (π):</span>
-                  <span id="disp-pi" class="text-cyan-400 font-bold">4.2%</span>
-                </div>
-                <input type="range" min="0" max="10" step="0.1" value="4.2" id="input-pi" oninput="calculateTaylorRule()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-400">
-              </div>
-
-              <div>
-                <div class="flex justify-between text-slate-300 mb-1">
-                  <span data-i18n="sim_output_gap">Output Gap (y - y*):</span>
-                  <span id="disp-gap" class="text-emerald-400 font-bold">+1.5%</span>
-                </div>
-                <input type="range" min="-5" max="5" step="0.1" value="1.5" id="input-gap" oninput="calculateTaylorRule()" class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-400">
-              </div>
-
-              <div class="grid grid-cols-2 gap-3 pt-2">
-                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]" data-i18n="sim_neutral_rate">Assumed Neutral r*:</span>
-                  <span class="text-slate-300 font-bold">1.0%</span>
-                </div>
-                <div class="p-2.5 rounded bg-slate-950 border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]" data-i18n="sim_target_pi">Inflation Target π*:</span>
-                  <span class="text-slate-300 font-bold">2.0%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Calculated Policy Rate Display -->
-          <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-            <div>
-              <div class="text-[10px] font-mono text-slate-500 uppercase tracking-wider" data-i18n="sim_prescribed_rate">PRESCRIBED POLICY RATE</div>
-              <div class="text-2xl font-bold font-mono text-cyan-400" id="taylorRateDisplay">7.05%</div>
-            </div>
-            <div class="text-right font-mono text-xs">
-              <span id="policyStanceBadge" class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold" data-i18n="sim_stance_tight">Aggressive Tightening</span>
-              <p class="text-[10px] text-slate-500 mt-1" id="yieldCurveStatus" data-i18n="sim_yield_inverted">Yield Curve: Inversion Risk High</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section: 2 Deep Analytical Treatises -->
-  <section id="projects" class="py-20 border-b border-slate-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Section Header -->
-      <div class="max-w-3xl mb-14">
-        <div class="flex items-center gap-2 text-cyan-400 font-mono text-xs font-semibold uppercase tracking-wider mb-2">
-          <i class="fa-solid fa-book-bookmark"></i>
-          <span data-i18n="projects_header_tag">Analytical Research & Treatises</span>
-        </div>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight" data-i18n="projects_main_title">
-          Core Economic Foundations & Frameworks
-        </h2>
-        <p class="text-sm sm:text-base text-slate-400 mt-3 leading-relaxed" data-i18n="projects_main_desc">
-          Two foundational studies in classical political economy and strategic game-theoretic equilibria. Each treatise contains over 1,000 words of thorough, rigorous exposition with dual-language support.
-        </p>
-      </div>
-
-      <!-- Project Cards Grid (2 Projects) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
-        <!-- Project 1 Card: Henry Hazlitt -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-800/40">PROJECT 01</span>
-              <span>1946 CLASSICAL TRADITION</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition mb-3" data-i18n="p1_title">
-              Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p1_summary">
-              An exhaustive critique of the "Broken Window Fallacy", the seen versus unseen secondary consequences, the destructive realities of government price ceilings, tariffs, and systemic monetary dilution.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#BrokenWindowFallacy</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#OpportunityCost</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#SoundMoney</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_1">1,215 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project1')" class="px-4 py-2 rounded-lg bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Project 2 Card: Game Theory -->
-        <div class="group rounded-2xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:border-emerald-500/40 transition duration-300 flex flex-col justify-between overflow-hidden p-6 sm:p-8">
-          <div>
-            <div class="flex items-center justify-between text-xs font-mono mb-4 text-slate-500">
-              <span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-800/40">PROJECT 02</span>
-              <span>STRATEGIC INTERACTION</span>
-            </div>
-            <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-emerald-300 transition mb-3" data-i18n="p2_title">
-              Game Theory: Equilibria, Information & Mechanism Design
-            </h3>
-            <p class="text-sm text-slate-400 leading-relaxed mb-6 line-clamp-3" data-i18n="p2_summary">
-              Formal mathematical and behavioral foundations of strategic behavior: Simultaneous vs Sequential games, Nash equilibria, Cournot-Bertrand competition, signaling, and incentive-compatible mechanisms.
-            </p>
-            <div class="flex flex-wrap gap-2 font-mono text-[11px] mb-6">
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#NashEquilibrium</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#MechanismDesign</span>
-              <span class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300">#AsymmetricInfo</span>
-            </div>
-          </div>
-          <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between font-mono text-xs">
-            <span class="text-slate-500 flex items-center gap-1.5">
-              <i class="fa-solid fa-align-left text-slate-400"></i>
-              <span data-i18n="word_count_2">1,270 Words (EN/TH)</span>
-            </span>
-            <button onclick="openModal('project2')" class="px-4 py-2 rounded-lg bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-slate-950 font-semibold transition flex items-center gap-2">
-              <span data-i18n="btn_read_treatise">Read Full Treatise</span>
-              <i class="fa-solid fa-arrow-right text-xs"></i>
-            </button>
+          <p class="text-slate-400 text-xs leading-relaxed font-sans" id="lessonBody">
+            Historical empirical regressions mutate when agents adjust to systemic policy rule regimes. Modern DSGE models must embed microfounded rational expectations.
+          </p>
+          <div class="pt-3 border-t border-slate-800 flex items-center gap-2 text-cyan-400 text-[11px]">
+            <i class="fa-solid fa-fingerprint"></i>
+            <span id="lessonTag">#ExpectationsFormation #CredibilityTheory</span>
           </div>
         </div>
 
       </div>
 
     </div>
-  </section>
 
-  <!-- About Me & Methodological Philosophy Section -->
-  <section id="about" class="py-20 border-b border-slate-900 bg-slate-900/20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        
-        <div class="lg:col-span-5 space-y-6">
-          <div class="p-8 rounded-2xl border border-slate-800 bg-slate-900/70 relative">
-            <div class="w-20 h-20 rounded-2xl bg-slate-900 border border-slate-800 p-2 mb-6 flex items-center justify-center overflow-hidden">
-              <img src="black.png" alt="Phatthanan S." class="w-full h-full object-contain" onerror="this.onerror=null; this.parentElement.innerHTML='<span class=\'font-mono text-2xl font-bold text-cyan-400\'>PS</span>';">
-            </div>
+  </main>
 
-            <h3 class="text-2xl font-bold text-white mb-1">Phatthanan S.</h3>
-            <p class="text-xs font-mono text-cyan-400 mb-4" data-i18n="about_role">Economist & Research Specialist</p>
-
-            <div class="space-y-3 font-mono text-xs text-slate-400 border-t border-slate-800/80 pt-4">
-              <div class="flex items-center gap-3">
-                <i class="fa-regular fa-envelope text-slate-500 w-4"></i>
-                <a href="mailto:sp.phatthanan@gmail.com" class="text-slate-300 hover:text-cyan-400 transition">sp.phatthanan@gmail.com</a>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-location-dot text-slate-500 w-4"></i>
-                <span data-i18n="about_location">Bangkok, Thailand (Global Research)</span>
-              </div>
-              <div class="flex items-center gap-3">
-                <i class="fa-solid fa-shield-halved text-slate-500 w-4"></i>
-                <span data-i18n="about_focus">Empirical Macro & Micro Foundations</span>
-              </div>
-            </div>
-
-            <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-[11px] font-mono text-slate-500">
-              <span>STATUS: AVAILABLE FOR RESEARCH</span>
-              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 space-y-6">
-          <div class="text-cyan-400 font-mono text-xs uppercase tracking-wider" data-i18n="about_tag">Intellectual Identity</div>
-          <h2 class="text-3xl font-bold text-white tracking-tight" data-i18n="about_title">
-            The Analytical Imperative: Clarifying Economic Mechanisms
-          </h2>
-          <div class="space-y-4 text-slate-400 leading-relaxed text-sm sm:text-base">
-            <p data-i18n="about_p1">
-              Economics often suffers from two opposing ailments: dry academic abstraction disconnected from ground realities, or short-sighted political interventions masquerading as benevolent solutions. My ethos adheres directly to Henry Hazlitt's foundational premise: real economic wisdom requires tracking not merely immediate effects on a single constituency, but the unseen secondary ramifications reverberating across all groups in the long run.
-            </p>
-            <p data-i18n="about_p2">
-              Whether analyzing the fragility of multi-echelon supply networks under geopolitical tariffs, dissecting the payoff matrices of strategic oligopolies, or tracking the monetary transmission channels of yield curve shifts, my research prioritizes transparency, mathematical soundness, and clear, pedagogical articulation.
-            </p>
-          </div>
-
-          <!-- Academic Principles Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 font-mono text-xs pt-4">
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-cyan-400 font-bold block mb-1">01. Causal Clarity</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_1">Uncovering the unseen opportunity cost.</span>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-emerald-400 font-bold block mb-1">02. Strategic Logic</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_2">Analyzing rational incentives & equilibria.</span>
-            </div>
-            <div class="p-3 rounded-lg border border-slate-800 bg-slate-900/50">
-              <span class="text-amber-400 font-bold block mb-1">03. Monetary Truth</span>
-              <span class="text-[11px] text-slate-500" data-i18n="principle_3">Tracing balance-sheet expansion realities.</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Collaboration Section -->
-  <section id="contact" class="py-20 bg-slate-950">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/20 text-cyan-300 font-mono text-xs mb-4">
-        <i class="fa-regular fa-paper-plane"></i>
-        <span data-i18n="contact_pill">Direct Inquiries & Scholarly Collaboration</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4" data-i18n="contact_title">
-        Let’s Demystify the Global Economy Together
-      </h2>
-      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base mb-8 leading-relaxed" data-i18n="contact_desc">
-        Interested in economic research, strategic analysis, game-theoretic modeling, or collaborative projects? Get in direct touch.
-      </p>
-
-      <div class="inline-flex flex-col sm:flex-row items-center gap-4">
-        <a href="mailto:sp.phatthanan@gmail.com" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-emerald-500 text-slate-950 font-bold font-mono text-sm hover:opacity-90 transition flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20">
-          <i class="fa-solid fa-envelope"></i>
-          <span>sp.phatthanan@gmail.com</span>
-        </a>
-        <button onclick="copyEmail()" class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:text-white hover:border-slate-700 font-mono text-xs transition flex items-center justify-center gap-2">
-          <i class="fa-regular fa-copy" id="copyIcon"></i>
-          <span id="copyText" data-i18n="btn_copy_email">Copy Email Address</span>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-900 bg-slate-950 py-8 font-mono text-xs text-slate-500">
+  <!-- Sticky Footer -->
+  <footer class="w-full border-t border-slate-900 bg-slate-950 py-6 font-mono text-xs text-slate-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © 2026 <span class="text-slate-300">Phatthanan S.</span>. All rights reserved.
+        Designed for <strong class="text-slate-300">Phatthanan S.</strong> | Quantitative Economist Portfolio
       </div>
-      <div class="flex items-center gap-6">
-        <span>Hosted on GitHub Pages</span>
-        <a href="#hero" class="text-cyan-400 hover:underline">↑ Top</a>
+      <div class="flex items-center gap-4">
+        <span>Framework: Pure Canvas + Vanilla JS</span>
+        <a href="#macroCanvas" class="text-cyan-400 hover:underline">↑ Top</a>
       </div>
     </div>
   </footer>
 
-  <!-- Modal / Reader Overlay for In-Depth 1,000+ Word Treatises -->
-  <div id="treatiseModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md overflow-y-auto">
-    <div class="min-h-screen px-4 py-8 sm:py-12 flex justify-center items-center">
-      <div class="relative w-full max-w-4xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden my-auto">
-        
-        <!-- Reader Header Bar -->
-        <div class="sticky top-0 z-20 bg-slate-900/95 backdrop-blur border-b border-slate-800 px-6 py-4 flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <span id="modalCategoryBadge" class="px-2.5 py-1 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 font-mono text-xs">PROJECT</span>
-            <span id="modalWordCount" class="text-xs font-mono text-slate-400">1,200+ words</span>
-          </div>
-          <div class="flex items-center gap-3">
-            <!-- Modal Internal Lang Switcher -->
-            <button onclick="toggleLanguageInModal()" class="px-2.5 py-1 rounded border border-slate-700 bg-slate-800 text-xs font-mono text-slate-300 hover:text-white transition">
-              <span id="modalLangToggleLabel">Switch to TH</span>
-            </button>
-            <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition">
-              <i class="fa-solid fa-xmark"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Article Container -->
-        <article class="p-6 sm:p-10 lg:p-12 text-slate-300 space-y-6 leading-relaxed max-w-none font-mono text-sm sm:text-base">
-          <h1 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-snug"></h1>
-          <div class="flex items-center gap-4 text-xs font-mono text-slate-500 pb-4 border-b border-slate-800">
-            <span>Author: Phatthanan S.</span>
-            <span>•</span>
-            <span>Empirical & Theoretical Analysis</span>
-          </div>
-          
-          <div id="modalBody" class="space-y-6 text-slate-300">
-            <!-- Dynamic treatise content loaded via JS -->
-          </div>
-        </article>
-
-        <!-- Reader Footer -->
-        <div class="border-t border-slate-800 bg-slate-950 px-6 py-4 flex items-center justify-between font-mono text-xs text-slate-500">
-          <span>End of Analytical Module</span>
-          <button onclick="closeModal()" class="text-cyan-400 hover:underline">Close Reader</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Notification Toast for Copy -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden px-4 py-2.5 rounded-lg bg-cyan-500 text-slate-950 font-mono text-xs font-bold shadow-xl transition-all">
-    <i class="fa-solid fa-check mr-1.5"></i> Email copied to clipboard!
-  </div>
-
-  <!-- Interactive Scripts & Dual-Language Corpus -->
+  <!-- Simulation & Narrative Engine Script -->
   <script>
+    // Current Application State
     let currentLang = 'en'; // 'en' or 'th'
-    let currentOpenProjectId = null;
+    let currentEpochIdx = 0;
+    let isPlaying = true;
+    let epochTimer = 0;
+    // Decelerate epoch duration from 600 to 1200 frames (~20s per epoch for a calm, contemplative read)
+    const epochDuration = 1200; 
 
-    // Translations for UI Elements
-    const uiTranslations = {
+    // Complete Historical Macroeconomic Epochs Database
+    const epochs = [
+      {
+        id: 'stagflation',
+        period: '1970 — 1982',
+        period_th: 'พ.ศ. 2513 — 2525',
+        title_en: 'The Great Stagflation & Supply Shocks',
+        title_th: 'ภาวะเศรษฐกิจชะงักงันและเงินเฟ้อ (Great Stagflation)',
+        subline_en: 'OPEC Oil Shocks • Wage-Price Spiral • Volcker Nominal Policy Shock',
+        subline_th: 'วิกฤตการณ์น้ำมันดิบ OPEC • วงจรอุบาทว์ค่าจ้าง-ราคา • นโยบายดอกเบี้ยหักดิบของ Volcker',
+        regime_en: 'COST-PUSH VOLATILITY',
+        regime_th: 'แรงกดดันต้นทุนพุ่งสูง',
+        palette: {
+          line: '#f59e0b', // amber-500
+          glow: 'rgba(245, 158, 11, 0.45)',
+          fillTop: 'rgba(245, 158, 11, 0.22)',
+          fillBottom: 'rgba(5, 8, 17, 0.0)',
+          ambient: 'rgba(245, 158, 11, 0.15)'
+        },
+        hud: {
+          pi: '13.5%',
+          piDelta: '+3.8%',
+          piPct: 85,
+          gap: '-4.2%',
+          gapDelta: 'Recessionary',
+          gapPct: 35,
+          rate: '20.0%',
+          rateDelta: 'Max Hawkish',
+          ratePct: 95,
+          vix: '38.4',
+          vixDelta: 'Systemic Alert',
+          vixPct: 70
+        },
+        story_en: 'The 1970s shattered the empirical stability of the traditional Phillips Curve. Exogenous geopolitical oil embargoes triggered simultaneous supply contraction and imported cost inflation. When institutional monetary authorities accommodated higher energy prices with loose liquidity, rational inflation expectations unanchored into an accelerating wage-price spiral.',
+        story_th: 'ทศวรรษ 1970 ได้ทำลายความเชื่อดั้งเดิมของเส้นโค้งฟิลลิปส์ (Phillips Curve) วิกฤตการณ์น้ำมันตัดขาดอุปทานอย่างรุนแรง ส่งผลให้ราคาสินค้านำเข้าพุ่งสูงขึ้นพร้อมกับเศรษฐกิจที่หดตัว เมื่อธนาคารกลางพิมพ์เงินชดเชยเพื่อบรรเทาปัญหา การคาดการณ์เงินเฟ้อของประชาชนจึงหลุดกรอบเป้าหมาย กลายเป็นวงจรอุบาทว์ที่ค่าจ้างและราคาสินค้าผลักดันกันเองไม่สิ้นสุด',
+        formula: '\\pi_t = \\pi^e_t + \\gamma(y_t - y^*) + \\epsilon^{supply}_t',
+        formulaDesc_en: 'Where severe supply shocks (ε > 0) drive inflation regardless of output gap slack, rendering static demand expansion ineffective.',
+        formulaDesc_th: 'เมื่อเกิดภาวะอุปทานช็อกรุนแรง (ε > 0) อัตราเงินเฟ้อจะพุ่งสูงขึ้นแม้เศรษฐกิจจะซบเซา การกระตุ้นอุปสงค์จึงยิ่งเร่งให้เกิดเงินเฟ้อรุนแรงขึ้น',
+        policy_en: 'Paul Volcker redefined monetary credibility by abandoning traditional federal funds targets to prioritize non-borrowed bank reserve quotas, driving nominal policy rates to 20% to violently break adaptive expectations.',
+        policy_th: 'Paul Volcker ประธานเฟดในขณะนั้น กอบกู้ความน่าเชื่อถือของนโยบายการเงินด้วยการขึ้นดอกเบี้ยนโยบายสูงถึง 20% เพื่อหยุดยั้งการคาดการณ์เงินเฟ้อแบบถอนรากถอนโคน แม้จะต้องแลกด้วยภาวะเศรษฐกิจถดถอยชั่วคราว',
+        cfTitle_en: 'What if the Federal Reserve Hiked in 1974 Instead of 1979?',
+        cfTitle_th: 'หากธนาคารกลางสหรัฐฯ ชิงขึ้นดอกเบี้ยตั้งแต่ปี 1974 แทนที่จะรอถึงปี 1979?',
+        cfBody_en: 'Under forward-looking Calvo pricing models, pre-emptive rate hikes would have anchored expectations five years earlier, averting the severe double-dip recessions of 1980–1982 at the cost of mild transitory unemployment.',
+        cfBody_th: 'แบบจำลองแสดงให้เห็นว่า การขึ้นดอกเบี้ยเชิงรุกอย่างรวดเร็วจะช่วยหยุดยั้งการคาดการณ์เงินเฟ้อได้เร็วกว่าเดิมถึง 5 ปี ช่วยลดความเสียหายจากวิกฤตเศรษฐกิจถดถอยซ้ำซ้อนในช่วงปี 1980–1982 ลงอย่างมีนัยสำคัญ',
+        cfMetric: '+2.4% Cumulative GDP',
+        lessonHead_en: 'Lucas Critique Validated',
+        lessonHead_th: 'บทพิสูจน์ข้อวิพากษ์ของลูคัส (Lucas Critique)',
+        lessonBody_en: 'Empirical econometric relationships break down when rational agents adapt behavior to changing policy regimes. DSGE models must embed forward-looking microfoundations.',
+        lessonBody_th: 'ความสัมพันธ์ทางสถิติในอดีตจะพังทลายทันทีเมื่อพฤติกรรมมนุษย์ปรับตัวตามนโยบายรัฐ แบบจำลองเศรษฐศาสตร์มหภาคสมัยใหม่จึงต้องสร้างบนรากฐานจุลภาคที่คำนึงถึงการคาดการณ์ไปข้างหน้าเสมอ',
+        lessonTag: '#CredibilityTheory #ExpectationsFormation',
+        physics: {
+          waveSpeed: 0.009, // Calmed down to ~25% speed
+          amplitude: 0.16,
+          turbulence: 0.8,  // Subdued random noise for smooth curvature
+          sharpness: 0.7,
+          trend: -0.05
+        }
+      },
+      {
+        id: 'tomyamkung',
+        period: '1997 — 1999',
+        period_th: 'พ.ศ. 2540 — 2542',
+        title_en: '1997 Asian Financial Crisis (Tom Yam Kung)',
+        title_th: 'วิกฤตการณ์ต้มยำกุ้ง (Asian Financial Crisis 1997)',
+        subline_en: 'Peg Incompatibility • Currency Run • Liquidity Contagion & Debt Overhang',
+        subline_th: 'การตรึงค่าเงินที่ไม่สมดุล • วิกฤตเงินบาท • ปัญหาสภาพคล่องและการลุกลามทั่วภูมิภาค',
+        regime_en: 'LIQUIDITY CRUNCH & FORCED DEVALUATION',
+        regime_th: 'วิกฤตสภาพคล่องและการลอยตัวค่าเงิน',
+        palette: {
+          line: '#ef4444', // red-500
+          glow: 'rgba(239, 68, 68, 0.5)',
+          fillTop: 'rgba(239, 68, 68, 0.25)',
+          fillBottom: 'rgba(5, 8, 17, 0.0)',
+          ambient: 'rgba(239, 68, 68, 0.18)'
+        },
+        hud: {
+          pi: '8.1%',
+          piDelta: 'FX Deprec.',
+          piPct: 60,
+          gap: '-10.5%',
+          gapDelta: 'Severe Crash',
+          gapPct: 15,
+          rate: '25.0%',
+          rateDelta: 'Interbank Defense',
+          ratePct: 100,
+          vix: '45.8',
+          vixDelta: 'Contagion Peak',
+          vixPct: 88
+        },
+        story_en: 'A classic demonstration of the Impossible Trinity: maintaining an open capital account, fixed exchange rate, and sovereign monetary policy. Domestic banks and corporations accrued massive unhedged foreign debt via the Bangkok International Banking Facilities (BIBF). When current account deficits widened, speculative attacks depleted foreign reserves, forcing the baht float on July 2, 1997.',
+        story_th: 'ภาพสะท้อนอันเจ็บปวดของทฤษฎีไตรภาวะที่เป็นไปไม่ได้ (Impossible Trinity) เมื่อประเทศเปิดเสรีเงินทุนแต่ยังคงตรึงค่าเงินบาทไว้กับดอลลาร์สหรัฐ ภาคเอกชนแห่กู้ยืมเงินต่างประเทศดอกเบี้ยต่ำผ่าน BIBF โดยไม่ป้องกันความเสี่ยงจากอัตราแลกเปลี่ยน เมื่อเกิดการโจมตีค่าเงิน ทุนสำรองระหว่างประเทศหมดลง บีบให้ต้องประกาศลอยตัวค่าเงินบาทในวันที่ 2 กรกฎาคม 2540',
+        formula: '\\Delta FX_{reserves} = NX_t + (KA_t - Outflows) \\to 0',
+        formulaDesc_en: 'Exhaustion of central bank net foreign assets forces immediate currency devaluation and balance-sheet insolvencies.',
+        formulaDesc_th: 'เมื่อทุนสำรองระหว่างประเทศสุทธิหมดลง การลอยตัวค่าเงินทำให้หนี้ต่างประเทศเพิ่มขึ้นเท่าตัวในชั่วข้ามคืน ฉุดให้ภาคธุรกิจล้มละลายทันที',
+        policy_en: 'The IMF mandated contractionary fiscal and monetary measures alongside structural financial institution closures (56 finance firms liquidated) before stabilization was achieved through flexible inflation targeting.',
+        policy_th: 'IMF กำหนดให้ใช้นโยบายการเงินการคลังแบบรัดเข็มขัด สั่งปิด 56 สถาบันการเงิน ก่อนที่ระบบเศรษฐกิจจะค่อยๆ ฟื้นตัวและปรับโครงสร้างสู่กรอบเป้าหมายเงินเฟ้อแบบยืดหยุ่น (Inflation Targeting)',
+        cfTitle_en: 'What if Thailand Adopted a Managed Float in 1995?',
+        cfTitle_th: 'หากไทยเริ่มปล่อยให้ค่าเงินบาทลอยตัวแบบมีการจัดการตั้งแต่ปี 2538?',
+        cfBody_en: 'Early foreign exchange flexibility would have naturally widened FX hedging premiums and discouraged short-term speculative foreign borrowing, averting the sudden-stop balance sheet crash.',
+        cfBody_th: 'หากเริ่มปล่อยให้ค่าเงินสะท้อนความเป็นจริงตั้งแต่ปี 2538 ธุรกิจจะระมัดระวังในการกู้เงินต่างประเทศมากขึ้น และช่วยลดความรุนแรงของวิกฤตหนี้สินภาคธนาคารลงได้อย่างมหาศาล',
+        cfMetric: '-65% Insolvency Volume',
+        lessonHead_en: 'Impossible Trinity & FX Mismatch',
+        lessonHead_th: 'บทเรียนไตรภาวะที่เป็นไปไม่ได้และความเสี่ยงโครงสร้างหนี้',
+        lessonBody_en: 'Currency pegs with unhedged external debt liabilities create catastrophic fragility. Macroprudential foreign exchange limits are non-negotiable for emerging markets.',
+        lessonBody_th: 'การตรึงค่าเงินควบคู่กับหนี้ต่างประเทศที่ไม่ป้องกันความเสี่ยงคือความเปราะบางขั้นวิกฤต มาตรการดูแลเสถียรภาพระบบการเงิน (Macroprudential) จึงเป็นหัวใจสำคัญของประเทศกำลังพัฒนา',
+        lessonTag: '#ImpossibleTrinity #BalanceSheetChannel',
+        physics: {
+          waveSpeed: 0.011, // Slower, solemn contraction
+          amplitude: 0.22,
+          turbulence: 1.1,
+          sharpness: 1.2,
+          trend: -0.18
+        }
+      },
+      {
+        id: 'gfc2008',
+        period: '2008 — 2012',
+        period_th: 'พ.ศ. 2551 — 2555',
+        title_en: '2008 Global Financial Crisis & The Liquidity Trap',
+        title_th: 'วิกฤตซับไพรม์และการเงินโลก 2008 (Global Financial Crisis)',
+        subline_en: 'Subprime MBS Default • Lehman Insolvency • Quantitative Easing (QE) Paradigm',
+        subline_th: 'วิกฤตสินเชื่อด้อยคุณภาพ • การล้มละลายของ Lehman Brothers • ยุคแห่งมาตรการผ่อนคลายเชิงปริมาณ (QE)',
+        regime_en: 'SOLVENCY CRISIS & ZERO LOWER BOUND',
+        regime_th: 'วิกฤตความสามารถในการชำระหนี้และดอกเบี้ยติดขอบล่าง',
+        palette: {
+          line: '#6366f1', // indigo-500
+          glow: 'rgba(99, 102, 241, 0.5)',
+          fillTop: 'rgba(99, 102, 241, 0.25)',
+          fillBottom: 'rgba(5, 8, 17, 0.0)',
+          ambient: 'rgba(99, 102, 241, 0.18)'
+        },
+        hud: {
+          pi: '0.1%',
+          piDelta: 'Deflationary',
+          piPct: 15,
+          gap: '-6.8%',
+          gapDelta: 'Severe Contraction',
+          gapPct: 22,
+          rate: '0.25%',
+          rateDelta: 'Zero Lower Bound',
+          ratePct: 5,
+          vix: '80.1',
+          vixDelta: 'Historical Peak',
+          vixPct: 98
+        },
+        story_en: 'Complex securitization (MBS, CDOs) masked systemic subprime mortgage defaults across primary money center banks. The collapse of Lehman Brothers in September 2008 froze unsecured commercial paper and interbank lending markets. With interest rates trapped at the Zero Lower Bound (ZLB), conventional policy instruments failed to transmit liquidity into the real economy.',
+        story_th: 'วิศวกรรมการเงินที่ซับซ้อน (MBS, CDO) ได้ซ่อนความเสี่ยงของสินเชื่อบ้านซับไพรม์ไว้ในงบดุลของสถาบันการเงินทั่วโลก การล้มละลายของ Lehman Brothers ในปี 2008 ส่งผลให้ตลาดสินเชื่อระหว่างธนาคารเป็นอัมพาต เมื่ออัตราดอกเบี้ยลดต่ำลงจนชนขอบล่างศูนย์ (ZLB) เครื่องมือนโยบายการเงินแบบดั้งเดิมจึงไม่สามารถกระตุ้นเศรษฐกิจได้อีกต่อไป',
+        formula: 'B_t = M_t + \\sum_{j=0}^{\\infty} \\mathbb{E}_t [Q_t \\cdot \\text{Bonds}_{long}] \\quad \\text{(QE Balance Expansion)}',
+        formulaDesc_en: 'Unconventional balance sheet expansion bypasses exhausted short-term policy interest rate channels to directly compress long-term yield premia.',
+        formulaDesc_th: 'ธนาคารกลางต้องขยายงบดุลผ่านการทำ QE เพื่อเข้าซื้อพันธบัตรระยะยาวโดยตรง ช่วยกดอัตราผลตอบแทนและฟื้นฟูสภาพคล่องในตลาดการเงิน',
+        policy_en: 'Central banks pioneered Quantitative Easing (QE1–QE3), expanding balance sheets from $900B to over $4.5T while implementing forward guidance and Dodd-Frank banking capital stress tests.',
+        policy_th: 'เฟดและธนาคารกลางชั้นนำเปิดฉากมาตรการ QE และ Forward Guidance เข้าอัดฉีดสภาพคล่องอย่างมหาศาล พร้อมทั้งออกกฎหมาย Dodd-Frank กำกับความเข้มแข็งของเงินกองทุนธนาคารพาณิชย์',
+        cfTitle_en: 'What if Lehman Brothers had been Rescued via an Orderly Bridge Facility?',
+        cfTitle_th: 'หาก Lehman Brothers ได้รับการอุ้มและปรับโครงสร้างหนี้อย่างเป็นระเบียบ?',
+        cfBody_en: 'Econometric counterfactuals show that an orderly state-assisted conservatorship would have reduced peak cross-asset panic, containing credit contraction by roughly 35% in early 2009.',
+        cfBody_th: 'แบบจำลองชี้ว่า หากมีการเข้าแทรกแซงและดูแลหนี้อย่างเป็นระบบ การลุกลามของวิกฤตความเชื่อมั่นในตลาดเงินโลกจะลดลง และภาคการเงินจะฟื้นตัวได้เร็วกว่าเดิมเกือบ 1 ปี',
+        cfMetric: '+1.8M Jobs Preserved',
+        lessonHead_en: 'The Financial Accelerator Mechanism',
+        lessonHead_th: 'กลไกเร่งการเงิน (Financial Accelerator)',
+        lessonBody_en: 'Bernanke-Gertler-Gilchrist framework: Collateral asset price declines depress corporate borrowing capacity, creating a self-reinforcing credit squeeze.',
+        lessonBody_th: 'ทฤษฎี Bernanke-Gertler-Gilchrist ชี้ว่าเมื่อราคาสินทรัพย์ค้ำประกันตกต่ำ ขีดความสามารถในการกู้ยืมของภาคธุรกิจจะหดตัวลงอย่างรวดเร็ว ก่อให้เกิดวงจรสินเชื่อตึงตัวที่ฉุดเศรษฐกิจจริงให้ดิ่งลึก',
+        lessonTag: '#QuantitativeEasing #ZeroLowerBound',
+        physics: {
+          waveSpeed: 0.009,
+          amplitude: 0.20,
+          turbulence: 0.9,
+          sharpness: 1.0,
+          trend: -0.12
+        }
+      },
+      {
+        id: 'covid2020',
+        period: '2020 — 2023',
+        period_th: 'พ.ศ. 2563 — 2566',
+        title_en: '2020 Exogenous Pandemic Shock & K-Shaped Rebound',
+        title_th: 'วิกฤตการณ์โรคระบาด 2020 และการฟื้นตัวรูปตัว K',
+        subline_en: 'Global Lockdown • Supply Bottlenecks • Fiscal Bazookas & Digital Divergence',
+        subline_th: 'การปิดเมืองทั่วโลก • ห่วงโซ่อุปทานชะงักงัน • มาตรการกระตุ้นการคลังขนานใหญ่ และความเหลื่อมล้ำทางเศรษฐกิจ',
+        regime_en: 'EXOGENOUS DUAL SUPPLY-DEMAND DISRUPTION',
+        regime_th: 'การชะงักงันทั้งด้านอุปสงค์และอุปทานจากปัจจัยภายนอก',
+        palette: {
+          line: '#06b6d4', // cyan-500
+          glow: 'rgba(6, 182, 212, 0.5)',
+          fillTop: 'rgba(6, 182, 212, 0.25)',
+          fillBottom: 'rgba(5, 8, 17, 0.0)',
+          ambient: 'rgba(6, 182, 212, 0.18)'
+        },
+        hud: {
+          pi: '9.1%',
+          piDelta: '40-Yr High',
+          piPct: 78,
+          gap: '+2.1%',
+          gapDelta: 'Overheating Demand',
+          gapPct: 75,
+          rate: '5.25%',
+          rateDelta: 'Rapid Tightening',
+          ratePct: 72,
+          vix: '65.5',
+          vixDelta: 'Sudden Shock',
+          vixPct: 82
+        },
+        story_en: 'An unprecedented exogenous shock: global lockdowns shut down physical economic interactions overnight, causing quarterly GDP declines of historic severity. Sovereign governments responded with massive fiscal transfers directly to household balance sheets, while central banks expanded balance sheets to record highs. As economies reopened, supply chain chokepoints and surging demand created the largest inflationary surge in four decades.',
+        story_th: 'วิกฤตการณ์ภายนอกที่ไม่เคยเกิดขึ้นมาก่อน: มาตรการล็อกดาวน์ทั่วโลกทำให้กิจกรรมทางเศรษฐกิจหยุดชะงักลงชั่วข้ามคืน รัฐบาลทั่วโลกจึงต้องอัดฉีดเงินช่วยเหลือเข้าบัญชีครัวเรือนโดยตรง ทว่าเมื่อเปิดเมือง การขาดแคลนชิปประมวลผล ค่าระวางเรือที่พุ่งสูง และอุปสงค์ที่อัดอั้น ได้จุดชนวนให้เกิดคลื่นเงินเฟ้อครั้งใหญ่ที่สุดในรอบ 40 ปี',
+        formula: 'Y_t = C(Y_t - T + Tr_t) + I(r_t) + G_t + \\mathbb{E}[\\Omega_{digital}]',
+        formulaDesc_en: 'Direct fiscal balance sheet transfers (Tr) offset physical contraction, propelling hyper-accelerated digital economy divergence.',
+        formulaDesc_th: 'การอัดฉีดเงินโอนตรงจากภาครัฐช่วยพยุงกำลังซื้อ แต่สร้างความเหลื่อมล้ำแบบตัว K โดยภาคเทคโนโลยีและดิจิทัลเติบโตก้าวกระโดด ในขณะที่ภาคบริการเผชิญกับบาดแผลทางเศรษฐกิจ',
+        policy_en: 'Central banks executed immediate emergency rate cuts to zero and unlimited QE, followed by the most rapid coordinated global policy rate hiking campaign in modern history to rein in multi-decade inflation.',
+        policy_th: 'ธนาคารกลางปรับลดดอกเบี้ยฉุกเฉินสู่ 0% พร้อมทำ QE ไม่จำกัดจำนวน ก่อนจะต้องกลับลำเร่งปรับขึ้นอัตราดอกเบี้ยอย่างรวดเร็วและพร้อมเพรียงกันทั่วโลกเพื่อสกัดเงินเฟ้อ',
+        cfTitle_en: 'What if Fiscal Stimulus was Reduced by 30% in Early 2021?',
+        cfTitle_th: 'หากมีการลดขนาดมาตรการกระตุ้นการคลังลง 30% ในช่วงต้นปี 2021?',
+        cfBody_en: 'Estimated econometric simulations demonstrate that a more calibrated stimulus would have moderated headline inflation peaks from 9.1% down to ~5.8%, requiring a gentler interest rate hiking cycle.',
+        cfBody_th: 'การจำลองทางเศรษฐมิติระบุว่า หากลดขนาดมาตรการกระตุ้นลง อัตราเงินเฟ้อสูงสุดจะลดลงเหลือราว 5.8% ซึ่งจะช่วยให้ธนาคารกลางไม่ต้องขึ้นดอกเบี้ยแรงจนกระทบต่อภาคธุรกิจ',
+        cfMetric: '-3.3% Inflation Peak',
+        lessonHead_en: 'Supply Chains Are Macroeconomic Infrastructure',
+        lessonHead_th: 'ห่วงโซ่อุปทานคือโครงสร้างพื้นฐานมหภาค',
+        lessonBody_en: 'Just-in-Time logistics optimization proved structurally brittle. Resilience, friend-shoring, and input redundancy now dominate corporate objective functions over pure cost-minimization.',
+        lessonBody_th: 'ระบบ Just-in-Time ที่มุ่งเน้นต้นทุนต่ำสุดมีความเปราะบางอย่างยิ่ง โลกยุคใหม่จึงต้องเปลี่ยนผ่านสู่ระบบ Just-in-Case ที่เน้นความมั่นคงและการกระจายความเสี่ยงของห่วงโซ่อุปทาน',
+        lessonTag: '#KShapedRecovery #SupplyChainRigidity',
+        physics: {
+          waveSpeed: 0.010,
+          amplitude: 0.24,
+          turbulence: 1.0,
+          sharpness: 1.2,
+          trend: 0.10
+        }
+      },
+      {
+        id: 'frontier2026',
+        period: '2026+ Causal Frontier',
+        period_th: 'พ.ศ. 2569+ พรมแดนใหม่แห่งการวิเคราะห์',
+        title_en: '2026+ Causal Frontier: Algorithmic & Geoeconomic Architecture',
+        title_th: 'พรมแดนใหม่ 2026+: ปัญญาประดิษฐ์เชิงเศรษฐมิติและการแตกขั้วทางภูมิเศรษฐศาสตร์',
+        subline_en: 'Structural Breaks • Causal AI Modeling • Dual Currency Networks & Green Transition',
+        subline_th: 'การเปลี่ยนแปลงเชิงโครงสร้าง • แบบจำลอง AI เชิงสาเหตุ • เครือข่ายการเงินสองขั้วและการเปลี่ยนผ่านสู่พลังงานสะอาด',
+        regime_en: 'STRUCTURAL REGIME SHIFT & HIGH-TECH EQUILIBRIUM',
+        regime_th: 'การเปลี่ยนผ่านโครงสร้างสู่ดุลยภาพเทคโนโลยีขั้นสูง',
+        palette: {
+          line: '#10b981', // emerald-500
+          glow: 'rgba(16, 185, 129, 0.5)',
+          fillTop: 'rgba(16, 185, 129, 0.22)',
+          fillBottom: 'rgba(5, 8, 17, 0.0)',
+          ambient: 'rgba(16, 185, 129, 0.18)'
+        },
+        hud: {
+          pi: '2.3%',
+          piDelta: 'Near Target',
+          piPct: 45,
+          gap: '+1.4%',
+          gapDelta: 'Productive Potential',
+          gapPct: 62,
+          rate: '3.75%',
+          rateDelta: 'Natural r* Equil.',
+          ratePct: 52,
+          vix: '15.2',
+          vixDelta: 'Calibrated Risk',
+          vixPct: 28
+        },
+        story_en: 'The macroeconomic frontier in 2026 and beyond operates under structural regime shifts: fragmented trade blocs, carbon border adjustment mechanisms, and rapid demographic aging across advanced economies. To navigate non-linear shocks, contemporary economists integrate microfounded DSGE models with Causal Machine Learning algorithms, tracking high-frequency alternative transaction telemetry to estimate natural interest rates (r*) and identify structural breaks in real time.',
+        story_th: 'พรมแดนเศรษฐศาสตร์มหภาคตั้งแต่ปี 2026 เป็นต้นไป ต้องเผชิญกับการเปลี่ยนแปลงเชิงโครงสร้างที่ซับซ้อน: การแตกขั้วทางการค้าระหว่างมหาอำนาจ กำแพงภาษีคาร์บอน (CBAM) และสังคมสูงวัย การวิเคราะห์ในยุคนี้จึงผสานแบบจำลองทางเศรษฐมิติเข้ากับปัญญาประดิษฐ์เชิงสาเหตุ (Causal AI) เพื่อประมวลผลข้อมูลความถี่สูงแบบเรียลไทม์ และคาดการณ์อัตราดอกเบี้ยสมดุลธรรมชาติ (r*) ได้อย่างแม่นยำ',
+        formula: '\\mathbf{Y}_{t+h} = f(\\mathbf{X}_t; \\theta) + \\sum_{k=1}^K \\tau_k \\cdot \\mathbb{I}(\\text{Geopolitics}_t) + \\mathbf{u}_{t+h}',
+        formulaDesc_en: 'Hybrid econometric estimation mapping non-linear machine learning representations onto rigorous causal institutional constraints.',
+        formulaDesc_th: 'การผสานการเรียนรู้ของเครื่อง (Machine Learning) เข้ากับกรอบเศรษฐมิติที่เข้มงวด ช่วยตรวจจับรอยเลื่อนทางโครงสร้างและผลกระทบจากภูมิรัฐศาสตร์ได้ล่วงหน้า',
+        policy_en: 'Modern institutions deploy algorithmic nowcasting and macroprudential stress frameworks to balance sovereign debt sustainability against monumental green and digital capital expenditure requirements.',
+        policy_th: 'ธนาคารกลางและสถาบันวิจัยชั้นนำใช้การพยากรณ์ภาวะปัจจุบัน (Nowcasting) ควบคู่กับมาตรการกำกับเสถียรภาพ เพื่อสร้างสมดุลระหว่างความยั่งยืนของหนี้สาธารณะและการลงทุนสีเขียวในอนาคต',
+        cfTitle_en: 'What if Geoeconomic Fragmentation Deepens into Autonomous Currency Blocs?',
+        cfTitle_th: 'หากการแตกขั้วทางภูมิเศรษฐศาสตร์นำไปสู่ระบบการชำระเงินที่แยกตัวโดยสมบูรณ์?',
+        cfBody_en: 'Simulations project higher structural global baseline inflation (+0.8%) due to duplicated capital infrastructures, balanced by accelerated productivity surges in regional tech automation.',
+        cfBody_th: 'แบบจำลองคาดการณ์ว่า ต้นทุนการสร้างห่วงโซ่อุปทานคู่ขนานจะดันให้อัตราเงินเฟ้อพื้นฐานของโลกสูงขึ้น 0.8% แต่จะถูกชดเชยด้วยการเติบโตของผลิตภาพจากระบบอัตโนมัติและ AI',
+        cfMetric: '+1.6% Total Factor Productivity',
+        lessonHead_en: 'Master Economics, the Simple Way',
+        lessonHead_th: 'เข้าใจเศรษฐศาสตร์อย่างลึกซึ้งด้วยตรรกะที่เฉียบคม',
+        lessonBody_en: 'Phatthanan S. philosophy: No matter how sophisticated machine learning algorithms become, sound economic reasoning remains paramount—tracing unseen opportunity costs and general equilibrium consequences.',
+        lessonBody_th: 'ปรัชญาของ Phatthanan S.: ไม่ว่าเทคโนโลยีและอัลกอริทึมจะก้าวหน้าเพียงใด หัวใจของเศรษฐศาสตร์ยังคงเดิม คือการมองเห็นต้นทุนค่าเสียโอกาสที่มองไม่เห็น และการทำความเข้าใจดุลยภาพระยะยาวอย่างแท้จริง',
+        lessonTag: '#CausalInference #AlgorithmicEconomics',
+        physics: {
+          waveSpeed: 0.008,
+          amplitude: 0.13,
+          turbulence: 0.5,
+          sharpness: 0.6,
+          trend: 0.06
+        }
+      }
+    ];
+
+    // UI Localized Strings
+    const uiI18n = {
       en: {
-        nav_projects: "Projects",
-        nav_lab: "Analytical Lab",
-        nav_about: "About & Philosophy",
-        nav_contact: "Contact",
-        btn_hire: "Get in Touch",
-        hero_status: "Economist • Quantitative & Strategic Research",
-        hero_quote: '"Master Economics, the Simple Way."',
-        quote_sub: "— Precision over rhetoric; evaluating long-term systemic equilibrium over localized illusions.",
-        hero_desc: "Bridging rigorous economic principles, strategic game theory, and empirical market dynamics into clean, actionable analytical frameworks. Dedicated to unraveling complex economic phenomena through uncompromising logic and clarity.",
-        hero_btn_explore: "Explore Analytical Treatises (2)",
-        hero_btn_lab: "Interactive Simulator",
-        badge_methodology: "METHODOLOGICAL RIGOR",
-        rigor_1: "Hazlittian Long-Run Tracing",
-        rigor_2: "Nash & Subgame Perfect Equilibria",
-        rigor_3: "Mechanism Design & Incentives",
-        rigor_4: "Price Signal Distortion Analysis",
-        stat_corpus_label: "RESEARCH CORPUS",
-        stat_bilingual_label: "DUAL-EDITION",
-        lab_subtitle: "Interactive Analytical Engine",
-        lab_title: "Quantitative Playground & Policy Simulators",
-        lab_disclaimer: "// Real-time algorithmic calculation for economic logic",
-        sim_game_title: "Strategic Dilemma Payoff Matrix",
-        sim_game_desc: "Adjust payoff values to observe dynamic dominance shifts and compute Nash Equilibrium instantly.",
-        sim_col_coop: "Cooperate (C)",
-        sim_col_defect: "Defect (D)",
-        sim_row_coop: "Coop (C)",
-        sim_row_defect: "Defect (D)",
-        sim_pareto: "Pareto Opt",
-        sim_sucker: "Exploited",
-        sim_tempt: "Temptation",
-        sim_nash: "★ NASH EQ",
-        sim_game_preset: "Preset Game:",
-        sim_nash_result: "Eq Status:",
-        sim_macro_title: "Central Bank Taylor Rule Policy Engine",
-        sim_macro_desc: "Simulate optimal central bank target policy rates based on real inflation divergence and GDP output gap.",
-        sim_inflation_rate: "Actual Inflation (π):",
-        sim_output_gap: "Output Gap (y - y*):",
-        sim_neutral_rate: "Assumed Neutral r*:",
-        sim_target_pi: "Inflation Target π*:",
-        sim_prescribed_rate: "PRESCRIBED POLICY RATE",
-        sim_stance_tight: "Aggressive Tightening",
-        sim_yield_inverted: "Yield Curve: Inversion Risk High",
-        projects_header_tag: "Analytical Research & Treatises",
-        projects_main_title: "Core Economic Foundations & Frameworks",
-        projects_main_desc: "Two foundational studies in classical political economy and strategic game-theoretic equilibria. Each treatise contains over 1,000 words of thorough, rigorous exposition with dual-language support.",
-        btn_read_treatise: "Read Full Treatise",
-        p1_title: "Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)",
-        p1_summary: "An exhaustive critique of the 'Broken Window Fallacy', the seen versus unseen secondary consequences, the destructive realities of government price ceilings, tariffs, and systemic monetary dilution.",
-        p2_title: "Game Theory: Equilibria, Information & Mechanism Design",
-        p2_summary: "Formal mathematical and behavioral foundations of strategic behavior: Simultaneous vs Sequential games, Nash equilibria, Cournot-Bertrand competition, signaling, and incentive-compatible mechanisms.",
-        about_tag: "Intellectual Identity",
-        about_title: "The Analytical Imperative: Clarifying Economic Mechanisms",
-        about_role: "Economist & Research Specialist",
-        about_location: "Bangkok, Thailand (Global Research)",
-        about_focus: "Empirical Macro & Micro Foundations",
-        about_p1: "Economics often suffers from two opposing ailments: dry academic abstraction disconnected from ground realities, or short-sighted political interventions masquerading as benevolent solutions. My ethos adheres directly to Henry Hazlitt's foundational premise: real economic wisdom requires tracking not merely immediate effects on a single constituency, but the unseen secondary ramifications reverberating across all groups in the long run.",
-        about_p2: "Whether analyzing the fragility of multi-echelon supply networks under geopolitical tariffs, dissecting the payoff matrices of strategic oligopolies, or tracking the monetary transmission channels of yield curve shifts, my research prioritizes transparency, mathematical soundness, and clear, pedagogical articulation.",
-        principle_1: "Uncovering the unseen opportunity cost.",
-        principle_2: "Analyzing rational incentives & equilibria.",
-        principle_3: "Tracing balance-sheet expansion realities.",
-        contact_pill: "Direct Inquiries & Scholarly Collaboration",
-        contact_title: "Let’s Demystify the Global Economy Together",
-        contact_desc: "Interested in economic research, strategic analysis, game-theoretic modeling, or collaborative projects? Get in direct touch.",
-        btn_copy_email: "Copy Email Address",
-        word_count_1: "1,215 Words (EN/TH)",
-        word_count_2: "1,270 Words (EN/TH)"
+        badge_interactive: "Story Engine",
+        header_sub: "Phatthanan S. • Quantitative Macroeconomic Research",
+        btn_pause: "Pause",
+        btn_play: "Play Journey",
+        regime_label: "System Regime",
+        hover_inspect: "Hover Canvas to Probe Points",
+        metric_pi: "Inflation Rate (π)",
+        metric_gap: "Output Gap (y - y*)",
+        metric_rate: "Policy Rate (i)",
+        metric_vix: "Stress / VIX",
+        causal_header: "Economic Transmission Mechanism",
+        formula_label: "GOVERNING EQUILIBRIUM EQUATION",
+        policy_label: "Central Bank & Institutional Resolution",
+        counterfactual_tag: "Counterfactual Scenario",
+        welfare_label: "Estimated Welfare Delta:",
+        takeaway_label: "CONTEMPORARY ECONOMETRIC LESSON"
       },
       th: {
-        nav_projects: "ผลงานวิจัย (2 โครงการ)",
-        nav_lab: "ห้องทดลองเศรษฐมิติ",
-        nav_about: "แนวคิด & ปรัชญา",
-        nav_contact: "ติดต่อ",
-        btn_hire: "ติดต่อร่วมงาน",
-        hero_status: "นักเศรษฐศาสตร์ • งานวิจัยเชิงปริมาณและกลยุทธ์",
-        hero_quote: '"Master Economics, the Simple Way."',
-        quote_sub: "— แม่นยำเหนือวาทกรรม; ประเมินดุลยภาพของระบบระยะยาวมากกว่าภาพลวงตาระยะสั้น",
-        hero_desc: "ผสานหลักเศรษฐศาสตร์อันเข้มงวด ทฤษฎีเกมเชิงกลยุทธ์ และพลวัตตลาดเชิงประจักษ์ ให้กลายเป็นกรอบการวิเคราะห์ที่เฉียบคมและนำไปปฏิบัติได้จริง มุ่งมั่นถอดรหัสปรากฏการณ์ทางเศรษฐกิจที่ซับซ้อนด้วยตรรกะที่โปร่งใสและตรงประเด็น",
-        hero_btn_explore: "สำรวจบทความวิจัยฉบับเต็ม (2 โครงการ)",
-        hero_btn_lab: "แบบจำลองเชิงโต้ตอบ",
-        badge_methodology: "ระเบียบวิธีวิจัยอันเข้มงวด",
-        rigor_1: "การแกะรอยผลกระทบระยะยาวตามแนวคิด Hazlitt",
-        rigor_2: "ดุลยภาพแนชและเกมหลายช่วงเวลา",
-        rigor_3: "การออกแบบกลไกและโครงสร้างแรงจูงใจ",
-        rigor_4: "การวิเคราะห์ความบิดเบี้ยวของระบบราคา",
-        stat_corpus_label: "ปริมาณเนื้อหาวิจัย",
-        stat_bilingual_label: "รองรับ 2 ภาษา",
-        lab_subtitle: "เครื่องมือวิเคราะห์เชิงโต้ตอบ",
-        lab_title: "พื้นที่ทดลองเชิงปริมาณและแบบจำลองนโยบาย",
-        lab_disclaimer: "// การประมวลผลอัลกอริทึมตามตรรกะทางเศรษฐศาสตร์แบบเรียลไทม์",
-        sim_game_title: "ตารางผลตอบแทนทฤษฎีเกมเชิงกลยุทธ์",
-        sim_game_desc: "ปรับเปลี่ยนค่าผลตอบแทนเพื่อดูการเปลี่ยนแปลงของกลยุทธ์เด่นและคำนวณหาจุดดุลยภาพแนช (Nash Equilibrium) ทันที",
-        sim_col_coop: "ร่วมมือ (C)",
-        sim_col_defect: "หักหลัง (D)",
-        sim_row_coop: "ร่วมมือ (C)",
-        sim_row_defect: "หักหลัง (D)",
-        sim_pareto: "ดุลยภาพพาเรโต",
-        sim_sucker: "ถูกเอาเปรียบ",
-        sim_tempt: "แรงจูงใจเบี่ยงเบน",
-        sim_nash: "★ จุดดุลยภาพแนช",
-        sim_game_preset: "เกมจำลองสำเร็จรูป:",
-        sim_nash_result: "สถานะดุลยภาพ:",
-        sim_macro_title: "เครื่องคำนวณอัตราดอกเบี้ยนโยบาย (Taylor Rule)",
-        sim_macro_desc: "จำลองอัตราดอกเบี้ยนโยบายที่เหมาะสมของธนาคารกลาง โดยอิงจากส่วนต่างอัตราเงินเฟ้อและช่องว่างผลผลิต (Output Gap)",
-        sim_inflation_rate: "เงินเฟ้อจริงปัจจุบัน (π):",
-        sim_output_gap: "ช่องว่างผลผลิต GDP (y - y*):",
-        sim_neutral_rate: "ดอกเบี้ยสมดุลธรรมชาติ r*:",
-        sim_target_pi: "เป้าหมายเงินเฟ้อ π*:",
-        sim_prescribed_rate: "อัตราดอกเบี้ยนโยบายที่คำนวณได้",
-        sim_stance_tight: "นโยบายการเงินตึงตัวเข้มงวด",
-        sim_yield_inverted: "เส้นผลตอบแทนพันธบัตร: ความเสี่ยง Inverted Yield Curve สูง",
-        projects_header_tag: "บทความวิชาการและการวิจัยเชิงลึก",
-        projects_main_title: "รากฐานและกรอบความคิดทางเศรษฐศาสตร์",
-        projects_main_desc: "สองบทความวิจัยพื้นฐานด้านเศรษฐศาสตร์การเมืองคลาสสิกและดุลยภาพทฤษฎีเกมเชิงกลยุทธ์ โดยแต่ละเรื่องมีความยาวมากกว่า 1,000 คำ พร้อมบทวิเคราะห์อันละเอียดถี่ถ้วนและรองรับ 2 ภาษา",
-        btn_read_treatise: "อ่านบทความวิจัยฉบับเต็ม",
-        p1_title: "แก่นความคิดเศรษฐศาสตร์จาก Economics in One Lesson (Henry Hazlitt, 1946)",
-        p1_summary: "การวิเคราะห์เชิงวิพากษ์อย่างละเอียดต่อภาพลวงตากระจกหน้าต่างแตก (Broken Window Fallacy) การมองเห็นผลกระทบขั้นที่สองที่ซ่อนอยู่ ความล้มเหลวของการควบคุมราคา ภาษีกีดกัน และการเสื่อมค่าของเงิน",
-        p2_title: "ทฤษฎีเกม (Game Theory): ดุลยภาพ สารสนเทศ และการออกแบบกลไก",
-        p2_summary: "รากฐานทางคณิตศาสตร์และพฤติกรรมศาสตร์ของการตัดสินใจเชิงกลยุทธ์: เกมพร้อมกันและเกมตามลำดับ จุดดุลยภาพแนช การแข่งขันแบบ Cournot-Bertrand ปัญหาสารสนเทศไม่สมมาตร และการออกแบบระบบสร้างแรงจูงใจ",
-        about_tag: "อัตลักษณ์ทางวิชาการ",
-        about_title: "พันธกิจเชิงวิเคราะห์: ถอดรหัสกลไกเศรษฐกิจอย่างโปร่งใส",
-        about_role: "นักเศรษฐศาสตร์ & ผู้เชี่ยวชาญการวิจัย",
-        about_location: "กรุงเทพฯ ประเทศไทย (รองรับงานวิจัยทั่วโลก)",
-        about_focus: "รากฐานเศรษฐศาสตร์จุลภาคและมหภาคเชิงประจักษ์",
-        about_p1: "วงการเศรษฐศาสตร์มักเผชิญกับปัญหาสองขั้ว: ทางหนึ่งคือนามธรรมเชิงวิชาการที่ตัดขาดจากความจริง อีกทางคือนโยบายแทรกแซงระยะสั้นจากฝ่ายการเมืองที่แฝงมาในคราบความหวังดี ปรัชญาการทำงานของฉันยึดมั่นตามหลักการของ Henry Hazlitt โดยตรง นั่นคือ ปัญญาทางเศรษฐศาสตร์ที่แท้จริงต้องไม่มองเพียงผลลัพธ์ฉาบฉวยต่อคนกลุ่มเดียว แต่ต้องติดตามผลกระทบลูกโซ่ที่มองไม่เห็น (unseen consequences) ในระยะยาวต่อผู้คนทุกกลุ่มในระบบเศรษฐกิจ",
-        about_p2: "ไม่ว่าจะเป็นการวิเคราะห์ความเปราะบางของห่วงโซ่อุปทานหลายระดับภายใต้สงครามการค้า การจำลองผลตอบแทนของตลาดผู้ขายน้อยราย หรือการตรวจสอบช่องทางการส่งผ่านดอกเบี้ยของธนาคารกลาง งานวิจัยของฉันมุ่งเน้นความโปร่งใส ความถูกต้องทางคณิตศาสตร์ และการสื่อสารที่ตรงประเด็น เข้าใจได้ง่ายที่สุด",
-        principle_1: "เปิดเผยต้นทุนค่าเสียโอกาสที่มองไม่เห็น",
-        principle_2: "วิเคราะห์แรงจูงใจและดุลยภาพอันสมเหตุสมผล",
-        principle_3: "ตรวจสอบความจริงของงบดุลและสภาพคล่องทางการเงิน",
-        contact_pill: "ติดต่อสอบถาม & ร่วมงานวิจัยเชิงวิชาการ",
-        contact_title: "ร่วมถอดรหัสกลไกเศรษฐกิจไปด้วยกัน",
-        contact_desc: "หากคุณสนใจการให้คำปรึกษาด้านการวิจัยเศรษฐศาสตร์ การแลกเปลี่ยนมุมมองทางวิชาการ ทฤษฎีเกมเชิงกลยุทธ์ หรือโครงการวิจัยร่วม สามารถติดต่อโดยตรงได้ที่นี่",
-        btn_copy_email: "คัดลอกอีเมล",
-        word_count_1: "1,215 คำ (EN/TH)",
-        word_count_2: "1,270 คำ (EN/TH)"
+        badge_interactive: "แบบจำลองเชิงเรื่องราว",
+        header_sub: "Phatthanan S. • วิจัยเศรษฐศาสตร์มหภาคเชิงปริมาณ",
+        btn_pause: "พักจำลอง",
+        btn_play: "เล่นเรื่องราว",
+        regime_label: "ระบอบเศรษฐกิจปัจจุบัน",
+        hover_inspect: "เลื่อนเมาส์บนกราฟเพื่อเจาะลึกจุดสำคัญ",
+        metric_pi: "อัตราเงินเฟ้อ (π)",
+        metric_gap: "ช่องว่างผลผลิต (y - y*)",
+        metric_rate: "อัตราดอกเบี้ยนโยบาย (i)",
+        metric_vix: "ดัชนีความเสี่ยง (VIX)",
+        causal_header: "กลไกการส่งผ่านผลกระทบทางเศรษฐกิจ",
+        formula_label: "สมการดุลยภาพที่ควบคุมระบบ",
+        policy_label: "การตอบสนองเชิงนโยบายของธนาคารกลาง",
+        counterfactual_tag: "แบบจำลองสถานการณ์สมมติ (Counterfactual)",
+        welfare_label: "ผลต่างสวัสดิการสังคมสุทธิ:",
+        takeaway_label: "บทเรียนเศรษฐมิติสำหรับโลกยุคใหม่"
       }
     };
 
-    // Treatises Database (Each project exceeds 1,200 words in both English and Thai)
-    const treatisesData = {
-      project1: {
-        badge: "PROJECT 01: CLASSICAL POLITICAL ECONOMY",
-        title_en: "Key Economic Concepts of Economics in One Lesson (Henry Hazlitt, 1946)",
-        title_th: "แก่นความคิดและบทวิเคราะห์ Economics in One Lesson โดย Henry Hazlitt (1946)",
-        wordCount_en: "1,215 Words",
-        wordCount_th: "1,280 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 font-mono text-xs text-cyan-300">
-              <strong>Thesis:</strong> "The art of economics consists in looking not merely at the immediate but at the longer effects of any act or policy; it consists in tracing the consequences of that policy not merely for one group but for all groups."
-            </div>
+    // Canvas & Waveform Render Variables
+    const canvas = document.getElementById('macroCanvas');
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    const pointsCount = 85; // Dense point distribution for silk-smooth curvature
+    let mainWave = [];
+    let secondaryWave = [];
+    let timeTick = 0;
+    let shiftAccumulator = 0;
 
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. The Broken Window Fallacy: Anatomy of Misallocated Capital</h3>
-            <p>
-              In 1946, financial journalist and classical economic thinker Henry Hazlitt formulated what remains one of the most enduring dissections of public policy fallacies in his seminal work <em>Economics in One Lesson</em>. Hazlitt begins with the classic parable of the broken window, initially conceived by Frédéric Bastiat in 1850. A young hooligan heaves a brick through the display window of a baker's shop. A crowd gathers, and inevitable sophistry emerges: spectators begin to rationalize that the vandalism possesses an economic silver lining. The glazier will earn fifty dollars to replace the pane; the glazier will subsequently spend those fifty dollars on shoes, enriching the cobbler; the cobbler will patronize the tailor, and thus purchasing power multiplies through the local economy.
-            </p>
-            <p>
-              Hazlitt meticulously dismantles this localized Keynesian multiplier illusion by distinguishing between <strong>what is seen</strong> versus <strong>what is unseen</strong>. What is seen is the physical replacement of the window and the direct monetary transfer from baker to glazier. What is unseen—and systematically ignored by special interests and interventionist policymakers—is the opportunity cost incurred by the shopkeeper. Had the window remained intact, the baker would have deployed those fifty dollars to purchase a tailored suit or invest in an additional baking oven to expand output. In that unmolested counterfactual scenario, the community would possess both the undamaged window <em>and</em> the new suit (or expanded production facility). Following the destruction, the community possesses merely the window, while the tailor has been deprived of employment. Destruction does not generate wealth; it merely diverts capital from productive expansion toward sheer replacement.
-            </p>
+    // Hover Tooltip State
+    let mousePos = { x: -1, y: -1, active: false };
 
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Curse of Specialization and Narrow Interests</h3>
-            <p>
-              Hazlitt generalizes the broken window fallacy to demonstrate how modern governments routinely justify harmful economic policies by examining solely the immediate benefits bestowed upon an organized, politically vocal minority, while ignoring the dispersed, long-run burdens shifted onto the silent majority. 
-            </p>
-            <p>
-              Consider the perennial advocacy for protective tariffs. A domestic manufacturer of steel petitions the state for an import tariff on foreign steel. What is immediately visible is that the domestic steel mill preserves its operational margin and retains 5,000 domestic laborers. Politicians hold press conferences celebrating the protection of domestic industry. However, the unseen consequence is that every automobile manufacturer, construction firm, and domestic consumer who purchases products utilizing steel must now pay an elevated price. Consequently, domestic consumers possess fewer real dollars to spend on domestic electronics, agriculture, and services. The tariff does not increase aggregate national employment; it merely subsidizes inefficient domestic steel production while cannibalizing competitive, unsubsidized export sectors and suppressing aggregate consumer purchasing power.
-            </p>
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      width = canvas.width = rect.width;
+      height = canvas.height = rect.height;
+    }
+    window.addEventListener('resize', resizeCanvas);
 
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. The Pathology of Price Fixing and Rent Controls</h3>
-            <p>
-              Hazlitt’s analysis of price ceilings provides a devastating critique of administrative fiat overriding supply-and-demand equilibrium. When government authorities legislate price controls below clearing levels—typically under the populist banner of consumer affordability—they inevitably trigger shortages. In competitive markets, price serves as an informational signal: an elevated price reflects acute consumer demand or supply scarcity, incentivizing entrepreneurs to allocate capital, ramp up production, and attract investment until supply expands and prices moderate.
-            </p>
-            <p>
-              When a mandatory ceiling is imposed on apartment rents, the economic repercussions follow inexorable trajectories:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>Erosion of Supply:</strong> Private developers halt investment in new multi-family housing complexes because projected rental returns fall below the cost of capital.</li>
-              <li><strong>Capital Deterioration:</strong> Landlords cannot recover repair and maintenance outlays, resulting in the rapid degradation of existing housing stock into slums.</li>
-              <li><strong>Black Markets and Rationing:</strong> When price cannot allocate scarce square footage, non-price rationing mechanisms emerge: bribery, key money, cronyism, and perpetual waiting lists.</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Inflation as Covert Taxation and Systemic Distortion</h3>
-            <p>
-              Perhaps the most urgent lesson Hazlitt imparted concerns monetary expansion. Inflation is frequently portrayed by governments not as an increase in the quantity of fiat currency and credit, but rather as the rising price of commodities—a sleight of hand attributing the consequence to the symptom. Hazlitt demonstrates that state-engineered monetary dilution functions as a regressive, invisible tax.
-            </p>
-            <p>
-              New money does not enter the economic bloodstream uniformly or simultaneously. The earliest recipients of newly created liquidity—typically the state, primary government contractors, and commercial financial institutions—spend this money at pre-inflation prices. By the time this expanded money supply trickles down to wage laborers, retirees, and fixed-income savers, aggregate retail prices have already escalated. Inflation inherently redistributes wealth away from prudent savers and creditors toward sovereign debtors and initial recipients of state liquidity, while simultaneously blinding entrepreneurs by distorting the price signals essential for accurate capital calculation.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. Contemporary Synthesis and Enduring Relevance</h3>
-            <p>
-              Eight decades after Hazlitt penned <em>Economics in One Lesson</em>, the global economy continues to battle the identical fallacies. The modern iterations of "stimulus through destruction" manifest in subsidies for premature industrial obsolescence, quantitative easing rationalized as cost-free liquidity, and geopolitical tariff walls framed as national rejuvenation. 
-            </p>
-            <p>
-              To master economics the simple way is not to oversimplify human desires, but to adhere rigorously to intellectual honesty: never analyze an economic intervention by isolating the first-order beneficiaries without computing the second-order, long-run incidence upon the entire social fabric.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-cyan-500/30 bg-cyan-950/20 font-mono text-xs text-cyan-300">
-              <strong>ใจความสำคัญ (Thesis):</strong> "ศิลปะแห่งเศรษฐศาสตร์ไม่ได้อยู่ที่การมองเพียงผลลัพธ์เฉพาะหน้า แต่ต้องสืบเสาะไปถึงผลกระทบระยะยาวของนโยบายใดๆ และไม่ได้อยู่ที่การตรวจสอบผลกระทบต่อคนกลุ่มใดกลุ่มหนึ่ง แต่ต้องประเมินผลลัพธ์ที่มีต่อคนทุกกลุ่มในระบบเศรษฐกิจทั้งหมด"
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. ภาพลวงตากระจกหน้าต่างแตก (The Broken Window Fallacy): กายวิภาคของการจัดสรรทุนผิดพลาด</h3>
-            <p>
-              ในปี ค.ศ. 1946 Henry Hazlitt นักหนังสือพิมพ์การเงินและนักคิดเศรษฐศาสตร์สำนักคลาสสิก ได้นำเสนอผลงานระดับตำนาน <em>Economics in One Lesson</em> ซึ่งเริ่มต้นด้วยการรื้อฟื้นนิทานเปรียบเทียบเรื่อง "หน้าต่างร้านขนมปังที่แตก" ของ Frédéric Bastiat (1850) เมื่อเด็กเกเรคนหนึ่งปาหินใส่กระจกหน้าร้านขนมปังจนแตกกระจาย ฝูงชนที่มุงดูเริ่มแสดงความคิดเห็นที่ดูเหมือนมีเหตุผล: กระจกที่แตกจะกระตุ้นเศรษฐกิจ ช่างกระจกจะได้เงิน 50 ดอลลาร์เพื่อมาเปลี่ยนกระจก จากนั้นช่างกระจกจะนำเงินไปซื้อรองเท้า ช่างทำรองเท้าก็นำเงินไปตัดสูท เงินหมุนเวียนในระบบเศรษฐกิจท้องถิ่นอย่างต่อเนื่อง
-            </p>
-            <p>
-              Hazlitt ได้ชี้ให้เห็นข้อผิดพลาดร้ายแรงของตรรกะนี้ด้วยการแยกแยะระหว่าง <strong>สิ่งที่มองเห็น (What is seen)</strong> กับ <strong>สิ่งที่มองไม่เห็น (What is unseen)</strong> สิ่งที่มองเห็นคือการติดตั้งกระจกบานใหม่และการจ่ายเงินให้ช่างกระจก แต่สิ่งที่มองไม่เห็น—และมักถูกละเลยโดยกลุ่มผลประโยชน์ทางการเมือง—คือ "ต้นทุนค่าเสียโอกาส" ของเจ้าของร้านขนมปัง หากหน้าต่างไม่แตก เจ้าของร้านอาจนำเงิน 50 ดอลลาร์นั้นไปซื้อเตาอบใหม่เพื่อเพิ่มผลผลิต หรือซื้อสูทตัวใหม่ ในกรณีที่ไม่มีการทำลายล้าง ชุมชนจะมีทั้งหน้าต่างและเตาอบใหม่ แต่หลังเกิดการทำลายล้าง ชุมชนเหลือเพียงหน้าต่างสภาพเดิม และช่างตัดเสื้อก็สูญเสียโอกาสทางธุรกิจ การทำลายล้างจึงไม่เคยสร้างความมั่งคั่งที่แท้จริง แต่เป็นการเบี่ยงเบนเงินทุนจากการขยายผลผลิตไปสู่การซ่อมแซมสิ่งเดิมโดยสูญเปล่า
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. กับดักของผลประโยชน์เฉพาะกลุ่มและการปกป้องภาษีศุลกากร</h3>
-            <p>
-              Hazlitt ขยายภาพลวงตากระจกแตกไปสู่การวิพากษ์นโยบายสาธารณะของรัฐบาล ซึ่งมักอ้างการช่วยเหลือกลุ่มผลประโยชน์กลุ่มเล็กๆ ที่มีอำนาจต่อรองทางการเมืองสูง โดยผลักภาระและต้นทุนระยะยาวไปให้แก่ประชาชนส่วนใหญ่ที่ไม่มีกระบอกเสียง
-            </p>
-            <p>
-              ตัวอย่างคลาสสิกคือ "การตั้งกำแพงภาษีนำเข้าเพื่อปกป้องอุตสาหกรรมในประเทศ" เมื่อผู้ผลิตเหล็กในประเทศขอให้รัฐขึ้นภาษีเหล็กนำเข้า สิ่งที่มองเห็นเด่นชัดคือโรงงานเหล็กในประเทศไม่ล้มละลายและยังรักษาแรงงานไว้ได้ 5,000 อัตรา นักการเมืองแถลงข่าวประกาศชัยชนะในการปกป้องคนในชาติ ทว่าสิ่งที่มองไม่เห็นคือ ผู้ผลิตยานยนต์ บริษัทรับเหมาก่อสร้าง และผู้บริโภคทุกคนในประเทศต้องซื้อเหล็กในราคาที่แพงขึ้น ส่งผลให้เงินในกระเป๋าของประชาชนลดลง ทำให้พวกเขามีเงินน้อยลงสำหรับการซื้อสินค้าอุตสาหกรรมอื่นๆ หรือสินค้าเกษตร ภาษีศุลกากรจึงไม่ได้เพิ่มการจ้างงานโดยรวมของประเทศเลยแม้แต่น้อย แต่เป็นการอุ้มชูอุตสาหกรรมที่ไร้ประสิทธิภาพด้วยการบั่นทอนกำลังซื้อของประชาชนและทำลายอุตสาหกรรมส่งออกที่แข่งขันได้อย่างแท้จริง
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. ผลลัพธ์วิบัติจากการควบคุมราคาและการจำกัดค่าเช่า</h3>
-            <p>
-              บทวิเคราะห์ของ Hazlitt ต่อการควบคุมราคา (Price Ceilings) เผยให้เห็นความพังทลายของระบบเมื่ออำนาจรัฐฝืนกลไกราคาตลาด ในระบบตลาดเสรี ราคาทำหน้าที่เป็นสัญญาณส่งข้อมูล (Price Signal) หากราคาสินค้าพุ่งสูงขึ้น นั่นแสดงถึงภาวะขาดแคลนหรือความต้องการสูง ซึ่งจะเป็นแรงจูงใจให้ผู้ประกอบการเร่งลงทุนและผลิตสินค้าเพิ่มจนปริมาณสินค้ากลับมาสมดุลและราคาลดลงในที่สุด
-            </p>
-            <p>
-              เมื่อรัฐบาลออกกฎหมายจำกัดเพดานค่าเช่าอะพาร์ตเมนต์เพื่อเอาใจผู้มีสิทธิเลือกตั้ง ผลลัพธ์ที่ตามมาในระยะยาวจะดำเนินไปตามวงจรอุบาทว์เสมอ:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li><strong>อุปทานที่อยู่อาศัยหดตัว:</strong> นักลงทุนเอกชนหยุดสร้างอะพาร์ตเมนต์ใหม่ เพราะผลตอบแทนจากการปล่อยเช่าไม่คุ้มกับต้นทุนทางการเงิน</li>
-              <li><strong>การทรุดโทรมของทรัพย์สิน:</strong> เจ้าของตึกไม่มีรายได้เพียงพอที่จะซ่อมแซมและบำรุงรักษาอาคาร ส่งผลให้อสังหาริมทรัพย์เสื่อมโทรมกลายเป็นชุมชนแออัดอย่างรวดเร็ว</li>
-              <li><strong>เกิดตลาดมืดและการจัดสรรแบบเล่นพรรคเล่นพวก:</strong> เมื่อราคาไม่สามารถทำหน้าที่คัดกรองอุปสงค์ได้ การจัดสรรจึงตกไปอยู่ใต้โต๊ะ ผ่านการติดสินบน ค่าน้ำร้อนน้ำชา และการเข้าคิวรออย่างไม่มีที่สิ้นสุด</li>
-            </ul>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. ภาวะเงินเฟ้อ: ภาษีแฝงที่ทำลายระบบราคา</h3>
-            <p>
-              หนึ่งในบทเรียนที่ทรงพลังที่สุดของ Hazlitt คือการทำความเข้าใจ "เงินเฟ้อ" รัฐบาลมักเบี่ยงเบนว่าเงินเฟ้อคือราคาสินค้าที่พุ่งสูงขึ้น แต่แท้จริงแล้วต้นเหตุของเงินเฟ้อคือการพิมพ์เงินและขยายปริมาณสินเชื่อของรัฐโดยไม่มีผลผลิตรองรับ Hazlitt อธิบายว่าเงินเฟ้อแท้จริงแล้วคือภาษีแฝงที่ขูดรีดอย่างเงียบงันและไม่เป็นธรรมที่สุด
-            </p>
-            <p>
-              เงินที่ถูกพิมพ์ขึ้นมาใหม่ไม่ได้กระจายไปยังทุกคนพร้อมๆ กัน คนกลุ่มแรกที่ได้รับเงินใหม่ (เช่น รัฐบาล ผู้รับเหมาโครงการรัฐ ธนาคารพาณิชย์) จะได้ใช้เงินนั้นในขณะที่ราคาสินค้าในตลาดยังไม่ปรับตัว แต่เมื่อเงินใหม่หมุนเวียนไปถึงมือประชาชน คนทำงานรายวัน ผู้รับบำนาญ และผู้ฝากเงิน ราคาสินค้าอุปโภคบริโภคก็ปรับตัวพุ่งขึ้นไปรอแล้ว เงินเฟ้อจึงปล้นความมั่งคั่งจากผู้ประหยัดอดออมและเจ้าหนี้ ไปประเคนให้แก่ลูกหนี้อธิปไตยและกลุ่มอำนาจที่อยู่ใกล้ชิดแท่นพิมพ์เงิน ทั้งยังทำลายระบบการคำนวณต้นทุนทางเศรษฐกิจของภาคธุรกิจจนบิดเบี้ยว
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. บทสรุปและความร่วมสมัยในศตวรรษที่ 21</h3>
-            <p>
-              กว่า 80 ปีหลังจาก Hazlitt เขียนหนังสือเล่มนี้ โลกยังคงเผชิญกับภาพลวงตาเดิมๆ การกระตุ้นเศรษฐกิจผ่านการทำลายสิ่งเก่า นโยบายผ่อนคลายทางการเงินแบบไร้ขีดจำกัด (QE) และการตั้งกำแพงภาษีในยุคสงครามภูมิเศรษฐศาสตร์ ล้วนเป็นมรดกทางความคิดที่ Hazlitt เคยเตือนไว้ล่วงหน้า
-            </p>
-            <p>
-              การเข้าใจเศรษฐศาสตร์อย่างเรียบง่ายไม่ใช่การทำให้ตื้นเขิน แต่คือการยึดมั่นในความซื่อสัตย์ทางปัญญา: จงอย่าวิเคราะห์นโยบายเศรษฐกิจใดๆ โดยมองแค่ผลประโยชน์เฉพาะหน้าต่อคนกลุ่มเดียว แต่ต้องคำนวณผลกระทบขั้นที่สองและสามที่จะส่งผลต่อระบบเศรษฐกิจทั้งหมดในระยะยาวเสมอ
-            </p>
-          </div>
-        `
-      },
-      project2: {
-        badge: "PROJECT 02: MICRO & STRATEGIC FOUNDATIONS",
-        title_en: "Game Theory: Equilibria, Strategic Credibility & Mechanism Design",
-        title_th: "ทฤษฎีเกม (Game Theory): ดุลยภาพ ความน่าเชื่อถือเชิงกลยุทธ์ และการออกแบบกลไก",
-        wordCount_en: "1,270 Words",
-        wordCount_th: "1,310 Words",
-        content_en: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 font-mono text-xs text-emerald-300">
-              <strong>Analytical Axiom:</strong> In interactive environments with rational agents, an outcome is governed not by independent optimization, but by the mutual consistency of strategic conjectures—formalized through Nash equilibria and backward induction.
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. Foundations of Non-Cooperative Strategic Behavior</h3>
-            <p>
-              Classical microeconomics largely operated under the assumption of parametric prices: atomistic firms and individual consumers take prevailing prices as exogenous market parameters. However, in reality, markets are dominated by strategic interdependencies—oligopolies, labor-management wage bargaining, central bank forward guidance, and international tariff disputes. Game theory transforms this paradigm by formalizing strategic interaction: an agent's optimal decision depends intrinsically on their beliefs regarding the expected actions of all rival agents.
-            </p>
-            <p>
-              Formally, a normal-form game is characterized by a triple $G = \\langle N, (S_i)_{i \\in N}, (u_i)_{i \\in N} \\rangle$, where $N$ represents the finite set of players, $S_i$ denotes the strategy space available to player $i$, and $u_i: \\prod_{j \\in N} S_j \\to \\mathbb{R}$ represents player $i$'s payoff function. The cornerstone of non-cooperative game theory, formulated by John Forbes Nash in 1950, defines a strategy profile $s^* = (s_1^*, s_2^*, \\dots, s_n^*)$ as a <strong>Nash Equilibrium</strong> if and only if no player possesses a unilateral incentive to deviate:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-cyan-300">
-              u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*) \quad \forall s_i \in S_i, \quad \forall i \in N
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. The Prisoner's Dilemma and Market Failure</h3>
-            <p>
-              The iconic Prisoner's Dilemma illustrates the profound chasm between individual rationality and systemic welfare maximization. When two suspects face prosecution under asymmetric evidentiary payoffs, each player possesses a <strong>strictly dominant strategy</strong> to defect. Regardless of whether Player 2 cooperates or defects, Player 1 achieves a strictly superior personal payoff by defecting:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li>If the rival cooperates, defecting captures the exploitation windfall ($u_{defect} = 5 > u_{coop} = 3$).</li>
-              <li>If the rival defects, defecting avoids the catastrophic sucker's payoff ($u_{defect} = 1 > u_{coop} = 0$).</li>
-            </ul>
-            <p>
-              Consequently, the unique, strictly dominant Nash Equilibrium resides at $(Defect, Defect)$, generating a payoff vector of $(1, 1)$. Paradoxically, mutual cooperation $(Cooperate, Cooperate)$ would have yielded $(3, 3)$—a strict Pareto improvement. This formalizes a ubiquitous economic reality: uncoordinated self-interest in the presence of externalities and public goods often yields sub-optimal, socially deficient outcomes (e.g., competitive tariff wars, environmental overexploitation, and patent arms races).
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. Extensive Games, Subgame Perfection, and Credible Commitments</h3>
-            <p>
-              While static games assume simultaneous decisions, real-world economics unfolds sequentially. In dynamic, extensive-form games modeled through game trees, the standard Nash equilibrium concept permits non-credible threats. Reinhard Selten resolved this in 1965 by introducing <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong>, derived systematically through backward induction.
-            </p>
-            <p>
-              Consider entry deterrence in an oligopoly. An incumbent monopolist threatens a prospective challenger: <em>"If you enter my market, I will engage in predatory pricing and launch a ruinous price war, driving both of our profits to negative infinity."</em> In a static framework, this threat might deter entry. However, under backward induction, if the challenger actually commits capital and enters, the incumbent faces a fait accompli: price-war profits are lower than shared duopoly profits. Because price-slashing is ex-post irrational, the threat is non-credible; the challenger enters, and the incumbent yields.
-            </p>
-            <p>
-              To render threats or promises credible, an agent must construct commitment devices—such as burning ships, investing in irreversible sunk capital (excess production capacity), or delegating policy execution to an independent, conservative agent (such as an independent central bank insulated from political electoral cycles).
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. Asymmetric Information and Mechanism Design</h3>
-            <p>
-              When economic agents possess private information that rivals cannot observe, standard equilibria mutate. George Akerlof demonstrated in 1970 that asymmetric quality information triggers <strong>adverse selection</strong>, collapsing markets into "lemons". Michael Spence (1973) formalized <strong>signaling games</strong>, proving that high-productivity workers can credibly signal their unseen quality only by undertaking a costly action that low-productivity counterparts cannot afford to replicate (the single-crossing condition).
-            </p>
-            <p>
-              This insight culminates in <strong>Mechanism Design</strong>—frequently termed "reverse game theory" (Hurwicz, Maskin, Myerson). Rather than analyzing outcomes under fixed game rules, the economist engineers the game’s institutional architecture and incentive compatibility constraints:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-emerald-300">
-              \text{Maximize } W(x) \quad \text{subject to } u_i(\theta_i, \theta_i) \ge u_i(\hat{\theta}_i, \theta_i) \quad (\text{Incentive Compatibility})
-            </div>
-            <p>
-              From Vickrey-Clarke-Groves (VCG) truth-telling auction mechanisms to the matching algorithms allocating medical residents to hospitals, mechanism design leverages strategic logic to overcome informational asymmetries and guarantee optimal resource distribution.
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. Strategic Synthesis</h3>
-            <p>
-              Game theory is far more than an intellectual exercise in abstract mathematics; it represents the fundamental language of institutional economics. By deconstructing tactical interactions into players, informational partitions, strategy profiles, and equilibrium concepts, the applied economist can anticipate unintended behavioral responses before regulatory interventions or commercial strategies are launched.
-            </p>
-          </div>
-        `,
-        content_th: `
-          <div class="prose prose-invert max-w-none space-y-6">
-            <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 font-mono text-xs text-emerald-300">
-              <strong>สัจพจน์เชิงวิเคราะห์ (Analytical Axiom):</strong> ในระบบที่มีผู้เล่นหลายฝ่ายซึ่งมีเหตุผล ผลลัพธ์สุดท้ายไม่ได้ถูกกำหนดด้วยการหาค่าที่เหมาะสมที่สุดของปัจเจกเพียงลำพัง แต่ถูกควบคุมด้วยความสอดคล้องร่วมกันของการคาดการณ์เชิงกลยุทธ์ ซึ่งถูกทำให้เป็นรูปธรรมผ่านดุลยภาพแนชและการอุปนัยย้อนกลับ
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">1. รากฐานของการตัดสินใจเชิงกลยุทธ์ (Non-Cooperative Game Theory)</h3>
-            <p>
-              เศรษฐศาสตร์จุลภาคกระแสเดิมส่วนใหญ่มักตั้งสมมติฐานว่าตัวแปรราคาเป็นสิ่งคงที่ซึ่งกำหนดมาจากตลาดภายนอก (Price Taking) โดยที่ผู้บริโภคและธุรกิจขนาดเล็กไม่มีอำนาจต่อรอง ทว่าในโลกความเป็นจริง ระบบเศรษฐกิจเต็มไปด้วย "การพึ่งพาซึ่งกันและกันเชิงกลยุทธ์" ไม่ว่าจะเป็นตลาดผู้ขายน้อยราย การเจรจาต่อรองค่าจ้างระหว่างสหภาพแรงงานกับผู้บริหาร การส่งสัญญาณนโยบายการเงินของธนาคารกลาง หรือสงครามภาษีการค้าระหว่างประเทศ ทฤษฎีเกมได้เปลี่ยนกระบวนทัศน์นี้ โดยทำให้การปฏิสัมพันธ์เชิงกลยุทธ์มีรูปแบบทางคณิตศาสตร์ที่ชัดเจน: การตัดสินใจที่ดีที่สุดของผู้เล่นคนหนึ่ง จะขึ้นอยู่กับความคาดหวังที่มีต่อการกระทำของผู้เล่นคนอื่นๆ ในระบบเสมอ
-            </p>
-            <p>
-              ในเชิงรูปนัย เกมรูปแบบปกติ (Normal-form game) ถูกนิยามด้วยชุดข้อมูล $G = \\langle N, (S_i)_{i \\in N}, (u_i)_{i \\in N} \\rangle$ โดย $N$ คือกลุ่มของผู้เล่นทั้งหมด $S_i$ คือขอบเขตกลยุทธ์ที่ผู้เล่น $i$ สามารถเลือกได้ และ $u_i$ คือฟังก์ชันอรรถประโยชน์หรือผลตอบแทน หัวใจสำคัญของทฤษฎีเกมไร้ความร่วมมือซึ่งพัฒนาขึ้นโดย John Forbes Nash ในปี ค.ศ. 1950 ได้นิยาม <strong>จุดดุลยภาพแนช (Nash Equilibrium)</strong> ว่าคือชุดกลยุทธ์ที่ไม่มีผู้เล่นคนใดสามารถเบี่ยงเบนการตัดสินใจไปจากจุดนี้เพียงลำพังแล้วทำให้ตนเองได้ผลตอบแทนสูงขึ้นได้:
-            </p>
-            <div class="p-3 bg-slate-950 rounded-lg border border-slate-800 font-mono text-xs text-center text-cyan-300">
-              u_i(s_i^*, s_{-i}^*) \ge u_i(s_i, s_{-i}^*) \quad \forall s_i \in S_i, \quad \forall i \in N
-            </div>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">2. ปริศนานักโทษ (Prisoner's Dilemma) และความล้มเหลวของตลาด</h3>
-            <p>
-              โมเดลปริศนานักโทษสะท้อนให้เห็นถึงช่องว่างอันลึกซึ้งระหว่าง "ความมีเหตุผลของปัจเจกบุคคล" กับ "สวัสดิการสูงสุดของสังคมส่วนรวม" เมื่อผู้ต้องหา 2 คนถูกแยกห้องสอบสวน แต่ละคนจะมี <strong>กลยุทธ์เด่น (Strictly Dominant Strategy)</strong> นั่นคือการ "หักหลังหรือสารภาพ (Defect)" ไม่ว่าผู้เล่นอีกฝ่ายจะเลือกให้ความร่วมมือหรือหักหลัง ผู้เล่นคนแรกก็ย่อมได้ผลประโยชน์เฉพาะหน้ามากกว่าเสมอเมื่อเลือกหักหลัง:
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-slate-300">
-              <li>หากอีกฝ่ายเลือกที่จะร่วมมือ การหักหลังจะทำให้ตนเองได้รับผลประโยชน์สูงสุด ($u = 5 > 3$)</li>
-              <li>หากอีกฝ่ายเลือกที่จะหักหลัง การเลือกหักหลังตามก็จะช่วยป้องกันไม่ให้ตนเองต้องตกเป็นผู้รับเคราะห์แต่เพียงผู้เดียว ($u = 1 > 0$)</li>
-            </ul>
-            <p>
-              ดังนั้น ดุลยภาพแนชหนึ่งเดียวจึงตกลงสู่จุด $(หักหลัง, หักหลัง)$ ซึ่งให้ผลตอบแทนเพียง $(1, 1)$ ทั้งที่ในความเป็นจริง หากทั้งสองฝ่ายร่วมมือกัน $(ร่วมมือ, ร่วมมือ)$ พวกเขาจะได้ผลตอบแทน $(3, 3)$ ซึ่งเป็นจุดที่เกิดประสิทธิภาพสูงสุดตามหลักพาเรโต (Pareto Optimum) โมเดลนี้อธิบายปรากฏการณ์ความล้มเหลวของตลาดได้อย่างชัดเจน เช่น การแข่งขันลดราคาจนพังทั้งคู่ การตัดไม้ทำลายป่าและทำลายสิ่งแวดล้อม (Tragedy of the Commons) หรือการตั้งกำแพงภาษีตอบโต้กันจนการค้าโลกหดตัว
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">3. เกมแบบมีลำดับเวลา (Extensive Form) และพันธสัญญาที่น่าเชื่อถือ</h3>
-            <p>
-              ในขณะที่เกมแบบพร้อมกันเกิดขึ้นในเวลาเดียวกัน แต่การตัดสินใจทางเศรษฐกิจจริงมักดำเนินไปอย่างเป็นลำดับขั้น (Dynamic Sequential Games) ซึ่งจำลองด้วยแผนภาพต้นไม้ (Game Tree) Reinhard Selten ได้เสนอแนวคิด <strong>Subgame Perfect Nash Equilibrium (SPNE)</strong> ในปี 1965 ซึ่งแก้ปัญหาด้วยวิธีการ "อุปนัยย้อนกลับ (Backward Induction)" เพื่อกำจัดคำขู่ที่ไม่น่าเชื่อถือ (Non-credible threats)
-            </p>
-            <p>
-              ลองพิจารณาตัวอย่างการกีดกันคู่แข่งรายใหม่ในตลาดผูกขาด: เจ้าตลาดเดิมข่มขู่ผู้ท้าชิงว่า <em>"หากคุณกล้าเข้ามาในตลาด ฉันจะตัดราคาขายจนขาดทุนมหาศาลเพื่อให้เราพังไปด้วยกันทั้งคู่"</em> ในเชิงตรรกะเบื้องต้น คำขู่นี้อาจทำให้ผู้ท้าชิงกลัว แต่เมื่อพิจารณาด้วยการอุปนัยย้อนกลับ หากผู้ท้าชิงตัดสินใจก้าวเข้ามาในตลาดจริงๆ เจ้าตลาดเดิมย่อมไม่ยอมตัดราคาจนเจ๊ง เพราะการยอมแบ่งตลาดแบบดูโอโพลียังคงสร้างกำไรได้มากกว่าการก่อสงครามราคาที่ไร้เหตุผล คำขู่นี้จึงเป็น "คำขู่ที่ไร้ความน่าเชื่อถือ"
-            </p>
-            <p>
-              ผู้เล่นจะสามารถสร้างคำขู่หรือคำสัญญาที่มีน้ำหนักได้ ก็ต่อเมื่อพวกเขามี "เครื่องมือผูกมัด (Commitment Devices)" เช่น การลงทุนในสินทรัพย์จมที่ไม่สามารถเปลี่ยนคืนเป็นเงินสดได้ (Irreversible Sunk Cost) หรือการมอบอำนาจบริหารนโยบายการเงินให้แก่ธนาคารกลางที่เป็นอิสระจากการเมืองอย่างแท้จริง
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">4. สารสนเทศไม่สมมาตรและการออกแบบกลไก (Mechanism Design)</h3>
-            <p>
-              เมื่อผู้เล่นในตลาดถือครองข้อมูลไม่เท่ากัน ดุลยภาพตลาดจะผิดเพี้ยนไป George Akerlof (1970) แสดงให้เห็นว่าความไม่สมมาตรของข้อมูลนำไปสู่ปัญหาการคัดเลือกที่ไม่พึงประสงค์ (Adverse Selection) จนตลาดล่มสลาย ขณะที่ Michael Spence (1973) นำเสนอทฤษฎีการส่งสัญญาณ (Signaling) ว่าผู้ที่มีความสามารถสูงต้องยอมลงทุนส่งสัญญาณที่มีต้นทุนสูงซึ่งคนไร้ความสามารถไม่สามารถเลียนแบบได้
-            </p>
-            <p>
-              แนวคิดนี้พัฒนาไปสู่จุดสูงสุดในสาขา <strong>การออกแบบกลไก (Mechanism Design)</strong> หรือทฤษฎีเกมแบบย้อนกลับ (Reverse Game Theory) โดยแทนที่จะวิเคราะห์ว่าผู้เล่นจะทำอย่างไรภายใต้กฎกติกาเดิม นักเศรษฐศาสตร์จะทำหน้าที่เป็นผู้ออกแบบกฎของระบบและโครงสร้างแรงจูงใจ เพื่อบีบให้ผู้เล่นเปิดเผยความจริง (Truth-telling) และนำไปสู่การจัดสรรทรัพยากรที่มีประสิทธิภาพสูงสุด ตัวอย่างเช่น การประมูลคลื่นความถี่โทรคมนาคมแบบ Vickrey-Clarke-Groves (VCG) หรือระบบจัดสรรแพทย์จบใหม่เข้าสู่โรงพยาบาล
-            </p>
-
-            <h3 class="text-lg font-bold text-white border-b border-slate-800 pb-2">5. บทสรุปทางกลยุทธ์</h3>
-            <p>
-              ทฤษฎีเกมไม่ใช่เพียงคณิตศาสตร์เชิงนามธรรม แต่เป็นภาษาและแว่นขยายที่ใช้อ่านโครงสร้างพฤติกรรมมนุษย์และสถาบันทางเศรษฐกิจ การเข้าใจดุลยภาพและแรงจูงใจที่แท้จริง จะช่วยให้นักเศรษฐศาสตร์มองเห็นล่วงหน้าว่านโยบายใดจะสัมฤทธิ์ผล หรือนโยบายใดจะล้มเหลวเพราะถูกผู้เล่นในระบบหาช่องว่างเพื่อผลประโยชน์ส่วนตน
-            </p>
-          </div>
-        `
+    // Initialize Wave Vectors with graceful equilibrium values
+    function initWaves() {
+      mainWave = [];
+      secondaryWave = [];
+      for (let i = 0; i < pointsCount; i++) {
+        mainWave.push(height * 0.52);
+        secondaryWave.push(height * 0.64);
       }
-    };
-
-    // Toggle Language Function
-    function toggleLanguage() {
-      currentLang = (currentLang === 'en') ? 'th' : 'en';
-      applyLanguage(currentLang);
     }
 
-    function applyLanguage(lang) {
-      document.getElementById('currentLangLabel').innerText = (lang === 'en') ? 'EN' : 'TH';
-      
-      // Update UI elements with data-i18n
-      const elements = document.querySelectorAll('[data-i18n]');
-      elements.forEach(el => {
+    // Build Epoch Navigation Chips
+    function buildEpochChips() {
+      const container = document.getElementById('epochChipsContainer');
+      container.innerHTML = '';
+      epochs.forEach((ep, idx) => {
+        const btn = document.createElement('button');
+        btn.id = `epoch-chip-${idx}`;
+        btn.onclick = () => selectEpoch(idx);
+        
+        const isCurrent = (idx === currentEpochIdx);
+        btn.className = isCurrent
+          ? 'px-3 py-1.5 rounded-lg border border-cyan-500 bg-cyan-500/20 text-cyan-300 font-semibold whitespace-nowrap transition-all shadow-md shadow-cyan-500/10'
+          : 'px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900/60 hover:bg-slate-800 text-slate-400 whitespace-nowrap transition-all';
+
+        const label = (currentLang === 'en') ? ep.period : ep.period_th;
+        btn.innerHTML = `<span>${label}</span>`;
+        container.appendChild(btn);
+      });
+    }
+
+    // Epoch Selection Handler
+    function selectEpoch(idx) {
+      currentEpochIdx = idx;
+      epochTimer = 0; // reset autoplay timer
+      updateView();
+    }
+
+    function nextEpoch() {
+      currentEpochIdx = (currentEpochIdx + 1) % epochs.length;
+      epochTimer = 0;
+      updateView();
+    }
+
+    function prevEpoch() {
+      currentEpochIdx = (currentEpochIdx - 1 + epochs.length) % epochs.length;
+      epochTimer = 0;
+      updateView();
+    }
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const playText = document.getElementById('playText');
+      const playIcon = document.getElementById('playIcon');
+      const liveDot = document.getElementById('liveStatusDot');
+      const liveText = document.getElementById('liveStatusText');
+
+      if (isPlaying) {
+        playText.innerText = (currentLang === 'en') ? 'Pause' : 'พักจำลอง';
+        playIcon.className = 'fa-solid fa-pause';
+        liveDot.className = 'w-2 h-2 rounded-full bg-emerald-400 animate-ping';
+        liveText.innerText = (currentLang === 'en') ? 'Live Simulation' : 'จำลองเวลาสด';
+      } else {
+        playText.innerText = (currentLang === 'en') ? 'Play Journey' : 'เล่นเรื่องราว';
+        playIcon.className = 'fa-solid fa-play';
+        liveDot.className = 'w-2 h-2 rounded-full bg-slate-500';
+        liveText.innerText = (currentLang === 'en') ? 'Paused' : 'หยุดชั่วคราว';
+      }
+    }
+
+    function toggleLang() {
+      currentLang = (currentLang === 'en') ? 'th' : 'en';
+      document.getElementById('langLabel').innerText = (currentLang === 'en') ? 'TH / EN' : 'EN / TH';
+      updateView();
+    }
+
+    // Update Text and DOM Elements to Match Current Epoch
+    function updateView() {
+      const ep = epochs[currentEpochIdx];
+      const t = uiI18n[currentLang];
+
+      // Update Localized UI Labels
+      document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (uiTranslations[lang][key]) {
-          el.innerText = uiTranslations[lang][key];
-        }
+        if (t[key]) el.innerText = t[key];
       });
 
-      // Special Hero Quote Check
-      const quoteEl = document.getElementById('heroQuote');
-      if (lang === 'th') {
-        quoteEl.innerText = '"เข้าใจเศรษฐศาสตร์อย่างถ่องแท้ ด้วยหลักการที่เฉียบคมและเรียบง่าย"';
-      } else {
-        quoteEl.innerText = '"Master Economics, the Simple Way."';
+      // Update Header Badges & Titles
+      document.getElementById('epochPeriodLabel').innerText = (currentLang === 'en') ? ep.period : ep.period_th;
+      document.getElementById('epochHeadline').innerText = (currentLang === 'en') ? ep.title_en : ep.title_th;
+      document.getElementById('epochSubline').innerText = (currentLang === 'en') ? ep.subline_en : ep.subline_th;
+      document.getElementById('epochRegime').innerText = (currentLang === 'en') ? ep.regime_en : ep.regime_th;
+
+      // Update HUD Gauges
+      document.getElementById('hudPi').innerText = ep.hud.pi;
+      document.getElementById('hudPiDelta').innerText = ep.hud.piDelta;
+      document.getElementById('barPi').style.width = ep.hud.piPct + '%';
+
+      document.getElementById('hudGap').innerText = ep.hud.gap;
+      document.getElementById('hudGapDelta').innerText = ep.hud.gapDelta;
+      document.getElementById('barGap').style.width = ep.hud.gapPct + '%';
+
+      document.getElementById('hudRate').innerText = ep.hud.rate;
+      document.getElementById('hudRateDelta').innerText = ep.hud.rateDelta;
+      document.getElementById('barRate').style.width = ep.hud.ratePct + '%';
+
+      document.getElementById('hudVix').innerText = ep.hud.vix;
+      document.getElementById('hudVixDelta').innerText = ep.hud.vixDelta;
+      document.getElementById('barVix').style.width = ep.hud.vixPct + '%';
+
+      // Update Scrubber Bar
+      document.getElementById('scrubberEpochName').innerText = (currentLang === 'en') ? ep.title_en : ep.title_th;
+      document.getElementById('scrubberMechanismHint').innerText = (currentLang === 'en') ? ep.subline_en : ep.subline_th;
+      document.getElementById('epochProgressLabel').innerText = `Epoch ${currentEpochIdx + 1} of ${epochs.length}`;
+
+      // Update Analytical Story Card
+      document.getElementById('storyCardTitle').innerText = (currentLang === 'en') ? ep.title_en : ep.title_th;
+      document.getElementById('storyCardBody').innerText = (currentLang === 'en') ? ep.story_en : ep.story_th;
+      document.getElementById('storyFormula').innerText = ep.formula;
+      document.getElementById('storyFormulaDesc').innerText = (currentLang === 'en') ? ep.formulaDesc_en : ep.formulaDesc_th;
+      document.getElementById('storyPolicyResolution').innerText = (currentLang === 'en') ? ep.policy_en : ep.policy_th;
+
+      // Update Counterfactual Card
+      document.getElementById('cfTitle').innerText = (currentLang === 'en') ? ep.cfTitle_en : ep.cfTitle_th;
+      document.getElementById('cfExplanation').innerText = (currentLang === 'en') ? ep.cfBody_en : ep.cfBody_th;
+      document.getElementById('cfMetric').innerText = ep.cfMetric;
+
+      // Update Lessons Card
+      document.getElementById('lessonHeadline').innerText = (currentLang === 'en') ? ep.lessonHead_en : ep.lessonHead_th;
+      document.getElementById('lessonBody').innerText = (currentLang === 'en') ? ep.lessonBody_en : ep.lessonBody_th;
+      document.getElementById('lessonTag').innerText = ep.lessonTag;
+
+      // Update Palette Ambient Glow
+      const glowOrb = document.getElementById('ambientGlow');
+      glowOrb.style.background = `radial-gradient(circle, ${ep.palette.ambient} 0%, transparent 70%)`;
+      
+      // Refresh chip styling to show active state
+      buildEpochChips();
+    }
+
+    // Main Canvas Render Loop (Decelerated & Dampened)
+    function renderLoop() {
+      ctx.clearRect(0, 0, width, height);
+      const ep = epochs[currentEpochIdx];
+      const p = ep.physics;
+
+      // Autoplay Progress Advancement (Slowed down to 1200 frames per epoch)
+      if (isPlaying) {
+        epochTimer++;
+        const pct = (epochTimer / epochDuration) * 100;
+        document.getElementById('cycleProgressBar').style.width = Math.min(100, pct) + '%';
+
+        if (epochTimer >= epochDuration) {
+          nextEpoch();
+        }
       }
 
-      // Update Active Modal if open
-      if (currentOpenProjectId) {
-        renderModalContent(currentOpenProjectId, lang);
+      timeTick += p.waveSpeed;
+
+      // Smooth horizontal point shift rate (sub-pixel shifting cadence)
+      shiftAccumulator += 0.35; // Shifts once every ~3 frames for a graceful, dignified flow
+      if (shiftAccumulator >= 1.0) {
+        shiftAccumulator = 0;
+
+        // Calculate smooth target point with gentle harmonic blending
+        const midY = height * 0.52;
+        const primarySin = Math.sin(timeTick * 1.2) * (height * p.amplitude);
+        const harmonicCos = Math.cos(timeTick * 0.45) * (height * p.amplitude * 0.5);
+        const softNoise = (Math.random() - 0.5) * (6 * p.turbulence);
+        const trendOffset = p.trend * height * 0.4;
+
+        const targetY = Math.max(height * 0.18, Math.min(height * 0.86, midY + primarySin + harmonicCos + softNoise + trendOffset));
+        
+        // Linear interpolation with current head point to prevent any abrupt jerks
+        const currentHead = mainWave[mainWave.length - 1];
+        const nextVal = currentHead + (targetY - currentHead) * 0.4;
+
+        mainWave.shift();
+        mainWave.push(nextVal);
+
+        // Secondary Shadow Wave (Smooth lagging counterpoint)
+        const targetSec = Math.max(height * 0.22, Math.min(height * 0.90, (height * 0.65) + Math.cos(timeTick * 0.7) * (height * 0.10) + (softNoise * 0.3)));
+        const currentSecHead = secondaryWave[secondaryWave.length - 1];
+        const nextSec = currentSecHead + (targetSec - currentSecHead) * 0.3;
+
+        secondaryWave.shift();
+        secondaryWave.push(nextSec);
       }
-    }
 
-    // Modal Reader Logic
-    function openModal(projectId) {
-      currentOpenProjectId = projectId;
-      renderModalContent(projectId, currentLang);
-      document.getElementById('treatiseModal').classList.remove('hidden');
-      document.body.style.overflow = 'hidden';
-    }
+      const stepX = width / (pointsCount - 1);
 
-    function closeModal() {
-      document.getElementById('treatiseModal').classList.add('hidden');
-      document.body.style.overflow = 'auto';
-      currentOpenProjectId = null;
-    }
-
-    function toggleLanguageInModal() {
-      toggleLanguage();
-    }
-
-    function renderModalContent(projectId, lang) {
-      const data = treatisesData[projectId];
-      if (!data) return;
-
-      document.getElementById('modalCategoryBadge').innerText = data.badge;
-      document.getElementById('modalWordCount').innerText = (lang === 'en') ? data.wordCount_en : data.wordCount_th;
-      document.getElementById('modalTitle').innerText = (lang === 'en') ? data.title_en : data.title_th;
-      document.getElementById('modalBody').innerHTML = (lang === 'en') ? data.content_en : data.content_th;
-      document.getElementById('modalLangToggleLabel').innerText = (lang === 'en') ? 'เปลี่ยนเป็นภาษาไทย (TH)' : 'Switch to English (EN)';
-    }
-
-    // Close modal on Escape
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && currentOpenProjectId) {
-        closeModal();
+      // --- 1. Draw Secondary Ghost Trail (Lagged Transmission) ---
+      ctx.beginPath();
+      for (let i = 0; i < pointsCount; i++) {
+        const x = i * stepX;
+        const y = secondaryWave[i];
+        if (i === 0) ctx.moveTo(x, y);
+        else {
+          const prevX = (i - 1) * stepX;
+          const prevY = secondaryWave[i - 1];
+          const cpX = (prevX + x) / 2;
+          ctx.bezierCurveTo(cpX, prevY, cpX, y, x, y);
+        }
       }
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.18)';
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([5, 6]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // --- 2. Draw Area Gradient Under Main Curve ---
+      const gradient = ctx.createLinearGradient(0, 0, 0, height);
+      gradient.addColorStop(0, ep.palette.fillTop);
+      gradient.addColorStop(1, ep.palette.fillBottom);
+
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      for (let i = 0; i < pointsCount; i++) {
+        const x = i * stepX;
+        const y = mainWave[i];
+        if (i === 0) ctx.lineTo(x, y);
+        else {
+          const prevX = (i - 1) * stepX;
+          const prevY = mainWave[i - 1];
+          const cpX = (prevX + x) / 2;
+          ctx.bezierCurveTo(cpX, prevY, cpX, y, x, y);
+        }
+      }
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fillStyle = gradient;
+      ctx.fill();
+
+      // --- 3. Draw Primary Glowing Curve ---
+      ctx.beginPath();
+      for (let i = 0; i < pointsCount; i++) {
+        const x = i * stepX;
+        const y = mainWave[i];
+        if (i === 0) ctx.moveTo(x, y);
+        else {
+          const prevX = (i - 1) * stepX;
+          const prevY = mainWave[i - 1];
+          const cpX = (prevX + x) / 2;
+          ctx.bezierCurveTo(cpX, prevY, cpX, y, x, y);
+        }
+      }
+      ctx.strokeStyle = ep.palette.line;
+      ctx.lineWidth = 2.8;
+      ctx.shadowColor = ep.palette.glow;
+      ctx.shadowBlur = 18;
+      ctx.stroke();
+      ctx.shadowBlur = 0; // reset
+
+      // --- 4. Draw Leading Pulse Node (Terminal Point) ---
+      const headX = width;
+      const headY = mainWave[pointsCount - 1];
+
+      // Calm breathing pulse (slowed down from factor 5 to 2.2)
+      const pulseR = 4.5 + Math.sin(timeTick * 2.2) * 2;
+      ctx.beginPath();
+      ctx.arc(headX, headY, pulseR * 1.8, 0, Math.PI * 2);
+      ctx.fillStyle = ep.palette.glow;
+      ctx.fill();
+
+      // Node center core
+      ctx.beginPath();
+      ctx.arc(headX, headY, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+
+      // --- 5. Interactive Mouse Probe Crosshair ---
+      if (mousePos.active) {
+        // Vertical inspection line
+        ctx.beginPath();
+        ctx.moveTo(mousePos.x, 0);
+        ctx.lineTo(mousePos.x, height);
+        ctx.strokeStyle = 'rgba(6, 182, 212, 0.4)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Find nearest point index
+        const nearestIdx = Math.min(pointsCount - 1, Math.max(0, Math.round(mousePos.x / stepX)));
+        const probeY = mainWave[nearestIdx];
+
+        // Intersection point ring
+        ctx.beginPath();
+        ctx.arc(nearestIdx * stepX, probeY, 6, 0, Math.PI * 2);
+        ctx.strokeStyle = '#06b6d4';
+        ctx.lineWidth = 2;
+        ctx.fillStyle = '#0f172a';
+        ctx.fill();
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    // Mouse Probing Listeners
+    canvas.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mousePos.x = e.clientX - rect.left;
+      mousePos.y = e.clientY - rect.top;
+      mousePos.active = true;
+
+      const stepX = width / (pointsCount - 1);
+      const nearestIdx = Math.min(pointsCount - 1, Math.max(0, Math.round(mousePos.x / stepX)));
+      const probeY = mainWave[nearestIdx];
+
+      const tooltip = document.getElementById('canvasTooltip');
+      tooltip.classList.remove('hidden');
+
+      // Position tooltip clamped within canvas bounds
+      const posX = Math.min(rect.width - 240, Math.max(20, mousePos.x + 15));
+      const posY = Math.min(rect.height - 120, Math.max(20, probeY - 40));
+      tooltip.style.left = posX + 'px';
+      tooltip.style.top = posY + 'px';
+
+      const ep = epochs[currentEpochIdx];
+      document.getElementById('tooltipDate').innerText = (currentLang === 'en') ? `${ep.period} Snapshot` : `ช่วงปี ${ep.period_th}`;
+      document.getElementById('tooltipEvent').innerText = (currentLang === 'en') ? ep.title_en : ep.title_th;
+      document.getElementById('tooltipDesc').innerText = (currentLang === 'en') 
+        ? `Trajectory Index: ${(100 + (height * 0.5 - probeY) * 0.35).toFixed(1)} | Policy Regime: ${ep.regime_en}`
+        : `ดัชนีจำลอง: ${(100 + (height * 0.5 - probeY) * 0.35).toFixed(1)} | สภาวะ: ${ep.regime_th}`;
     });
 
-    // Copy Email Function
-    function copyEmail() {
-      const email = 'sp.phatthanan@gmail.com';
-      const dummy = document.createElement('textarea');
-      document.body.appendChild(dummy);
-      dummy.value = email;
-      dummy.select();
-      document.execCommand('copy');
-      document.body.removeChild(dummy);
+    canvas.addEventListener('mouseleave', () => {
+      mousePos.active = false;
+      document.getElementById('canvasTooltip').classList.add('hidden');
+    });
 
-      const toast = document.getElementById('toast');
-      toast.classList.remove('hidden');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-      }, 3000);
-    }
-
-    // Interactive Game Theory Presets
-    function setGamePreset(type) {
-      const cc = document.getElementById('cell-CC');
-      const cd = document.getElementById('cell-CD');
-      const dc = document.getElementById('cell-DC');
-      const dd = document.getElementById('cell-DD');
-
-      if (type === 'pd') {
-        document.getElementById('p1_cc').innerText = '3';
-        document.getElementById('p2_cc').innerText = '3';
-        document.getElementById('p1_cd').innerText = '0';
-        document.getElementById('p2_cd').innerText = '5';
-        document.getElementById('p1_dc').innerText = '5';
-        document.getElementById('p2_dc').innerText = '0';
-        document.getElementById('p1_dd').innerText = '1';
-        document.getElementById('p2_dd').innerText = '1';
-
-        dd.className = 'p-3 rounded border border-amber-500/40 bg-amber-500/10 transition relative';
-        cc.className = 'p-3 rounded border border-slate-800 bg-slate-900/80 transition';
-        document.getElementById('nashExplanation').innerText = 
-          (currentLang === 'en') 
-          ? 'Strict Dominant Strategy leads to (Defect, Defect) yielding sub-optimal welfare.'
-          : 'กลยุทธ์เด่นชักนำให้เกิดดุลยภาพที่ (หักหลัง, หักหลัง) ซึ่งให้สวัสดิการต่ำกว่าจุดร่วมมือ';
-      } else {
-        // Stag Hunt (Coordination Game)
-        document.getElementById('p1_cc').innerText = '4';
-        document.getElementById('p2_cc').innerText = '4';
-        document.getElementById('p1_cd').innerText = '0';
-        document.getElementById('p2_cd').innerText = '3';
-        document.getElementById('p1_dc').innerText = '3';
-        document.getElementById('p2_dc').innerText = '0';
-        document.getElementById('p1_dd').innerText = '2';
-        document.getElementById('p2_dd').innerText = '2';
-
-        cc.className = 'p-3 rounded border border-emerald-500/40 bg-emerald-500/10 transition';
-        dd.className = 'p-3 rounded border border-amber-500/40 bg-amber-500/10 transition';
-        document.getElementById('nashExplanation').innerText = 
-          (currentLang === 'en')
-          ? 'Coordination Game exhibits 2 Pure Nash Equilibria: (Stag, Stag) [Payoff Dominant] and (Hare, Hare) [Risk Dominant].'
-          : 'เกมการประสานงานมี 2 ดุลยภาพแนชแท้: (ล่ากวาง, ล่ากวาง) ที่ให้ผลตอบแทนสูงสุด และ (ล่ากระต่าย, ล่ากระต่าย) ที่มีความเสี่ยงต่ำสุด';
+    // Touch Support for Mobile Scrubbing
+    canvas.addEventListener('touchmove', (e) => {
+      if (e.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mousePos.x = e.touches[0].clientX - rect.left;
+        mousePos.y = e.touches[0].clientY - rect.top;
+        mousePos.active = true;
       }
-    }
+    }, { passive: true });
 
-    // Taylor Rule Calculation Logic
-    function calculateTaylorRule() {
-      const pi = parseFloat(document.getElementById('input-pi').value);
-      const gap = parseFloat(document.getElementById('input-gap').value);
+    canvas.addEventListener('touchend', () => {
+      mousePos.active = false;
+      document.getElementById('canvasTooltip').classList.add('hidden');
+    });
 
-      document.getElementById('disp-pi').innerText = pi.toFixed(1) + '%';
-      document.getElementById('disp-gap').innerText = (gap >= 0 ? '+' : '') + gap.toFixed(1) + '%';
-
-      const r_star = 1.0;
-      const pi_star = 2.0;
-
-      // Classic Taylor Rule: i = r* + pi + 0.5(pi - pi*) + 0.5(gap)
-      const nominalRate = r_star + pi + 0.5 * (pi - pi_star) + 0.5 * (gap);
-      const clampedRate = Math.max(0, nominalRate);
-
-      document.getElementById('taylorRateDisplay').innerText = clampedRate.toFixed(2) + '%';
-
-      const badge = document.getElementById('policyStanceBadge');
-      const yieldLabel = document.getElementById('yieldCurveStatus');
-
-      if (clampedRate >= 5.5) {
-        badge.className = 'px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Aggressive Tightening' : 'นโยบายการเงินตึงตัวเข้มงวด';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Inversion Risk High' : 'เส้นอัตราผลตอบแทน: ความเสี่ยงกลับทิศสูง';
-      } else if (clampedRate <= 2.5) {
-        badge.className = 'px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Accommodative Expansion' : 'นโยบายการเงินผ่อนคลายขยายตัว';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Steepening Bullish' : 'เส้นอัตราผลตอบแทน: ลาดชันขึ้นตามปกติ';
-      } else {
-        badge.className = 'px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold';
-        badge.innerText = (currentLang === 'en') ? 'Neutral Rate Equilibrium' : 'อัตราดอกเบี้ยสมดุลเป็นกลาง';
-        yieldLabel.innerText = (currentLang === 'en') ? 'Yield Curve: Normal Term Premium' : 'เส้นอัตราผลตอบแทน: ค่าชดเชยปกติ';
-      }
-    }
-
-    // Initialize Page
+    // Initialize System on Window Load
     window.onload = function() {
-      calculateTaylorRule();
+      resizeCanvas();
+      initWaves();
+      buildEpochChips();
+      updateView();
+      renderLoop();
     };
   </script>
 </body>
 </html>
+
